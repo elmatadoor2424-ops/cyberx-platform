@@ -24,7 +24,7 @@ export async function POST(req: NextRequest) {
     const targetWebhookUrl =
       (forwardWebhookUrl && forwardWebhookUrl.startsWith("http") ? forwardWebhookUrl.trim() : null) ||
       process.env.N8N_WEBHOOK_URL ||
-      "https://polite-snake-84.loca.lt/webhook/c59e6ab9-de89-4c7c-a02c-58869a44c0b3";
+      "https://cultures-era-choices-galleries.trycloudflare.com/webhook/c59e6ab9-de89-4c7c-a02c-58869a44c0b3";
 
     // Persist lead immediately to admin database
     addLead({

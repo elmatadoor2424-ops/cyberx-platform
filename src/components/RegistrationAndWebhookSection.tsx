@@ -36,7 +36,7 @@ export default function RegistrationAndWebhookSection({
     couponCode: appliedDiscountCode || "CYBER70",
   });
 
-  const [customWebhookUrl, setCustomWebhookUrl] = useState("https://polite-snake-84.loca.lt/webhook/c59e6ab9-de89-4c7c-a02c-58869a44c0b3");
+  const [customWebhookUrl, setCustomWebhookUrl] = useState("https://cultures-era-choices-galleries.trycloudflare.com/webhook/c59e6ab9-de89-4c7c-a02c-58869a44c0b3");
   const [showWebhookSettings, setShowWebhookSettings] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submissionResult, setSubmissionResult] = useState<{
@@ -186,7 +186,7 @@ export default function RegistrationAndWebhookSection({
                   </div>
                   <input
                     type="url"
-                    placeholder="https://polite-snake-84.loca.lt/webhook/c59e6ab9-de89-4c7c-a02c-58869a44c0b3"
+                    placeholder="https://cultures-era-choices-galleries.trycloudflare.com/webhook/c59e6ab9-de89-4c7c-a02c-58869a44c0b3"
                     value={customWebhookUrl}
                     onChange={(e) => setCustomWebhookUrl(e.target.value)}
                     className="w-full px-3 py-2 rounded-lg bg-slate-900 border border-slate-700 text-xs font-mono-tech text-cyan-300 focus:outline-none focus:border-cyan-400 dir-ltr"
