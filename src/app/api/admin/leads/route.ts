@@ -7,6 +7,8 @@ import {
   deleteLead,
 } from "@/lib/server/leadsStore";
 
+export const dynamic = "force-dynamic";
+
 export async function GET(req: NextRequest) {
   const session = await getAdminSessionFromRequest(req);
   if (!session.valid) {

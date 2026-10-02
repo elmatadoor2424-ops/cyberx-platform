@@ -44,10 +44,78 @@ import {
   HelpCircle,
   ChevronRight,
   ArrowRight,
+  Clock,
+  Copy,
+  Check,
+  Mail,
+  Calendar,
 } from "lucide-react";
 import { playCyberSound, fireCyberConfetti } from "@/lib/cyberEffects";
 import { LeadItem } from "@/lib/server/leadsStore";
 import { SiteConfiguration } from "@/lib/server/configStore";
+
+function getWhatsAppCleanUrl(phone: string, fullName: string, service: string): string {
+  let cleaned = (phone || "").replace(/[^0-9]/g, "");
+  if (cleaned.startsWith("00")) {
+    cleaned = cleaned.substring(2);
+  }
+  // Egyptian numbers starting with 01 (11 digits)
+  if (/^01[0125][0-9]{8}$/.test(cleaned)) {
+    cleaned = "2" + cleaned;
+  } else if (/^1[0125][0-9]{8}$/.test(cleaned)) {
+    cleaned = "20" + cleaned;
+  }
+  const greeting = `مرحباً ${fullName || "عزيزي العميل"}، معك المهندس أحمد عمر وفريق عمل CyberX بخصوص طلبك للخدمة (${service || "خدمات CyberX"}). كيف يمكننا خدمتك اليوم؟`;
+  return `https://wa.me/${cleaned}?text=${encodeURIComponent(greeting)}`;
+}
+
+function LeadCountdownTimer({ createdAt }: { createdAt: string }) {
+  const [timeLeft, setTimeLeft] = useState<{ hours: number; minutes: number; seconds: number; isExpired: boolean }>({
+    hours: 24,
+    minutes: 0,
+    seconds: 0,
+    isExpired: false,
+  });
+
+  useEffect(() => {
+    const updateCountdown = () => {
+      const createdTime = new Date(createdAt).getTime();
+      const deadline = createdTime + 24 * 60 * 60 * 1000; // 24-hour window
+      const diff = deadline - Date.now();
+
+      if (diff <= 0) {
+        setTimeLeft({ hours: 0, minutes: 0, seconds: 0, isExpired: true });
+      } else {
+        const hours = Math.floor(diff / (1000 * 60 * 60));
+        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+        setTimeLeft({ hours, minutes, seconds, isExpired: false });
+      }
+    };
+
+    updateCountdown();
+    const timer = setInterval(updateCountdown, 1000);
+    return () => clearInterval(timer);
+  }, [createdAt]);
+
+  const pad = (n: number) => String(n).padStart(2, "0");
+
+  if (timeLeft.isExpired) {
+    return (
+      <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-slate-900 border border-slate-700/80 text-slate-400 text-[10px] font-mono-tech">
+        <span>⚠️ انتهت مهلة 24h</span>
+      </span>
+    );
+  }
+
+  return (
+    <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-amber-950/80 border border-amber-500/60 text-amber-300 text-[11px] font-mono-tech font-bold shadow-[0_0_12px_rgba(245,158,11,0.25)]">
+      <Clock className="w-3.5 h-3.5 text-amber-400 animate-spin" style={{ animationDuration: "10s" }} />
+      <span>{pad(timeLeft.hours)}:{pad(timeLeft.minutes)}:{pad(timeLeft.seconds)}</span>
+      <span className="text-[9px] text-amber-400/80">متبقية</span>
+    </span>
+  );
+}
 
 export default function AdminPortal() {
   // Authentication states
@@ -346,14 +414,26 @@ export default function AdminPortal() {
 
   // Filtered Leads
   const filteredLeads = leads.filter((lead) => {
+    const q = leadSearch.toLowerCase().trim();
     const matchesSearch =
-      lead.fullName.toLowerCase().includes(leadSearch.toLowerCase()) ||
-      lead.phone.includes(leadSearch) ||
-      (lead.company && lead.company.toLowerCase().includes(leadSearch.toLowerCase())) ||
-      lead.service.toLowerCase().includes(leadSearch.toLowerCase()) ||
-      lead.id.toLowerCase().includes(leadSearch.toLowerCase());
+      !q ||
+      lead.fullName.toLowerCase().includes(q) ||
+      lead.phone.includes(q) ||
+      (lead.email && lead.email.toLowerCase().includes(q)) ||
+      (lead.company && lead.company.toLowerCase().includes(q)) ||
+      lead.service.toLowerCase().includes(q) ||
+      lead.id.toLowerCase().includes(q);
 
-    const matchesStatus = leadStatusFilter === "all" || lead.status === leadStatusFilter;
+    let matchesStatus = true;
+    if (leadStatusFilter === "new") {
+      matchesStatus = lead.status === "new";
+    } else if (leadStatusFilter === "contacting") {
+      matchesStatus = lead.status === "contacting";
+    } else if (leadStatusFilter === "closed" || leadStatusFilter === "completed") {
+      matchesStatus = lead.status === "closed" || lead.status === "completed";
+    } else if (leadStatusFilter === "cancelled") {
+      matchesStatus = lead.status === "cancelled";
+    }
 
     return matchesSearch && matchesStatus;
   });
@@ -828,37 +908,94 @@ export default function AdminPortal() {
         {/* TAB 2: LEADS & PIPELINE MANAGEMENT */}
         {activeTab === "leads" && (
           <div className="space-y-6 animate-in fade-in duration-300">
+            {/* Quick Status Metric Pills */}
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+              {[
+                {
+                  id: "all",
+                  label: "إجمالي الطلبات",
+                  count: leads.length,
+                  color: "border-slate-700 bg-slate-900/60 text-white",
+                  badge: "bg-slate-800 text-slate-300",
+                },
+                {
+                  id: "new",
+                  label: "طلبات جديدة",
+                  count: leads.filter((l) => l.status === "new").length,
+                  color: "border-cyan-500/40 bg-cyan-950/30 text-cyan-300",
+                  badge: "bg-cyan-900 text-cyan-300 animate-pulse",
+                },
+                {
+                  id: "contacting",
+                  label: "قيد التواصل",
+                  count: leads.filter((l) => l.status === "contacting").length,
+                  color: "border-yellow-500/40 bg-yellow-950/30 text-yellow-300",
+                  badge: "bg-yellow-900 text-yellow-300",
+                },
+                {
+                  id: "closed",
+                  label: "تم التنفيذ",
+                  count: leads.filter((l) => l.status === "closed" || l.status === "completed").length,
+                  color: "border-emerald-500/40 bg-emerald-950/30 text-emerald-300",
+                  badge: "bg-emerald-900 text-emerald-300",
+                },
+              ].map((pill) => (
+                <button
+                  key={pill.id}
+                  onClick={() => {
+                    playCyberSound("click");
+                    setLeadStatusFilter(pill.id);
+                  }}
+                  className={`p-3.5 rounded-2xl border text-right transition-all cursor-pointer ${pill.color} ${
+                    leadStatusFilter === pill.id ? "ring-2 ring-cyan-400 shadow-lg" : "hover:border-cyan-400/60"
+                  }`}
+                >
+                  <div className="text-[11px] font-bold text-slate-400 flex items-center justify-between">
+                    <span>{pill.label}</span>
+                    <span className={`px-2 py-0.5 rounded-full text-[10px] font-mono-tech font-bold ${pill.badge}`}>
+                      {pill.count}
+                    </span>
+                  </div>
+                  <div className="font-mono-tech font-black text-2xl mt-1 text-white">
+                    {pill.count}
+                  </div>
+                </button>
+              ))}
+            </div>
+
             {/* Controls Bar */}
             <div className="p-4 rounded-2xl bg-[#0F172A] border border-cyan-500/30 flex flex-wrap items-center justify-between gap-4">
-              
               {/* Search input */}
-              <div className="relative flex-1 min-w-[240px]">
+              <div className="relative flex-1 min-w-[260px]">
                 <Search className="w-4 h-4 text-slate-500 absolute right-3 top-3" />
                 <input
                   type="text"
-                  placeholder="ابحث بالاسم، رقم الهاتف، اسم الشركة، أو الخدمة..."
+                  placeholder="ابحث بالاسم، رقم الواتساب، البريد، الشركة، أو الخدمة..."
                   value={leadSearch}
                   onChange={(e) => setLeadSearch(e.target.value)}
-                  className="w-full pr-10 pl-4 py-2 rounded-xl bg-slate-950 border border-slate-700 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400"
+                  className="w-full pr-10 pl-4 py-2.5 rounded-xl bg-slate-950 border border-slate-700 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400"
                 />
               </div>
 
-              {/* Status Filter */}
-              <div className="flex items-center gap-1.5 text-xs">
-                <span className="text-slate-400 font-bold">الحالة:</span>
+              {/* Status Filter Buttons */}
+              <div className="flex flex-wrap items-center gap-1.5 text-xs">
+                <span className="text-slate-400 font-bold ml-1">الحالة:</span>
                 {[
                   { id: "all", label: "الكل" },
-                  { id: "new", label: "جديد" },
-                  { id: "contacting", label: "قيد التواصل" },
-                  { id: "closed", label: "تم التعاقد" },
-                  { id: "cancelled", label: "ملغي" },
+                  { id: "new", label: "جديد 🔵" },
+                  { id: "contacting", label: "قيد التواصل 🟡" },
+                  { id: "closed", label: "تم التنفيذ 🟢" },
+                  { id: "cancelled", label: "ملغي 🔴" },
                 ].map((s) => (
                   <button
                     key={s.id}
-                    onClick={() => setLeadStatusFilter(s.id)}
-                    className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+                    onClick={() => {
+                      playCyberSound("click");
+                      setLeadStatusFilter(s.id);
+                    }}
+                    className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer ${
                       leadStatusFilter === s.id
-                        ? "bg-cyan-500 text-slate-950 font-black shadow-sm"
+                        ? "bg-gradient-to-r from-cyan-500 to-blue-600 text-slate-950 font-black shadow-[0_0_10px_rgba(0,240,255,0.3)]"
                         : "bg-slate-950 text-slate-400 hover:text-white border border-slate-800"
                     }`}
                   >
@@ -871,35 +1008,34 @@ export default function AdminPortal() {
               <div className="flex items-center gap-2">
                 <button
                   onClick={() => setShowAddLeadModal(true)}
-                  className="px-3.5 py-2 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-slate-950 font-bold text-xs flex items-center gap-1.5 shadow-[0_0_12px_rgba(0,240,255,0.25)] cursor-pointer"
+                  className="px-4 py-2 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-slate-950 font-black text-xs flex items-center gap-1.5 shadow-[0_0_12px_rgba(0,240,255,0.25)] hover:scale-105 active:scale-95 transition-all cursor-pointer"
                 >
                   <Plus className="w-4 h-4" />
-                  <span>إضافة عميل</span>
+                  <span>إضافة عميل يدوياً</span>
                 </button>
 
                 <button
                   onClick={exportLeadsToCsv}
-                  className="px-3 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 text-emerald-400 border border-slate-700 text-xs font-bold flex items-center gap-1.5 cursor-pointer"
+                  className="px-3.5 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 text-emerald-400 border border-slate-700 text-xs font-bold flex items-center gap-1.5 cursor-pointer transition-all"
                   title="تصدير لملف Excel/CSV"
                 >
                   <Download className="w-4 h-4" />
-                  <span>تصدير</span>
+                  <span>تصدير CSV</span>
                 </button>
               </div>
-
             </div>
 
-            {/* Leads Table */}
-            <div className="rounded-3xl bg-[#0F172A] border border-cyan-500/30 overflow-hidden shadow-xl">
+            {/* Interactive Leads Table */}
+            <div className="rounded-3xl bg-[#0F172A] border border-cyan-500/30 overflow-hidden shadow-2xl">
               <div className="overflow-x-auto">
                 <table className="w-full text-right border-collapse text-xs">
                   <thead>
-                    <tr className="bg-slate-950 border-b border-slate-800 text-slate-400 font-mono-tech">
-                      <th className="py-4 px-4 text-right">المعرف والتاريخ</th>
-                      <th className="py-4 px-4 text-right">بيانات العميل والنشاط</th>
-                      <th className="py-4 px-4 text-right">رقم الهاتف والتواصل</th>
-                      <th className="py-4 px-4 text-right">الخدمة المطلوبة</th>
-                      <th className="py-4 px-4 text-right">الميزانية والكود</th>
+                    <tr className="bg-slate-950 border-b border-slate-800 text-slate-300 font-mono-tech text-[11px]">
+                      <th className="py-4 px-4 text-right">اسم العميل والنشاط</th>
+                      <th className="py-4 px-4 text-right">رقم الواتساب والتواصل</th>
+                      <th className="py-4 px-4 text-right">البريد الإلكتروني</th>
+                      <th className="py-4 px-4 text-right">الخدمة أو الباقة المختارة</th>
+                      <th className="py-4 px-4 text-right">توقيت التسجيل والعداد التنازلي</th>
                       <th className="py-4 px-4 text-center">حالة الطلب</th>
                       <th className="py-4 px-4 text-center">الإجراءات</th>
                     </tr>
@@ -908,103 +1044,146 @@ export default function AdminPortal() {
                     {filteredLeads.length > 0 ? (
                       filteredLeads.map((lead) => (
                         <tr key={lead.id} className="hover:bg-slate-900/60 transition-colors">
-                          {/* ID & Date */}
-                          <td className="py-3.5 px-4 font-mono-tech">
-                            <div className="font-extrabold text-cyan-400">{lead.id}</div>
-                            <div className="text-[10px] text-slate-500 mt-0.5">
-                              {new Date(lead.createdAt).toLocaleTimeString("ar-EG", { hour: "2-digit", minute: "2-digit" })}
-                              {" • "}
-                              {new Date(lead.createdAt).toLocaleDateString("ar-EG")}
+                          {/* 1. اسم العميل والنشاط */}
+                          <td className="py-4 px-4">
+                            <div className="flex items-center gap-2.5">
+                              <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-slate-800 to-slate-950 border border-cyan-500/40 flex items-center justify-center font-bold text-cyan-300 font-mono-tech shrink-0 shadow-[0_0_10px_rgba(0,240,255,0.15)]">
+                                {lead.fullName.charAt(0)}
+                              </div>
+                              <div>
+                                <div className="font-extrabold text-white text-sm">
+                                  {lead.fullName}
+                                </div>
+                                <div className="flex items-center gap-2 mt-0.5">
+                                  <span className="text-[10px] font-mono-tech text-cyan-400 font-bold">
+                                    {lead.id}
+                                  </span>
+                                  {lead.company && (
+                                    <span className="text-[10px] text-slate-400 px-1.5 py-0.5 rounded bg-slate-900 border border-slate-800">
+                                      {lead.company}
+                                    </span>
+                                  )}
+                                </div>
+                              </div>
                             </div>
                           </td>
 
-                          {/* Name & Company */}
-                          <td className="py-3.5 px-4">
-                            <div className="font-bold text-white text-sm">{lead.fullName}</div>
-                            {lead.company && (
-                              <div className="text-[11px] text-slate-400 mt-0.5">{lead.company}</div>
-                            )}
-                            {lead.email && (
-                              <div className="text-[10px] text-slate-500 font-mono-tech">{lead.email}</div>
-                            )}
-                          </td>
-
-                          {/* Phone & WhatsApp link */}
-                          <td className="py-3.5 px-4 font-mono-tech">
-                            <div className="text-white font-bold dir-ltr" dir="ltr">
+                          {/* 2. رقم الواتساب + الزر المباشر "تواصل عبر الواتساب" */}
+                          <td className="py-4 px-4">
+                            <div className="font-mono-tech font-bold text-white text-xs dir-ltr" dir="ltr">
                               {lead.phone}
                             </div>
                             <a
-                              href={`https://wa.me/2${lead.phone.replace(/[^0-9]/g, "")}?text=${encodeURIComponent(
-                                `مرحباً ${lead.fullName}، معك المهندس أحمد عمر وفريق عمل CyberX بخصوص طلبك للخدمة (${lead.service}). كيف يمكننا خدمتك؟`
-                              )}`}
+                              href={getWhatsAppCleanUrl(lead.phone, lead.fullName, lead.service)}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="inline-flex items-center gap-1 text-[11px] text-emerald-400 hover:text-emerald-300 font-bold mt-1"
+                              onClick={() => playCyberSound("click")}
+                              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[#25D366] hover:bg-[#20ba59] text-slate-950 font-black text-xs transition-all shadow-[0_0_12px_rgba(37,211,102,0.35)] hover:scale-105 active:scale-95 cursor-pointer mt-1.5"
+                              title="تواصل مباشر عبر الواتساب"
                             >
-                              <MessageCircle className="w-3.5 h-3.5" />
-                              <span>مراسلة واتساب</span>
+                              <MessageCircle className="w-3.5 h-3.5 fill-slate-950 text-[#25D366]" />
+                              <span>تواصل عبر الواتساب</span>
                             </a>
                           </td>
 
-                          {/* Service */}
-                          <td className="py-3.5 px-4">
-                            <div className="font-medium text-pink-300 max-w-xs">{lead.service}</div>
-                            {lead.projectDetails && (
-                              <p className="text-[10px] text-slate-400 line-clamp-1 mt-0.5">
-                                {lead.projectDetails}
-                              </p>
+                          {/* 3. البريد الإلكتروني */}
+                          <td className="py-4 px-4">
+                            {lead.email ? (
+                              <div className="space-y-1">
+                                <a
+                                  href={`mailto:${lead.email}`}
+                                  className="text-cyan-300 hover:text-cyan-200 hover:underline font-mono-tech text-xs dir-ltr block"
+                                  dir="ltr"
+                                >
+                                  {lead.email}
+                                </a>
+                                <button
+                                  type="button"
+                                  onClick={() => {
+                                    navigator.clipboard.writeText(lead.email || "");
+                                    playCyberSound("click");
+                                    alert("تم نسخ البريد الإلكتروني بنجاح!");
+                                  }}
+                                  className="inline-flex items-center gap-1 text-[10px] text-slate-400 hover:text-white"
+                                >
+                                  <Copy className="w-2.5 h-2.5" />
+                                  <span>نسخ البريد</span>
+                                </button>
+                              </div>
+                            ) : (
+                              <span className="text-slate-500 font-mono-tech text-xs">غير مسجل</span>
                             )}
                           </td>
 
-                          {/* Budget & Coupon */}
-                          <td className="py-3.5 px-4">
-                            <div className="text-slate-300">{lead.budget || "مرن"}</div>
-                            {lead.couponCode && (
-                              <span className="inline-block mt-1 px-2 py-0.5 rounded bg-pink-950/70 border border-pink-500/40 text-pink-300 text-[10px] font-mono-tech font-bold">
-                                {lead.couponCode} (-70%)
-                              </span>
-                            )}
+                          {/* 4. الخدمة أو الباقة المختارة */}
+                          <td className="py-4 px-4">
+                            <div className="font-bold text-pink-300 text-xs max-w-xs leading-snug">
+                              {lead.service}
+                            </div>
+                            <div className="flex flex-wrap items-center gap-1.5 mt-1">
+                              {lead.couponCode && (
+                                <span className="px-2 py-0.5 rounded bg-pink-950/80 border border-pink-500/40 text-pink-300 text-[10px] font-mono-tech font-bold">
+                                  {lead.couponCode} (-70%)
+                                </span>
+                              )}
+                              {lead.budget && (
+                                <span className="text-[10px] text-slate-400">
+                                  {lead.budget}
+                                </span>
+                              )}
+                            </div>
                           </td>
 
-                          {/* Status Dropdown */}
-                          <td className="py-3.5 px-4 text-center">
+                          {/* 5. توقيت التسجيل والعداد التنازلي */}
+                          <td className="py-4 px-4 font-mono-tech">
+                            <div className="text-white text-[11px] font-bold">
+                              {new Date(lead.createdAt).toLocaleDateString("ar-EG")}
+                              {" • "}
+                              {new Date(lead.createdAt).toLocaleTimeString("ar-EG", { hour: "2-digit", minute: "2-digit" })}
+                            </div>
+                            <div className="mt-1.5">
+                              <LeadCountdownTimer createdAt={lead.createdAt} />
+                            </div>
+                          </td>
+
+                          {/* 6. حالة الطلب (جديد / قيد التواصل / تم التنفيذ) */}
+                          <td className="py-4 px-4 text-center">
                             <select
-                              value={lead.status}
+                              value={lead.status === "completed" ? "closed" : lead.status}
                               onChange={(e) =>
                                 handleUpdateLeadStatus(lead.id, e.target.value as LeadItem["status"])
                               }
-                              className={`px-2.5 py-1 rounded-lg text-xs font-bold border transition-colors cursor-pointer ${
-                                lead.status === "closed"
-                                  ? "bg-emerald-950/90 text-emerald-300 border-emerald-500/50"
+                              className={`px-3 py-1.5 rounded-xl text-xs font-bold border transition-all cursor-pointer ${
+                                lead.status === "closed" || lead.status === "completed"
+                                  ? "bg-emerald-950/90 text-emerald-300 border-emerald-500/50 shadow-[0_0_10px_rgba(16,185,129,0.2)]"
                                   : lead.status === "contacting"
-                                  ? "bg-yellow-950/90 text-yellow-300 border-yellow-500/50"
+                                  ? "bg-yellow-950/90 text-yellow-300 border-yellow-500/50 shadow-[0_0_10px_rgba(234,179,8,0.2)]"
                                   : lead.status === "cancelled"
                                   ? "bg-red-950/90 text-red-300 border-red-500/50"
-                                  : "bg-cyan-950/90 text-cyan-300 border-cyan-500/50"
+                                  : "bg-cyan-950/90 text-cyan-300 border-cyan-500/50 shadow-[0_0_10px_rgba(0,240,255,0.2)]"
                               }`}
                             >
-                              <option value="new">طلب جديد 🔵</option>
+                              <option value="new">جديد 🔵</option>
                               <option value="contacting">قيد التواصل 🟡</option>
-                              <option value="closed">تم التعاقد 🟢</option>
+                              <option value="closed">تم التنفيذ 🟢</option>
                               <option value="cancelled">ملغي 🔴</option>
                             </select>
                           </td>
 
-                          {/* Actions */}
-                          <td className="py-3.5 px-4 text-center">
+                          {/* 7. الإجراءات */}
+                          <td className="py-4 px-4 text-center">
                             <div className="flex items-center justify-center gap-1.5">
                               <button
                                 onClick={() => setSelectedLeadForDetails(lead)}
-                                className="p-1.5 rounded-lg bg-slate-900 hover:bg-cyan-950 text-cyan-400 hover:text-white border border-slate-700 transition-colors cursor-pointer"
-                                title="عرض التفاصيل والملاحظات"
+                                className="p-2 rounded-xl bg-slate-900 hover:bg-cyan-950 text-cyan-400 hover:text-white border border-slate-700 hover:border-cyan-500/50 transition-all cursor-pointer"
+                                title="عرض التفاصيل الكاملة"
                               >
                                 <Eye className="w-4 h-4" />
                               </button>
                               <button
                                 onClick={() => handleDeleteLead(lead.id)}
-                                className="p-1.5 rounded-lg bg-slate-900 hover:bg-red-950 text-red-400 hover:text-white border border-slate-700 transition-colors cursor-pointer"
-                                title="حذف العميل"
+                                className="p-2 rounded-xl bg-slate-900 hover:bg-red-950 text-red-400 hover:text-white border border-slate-700 hover:border-red-500/50 transition-all cursor-pointer"
+                                title="حذف الطلب نهائياً"
                               >
                                 <Trash2 className="w-4 h-4" />
                               </button>
@@ -1014,8 +1193,20 @@ export default function AdminPortal() {
                       ))
                     ) : (
                       <tr>
-                        <td colSpan={7} className="py-12 text-center text-slate-500">
-                          لا توجد نتائج مطابقة لخيارات البحث الحالية
+                        <td colSpan={7} className="py-16 text-center text-slate-400">
+                          <div className="flex flex-col items-center gap-2">
+                            <Users className="w-8 h-8 text-slate-600" />
+                            <span className="text-sm font-bold">لا توجد طلبات مطابقة لخيارات البحث أو التصفية الحالية</span>
+                            <button
+                              onClick={() => {
+                                setLeadSearch("");
+                                setLeadStatusFilter("all");
+                              }}
+                              className="text-xs text-cyan-400 hover:underline mt-1 font-bold"
+                            >
+                              إعادة تعيين خيارات التصفية
+                            </button>
+                          </div>
                         </td>
                       </tr>
                     )}
@@ -1726,103 +1917,150 @@ export default function AdminPortal() {
       </main>
 
       {/* Modal 1: Lead Details & Notes Modal */}
+      {/* Modal 1: Lead Details & Notes Modal */}
       {selectedLeadForDetails && (
         <div
           className="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4 animate-in fade-in duration-200"
           onClick={() => setSelectedLeadForDetails(null)}
         >
           <div
-            className="relative w-full max-w-lg rounded-3xl bg-[#0F172A] border border-cyan-500/50 p-6 space-y-4 shadow-[0_0_40px_rgba(0,240,255,0.2)]"
+            className="relative w-full max-w-lg rounded-3xl bg-[#0F172A] border border-cyan-500/50 p-6 space-y-4 shadow-[0_0_40px_rgba(0,240,255,0.25)]"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex items-center justify-between pb-3 border-b border-slate-800">
               <div className="flex items-center gap-2 font-mono-tech text-cyan-400 font-bold text-sm">
-                <span>LEAD FILE // {selectedLeadForDetails.id}</span>
+                <span>ملف العميل // {selectedLeadForDetails.id}</span>
               </div>
-              <button
-                onClick={() => setSelectedLeadForDetails(null)}
-                className="p-1 rounded-lg bg-slate-900 text-slate-400 hover:text-white cursor-pointer"
-              >
-                ✕
-              </button>
+              <div className="flex items-center gap-2">
+                <LeadCountdownTimer createdAt={selectedLeadForDetails.createdAt} />
+                <button
+                  onClick={() => setSelectedLeadForDetails(null)}
+                  className="p-1 rounded-lg bg-slate-900 text-slate-400 hover:text-white cursor-pointer"
+                >
+                  ✕
+                </button>
+              </div>
             </div>
 
-            <div className="space-y-3 text-xs">
-              <div className="grid grid-cols-2 gap-3">
+            <div className="space-y-3.5 text-xs">
+              <div className="grid grid-cols-2 gap-3 p-3 rounded-2xl bg-slate-950 border border-slate-800">
                 <div>
-                  <span className="text-slate-400 block">اسم العميل:</span>
+                  <span className="text-slate-400 block mb-0.5">اسم العميل:</span>
                   <strong className="text-white text-sm">{selectedLeadForDetails.fullName}</strong>
                 </div>
                 <div>
-                  <span className="text-slate-400 block">الشركة / النشاط:</span>
+                  <span className="text-slate-400 block mb-0.5">الشركة / النشاط:</span>
                   <strong className="text-slate-200">{selectedLeadForDetails.company || "غير محدد"}</strong>
                 </div>
               </div>
 
-              <div className="grid grid-cols-2 gap-3">
+              <div className="grid grid-cols-2 gap-3 p-3 rounded-2xl bg-slate-950 border border-slate-800">
                 <div>
-                  <span className="text-slate-400 block">الهاتف:</span>
-                  <span className="font-mono-tech text-cyan-300 font-bold">{selectedLeadForDetails.phone}</span>
+                  <span className="text-slate-400 block mb-0.5">رقم الواتساب:</span>
+                  <span className="font-mono-tech text-emerald-400 font-bold text-sm dir-ltr block" dir="ltr">
+                    {selectedLeadForDetails.phone}
+                  </span>
                 </div>
                 <div>
-                  <span className="text-slate-400 block">البريد:</span>
-                  <span className="font-mono-tech text-slate-300">{selectedLeadForDetails.email || "غير متوفر"}</span>
+                  <span className="text-slate-400 block mb-0.5">البريد الإلكتروني:</span>
+                  {selectedLeadForDetails.email ? (
+                    <a
+                      href={`mailto:${selectedLeadForDetails.email}`}
+                      className="font-mono-tech text-cyan-300 hover:underline text-xs dir-ltr block"
+                      dir="ltr"
+                    >
+                      {selectedLeadForDetails.email}
+                    </a>
+                  ) : (
+                    <span className="text-slate-500">غير متوفر</span>
+                  )}
                 </div>
               </div>
 
-              <div>
-                <span className="text-slate-400 block">الخدمة المطلوبة:</span>
-                <strong className="text-pink-300">{selectedLeadForDetails.service}</strong>
-              </div>
-
-              <div className="grid grid-cols-2 gap-3">
+              <div className="p-3 rounded-2xl bg-slate-950 border border-slate-800 space-y-2">
                 <div>
-                  <span className="text-slate-400 block">الميزانية المقدرة:</span>
-                  <strong className="text-slate-200">{selectedLeadForDetails.budget || "مرن"}</strong>
+                  <span className="text-slate-400 block mb-0.5">الخدمة أو الباقة المطلوبة:</span>
+                  <strong className="text-pink-300 text-sm">{selectedLeadForDetails.service}</strong>
                 </div>
-                <div>
-                  <span className="text-slate-400 block">كود الخصم:</span>
-                  <strong className="text-pink-400 font-mono-tech">{selectedLeadForDetails.couponCode || "بدون كود"}</strong>
+                <div className="grid grid-cols-2 gap-2 pt-1 border-t border-slate-900">
+                  <div>
+                    <span className="text-slate-400 block text-[11px]">الميزانية:</span>
+                    <span className="text-slate-200 font-bold">{selectedLeadForDetails.budget || "مرن"}</span>
+                  </div>
+                  <div>
+                    <span className="text-slate-400 block text-[11px]">كود الخصم:</span>
+                    <span className="text-pink-400 font-mono-tech font-bold">{selectedLeadForDetails.couponCode || "CYBER70"}</span>
+                  </div>
                 </div>
               </div>
 
               {selectedLeadForDetails.projectDetails && (
                 <div>
-                  <span className="text-slate-400 block mb-1">تفاصيل المشروع من العميل:</span>
-                  <div className="p-3 rounded-xl bg-slate-950 border border-slate-800 text-slate-300 leading-relaxed">
+                  <span className="text-slate-400 block mb-1">تفاصيل المشروع والطلب:</span>
+                  <div className="p-3 rounded-xl bg-slate-950 border border-slate-800 text-slate-300 leading-relaxed text-xs">
                     {selectedLeadForDetails.projectDetails}
                   </div>
                 </div>
               )}
 
+              {/* Status Update inside Modal */}
+              <div className="p-3 rounded-2xl bg-slate-950 border border-slate-800 flex items-center justify-between">
+                <span className="text-slate-300 font-bold">تحديث حالة الطلب:</span>
+                <select
+                  value={selectedLeadForDetails.status === "completed" ? "closed" : selectedLeadForDetails.status}
+                  onChange={(e) =>
+                    handleUpdateLeadStatus(selectedLeadForDetails.id, e.target.value as LeadItem["status"])
+                  }
+                  className={`px-3 py-1.5 rounded-xl text-xs font-bold border transition-colors cursor-pointer ${
+                    selectedLeadForDetails.status === "closed" || selectedLeadForDetails.status === "completed"
+                      ? "bg-emerald-950 text-emerald-300 border-emerald-500/50"
+                      : selectedLeadForDetails.status === "contacting"
+                      ? "bg-yellow-950 text-yellow-300 border-yellow-500/50"
+                      : selectedLeadForDetails.status === "cancelled"
+                      ? "bg-red-950 text-red-300 border-red-500/50"
+                      : "bg-cyan-950 text-cyan-300 border-cyan-500/50"
+                  }`}
+                >
+                  <option value="new">طلب جديد 🔵</option>
+                  <option value="contacting">قيد التواصل 🟡</option>
+                  <option value="closed">تم التنفيذ 🟢</option>
+                  <option value="cancelled">ملغي 🔴</option>
+                </select>
+              </div>
+
               <div>
-                <label className="text-slate-400 block mb-1">ملاحظات م. أحمد عمر الداخلية:</label>
+                <label className="text-slate-400 block mb-1 font-bold">ملاحظات م. أحمد عمر الداخلية:</label>
                 <textarea
                   rows={2}
                   defaultValue={selectedLeadForDetails.notes || ""}
                   onBlur={(e) =>
                     handleUpdateLeadStatus(selectedLeadForDetails.id, selectedLeadForDetails.status, e.target.value)
                   }
-                  placeholder="أضف ملاحظاتك لمتابعة هذا العميل..."
-                  className="w-full px-3 py-2 rounded-xl bg-slate-950 border border-slate-700 text-xs text-white"
+                  placeholder="أضف ملاحظاتك لمتابعة هذا العميل وسيتم الحفظ تلقائياً..."
+                  className="w-full px-3 py-2 rounded-xl bg-slate-950 border border-slate-700 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400"
                 />
               </div>
             </div>
 
-            <div className="pt-3 border-t border-slate-800 flex items-center justify-between">
+            <div className="pt-3 border-t border-slate-800 flex items-center justify-between gap-2">
               <a
-                href={`https://wa.me/2${selectedLeadForDetails.phone.replace(/[^0-9]/g, "")}`}
+                href={getWhatsAppCleanUrl(
+                  selectedLeadForDetails.phone,
+                  selectedLeadForDetails.fullName,
+                  selectedLeadForDetails.service
+                )}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-slate-950 font-bold text-xs flex items-center gap-1.5"
+                onClick={() => playCyberSound("click")}
+                className="px-4 py-2.5 rounded-xl bg-[#25D366] hover:bg-[#20ba59] text-slate-950 font-black text-xs flex items-center gap-1.5 shadow-[0_0_15px_rgba(37,211,102,0.4)] hover:scale-105 active:scale-95 transition-all"
               >
-                <MessageCircle className="w-4 h-4" />
-                <span>بدء محادثة واتساب فورية</span>
+                <MessageCircle className="w-4 h-4 fill-slate-950 text-[#25D366]" />
+                <span>تواصل عبر الواتساب</span>
               </a>
 
               <button
                 onClick={() => setSelectedLeadForDetails(null)}
-                className="px-4 py-2 rounded-xl bg-slate-900 text-slate-300 text-xs font-bold"
+                className="px-4 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-300 text-xs font-bold transition-colors cursor-pointer"
               >
                 إغلاق
               </button>

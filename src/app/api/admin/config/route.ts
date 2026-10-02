@@ -6,6 +6,8 @@ import {
   resetSiteConfigToDefaults,
 } from "@/lib/server/configStore";
 
+export const dynamic = "force-dynamic";
+
 export async function GET(req: NextRequest) {
   // Allow public or admin read (or admin authenticated)
   const config = getSiteConfig();

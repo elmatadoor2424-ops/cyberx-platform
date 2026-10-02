@@ -1,7 +1,8 @@
 "use client";
 
 import React from "react";
-import { ShieldCheck, MessageCircle, Mail, MapPin, Sparkles, Terminal, PhoneCall, CreditCard, Coins, Smartphone } from "lucide-react";
+import Link from "next/link";
+import { ShieldCheck, MessageCircle, Mail, MapPin, Sparkles, Terminal, PhoneCall, CreditCard, Coins, Smartphone, Lock, KeyRound } from "lucide-react";
 import { CYBER_SERVICES, CYBER_CONTACTS } from "@/lib/cyberData";
 import { useCyberConfig } from "@/context/CyberConfigContext";
 import { playCyberSound } from "@/lib/cyberEffects";
@@ -119,7 +120,7 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Contact & Support (1 col) */}
+          {/* Contact & Support & Admin Access (1 col) */}
           <div className="space-y-3">
             <h4 className="font-bold text-white text-sm">قنوات التواصل المباشر</h4>
             <ul className="space-y-2.5 text-xs">
@@ -153,20 +154,44 @@ export default function Footer() {
                 <Terminal className="w-4 h-4 text-purple-400 shrink-0" />
                 <span>خوادم n8n Webhook متصلة</span>
               </li>
+              <li className="pt-2">
+                <Link
+                  href="/admin"
+                  onClick={() => playCyberSound("click")}
+                  className="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-slate-900 border border-cyan-500/40 hover:border-cyan-400 text-cyan-300 hover:text-white font-bold transition-all text-xs shadow-[0_0_12px_rgba(0,240,255,0.15)] group"
+                >
+                  <Lock className="w-3.5 h-3.5 text-cyan-400 group-hover:rotate-12 transition-transform" />
+                  <span>إدارة المنصة (Admin Login)</span>
+                </Link>
+              </li>
             </ul>
           </div>
 
         </div>
 
-        {/* Bottom Bar: STRICT COPYRIGHT ONLY TO Eng. Ahmed Omar */}
-        <div className="pt-8 border-t border-slate-900 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400">
+        {/* Bottom Bar: STRICT COPYRIGHT ONLY TO Eng. Ahmed Omar & Admin Button */}
+        <div className="pt-8 border-t border-slate-900 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-slate-400">
           <div className="font-semibold text-slate-200">
             {contacts.copyrightNotice}
           </div>
-          <div className="flex items-center gap-4 text-[11px] font-mono-tech text-slate-500">
+
+          <div className="flex flex-wrap items-center gap-4 text-[11px] font-mono-tech text-slate-500">
             <span className="text-cyan-400">PAYMENTS: VODAFONE CASH &bull; ACCESS PAY &bull; BINANCE USDT</span>
             <span>&bull;</span>
             <span className="text-pink-400">PROMO: CYBER70 (-70%)</span>
+          </div>
+
+          {/* Prominent Dedicated Admin Login Button */}
+          <div>
+            <Link
+              href="/admin"
+              onClick={() => playCyberSound("click")}
+              className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-slate-900 via-slate-950 to-slate-900 border border-cyan-500/50 hover:border-cyan-400 text-cyan-300 hover:text-white text-xs font-bold transition-all shadow-[0_0_15px_rgba(0,240,255,0.2)] hover:shadow-[0_0_25px_rgba(0,240,255,0.4)] group"
+              title="دخول المشرف وإدارة الطلبات والعملاء"
+            >
+              <KeyRound className="w-3.5 h-3.5 text-cyan-400 group-hover:scale-110 transition-transform" />
+              <span>إدارة المنصة | Admin Login</span>
+            </Link>
           </div>
         </div>
       </div>

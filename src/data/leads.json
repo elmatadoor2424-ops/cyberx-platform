@@ -1,5 +1,35 @@
 [
   {
+    "id": "CX-596525",
+    "fullName": "أحمد عبد الله التميمي",
+    "phone": "+201094200285",
+    "email": "ahmed.tamimi@enterprise.com",
+    "company": "مجموعة التميمي الدولية",
+    "service": "أتمتة المحادثات وخدمة العملاء (WhatsApp AI Bot)",
+    "budget": "15,000 - 35,000 ج.م (~$300 - $700)",
+    "projectDetails": "تفعيل أتمتة الردود على الواتساب وربطه مع الـ CRM",
+    "couponCode": "CYBER70",
+    "status": "new",
+    "notes": "طلب مسجل آلياً عبر نموذج الموقع الرسمي وموجه للـ Webhook",
+    "forwardedWebhook": true,
+    "createdAt": "2026-10-01T22:20:27.921Z"
+  },
+  {
+    "id": "CX-312750",
+    "fullName": "عميل تجريبي د. محمود كمال",
+    "phone": "01099887766",
+    "email": "mahmoud.kamal@clinic.com",
+    "company": "عيادات النخبة التخصصية",
+    "service": "أتمتة المحادثات وخدمة العملاء (WhatsApp AI Bot)",
+    "budget": "5,000 - 15,000 ج.م (~$100 - $300)",
+    "projectDetails": "طلب تفعيل بوت الواتساب واستلام الـ 1,000 رقم مستهدف",
+    "couponCode": "CYBER70",
+    "status": "closed",
+    "notes": "تم التواصل وتفعيل الباقة بنجاح",
+    "forwardedWebhook": false,
+    "createdAt": "2026-10-01T11:37:52.529Z"
+  },
+  {
     "id": "CX-892104",
     "fullName": "د. طارق الرشيدي",
     "phone": "01012345678",

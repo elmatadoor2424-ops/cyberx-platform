@@ -36,7 +36,7 @@ export default function RegistrationAndWebhookSection({
     couponCode: appliedDiscountCode || "CYBER70",
   });
 
-  const [customWebhookUrl, setCustomWebhookUrl] = useState("");
+  const [customWebhookUrl, setCustomWebhookUrl] = useState("https://proud-states-draw.loca.lt/webhook/c59e6ab9-de89-4c7c-a02c-58869a44c0b3");
   const [showWebhookSettings, setShowWebhookSettings] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submissionResult, setSubmissionResult] = useState<{
@@ -165,27 +165,35 @@ export default function RegistrationAndWebhookSection({
                   }}
                   className="flex items-center gap-1.5 text-xs text-slate-400 hover:text-cyan-400 transition-colors"
                 >
-                  <Settings className="w-3.5 h-3.5" />
-                  <span>إعدادات الـ Webhook (n8n)</span>
+                  <Settings className="w-3.5 h-3.5 text-cyan-400" />
+                  <span className="font-mono-tech text-cyan-300 font-bold flex items-center gap-1">
+                    <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                    <span>Webhook n8n متصل</span>
+                  </span>
                 </button>
               </div>
 
-              {/* Optional Webhook Destination Settings */}
+              {/* Webhook Destination Settings */}
               {showWebhookSettings && (
-                <div className="mb-6 p-4 rounded-xl bg-slate-950 border border-slate-700 space-y-2 animate-in fade-in duration-200">
-                  <label className="block text-xs font-bold text-cyan-300">
-                    رابط الـ Webhook المخصص (n8n / Backend Endpoint URL):
-                  </label>
+                <div className="mb-6 p-4 rounded-xl bg-slate-950 border border-cyan-500/40 space-y-2 animate-in fade-in duration-200">
+                  <div className="flex items-center justify-between">
+                    <label className="block text-xs font-bold text-cyan-300">
+                      رابط الـ Webhook المستهدف لإرسال البيانات (POST Target URL):
+                    </label>
+                    <span className="px-2 py-0.5 rounded text-[10px] font-mono-tech bg-emerald-950 text-emerald-300 border border-emerald-500/40 font-bold">
+                      n8n Active (5678)
+                    </span>
+                  </div>
                   <input
                     type="url"
-                    placeholder="https://your-n8n-instance.com/webhook/cyberx-lead"
+                    placeholder="https://proud-states-draw.loca.lt/webhook/c59e6ab9-de89-4c7c-a02c-58869a44c0b3"
                     value={customWebhookUrl}
                     onChange={(e) => setCustomWebhookUrl(e.target.value)}
                     className="w-full px-3 py-2 rounded-lg bg-slate-900 border border-slate-700 text-xs font-mono-tech text-cyan-300 focus:outline-none focus:border-cyan-400 dir-ltr"
                     dir="ltr"
                   />
-                  <p className="text-[11px] text-slate-400">
-                    * افتراضياً سيتم الإرسال لخادم CyberX الداخلي وتمريره إلى خط أنابيب n8n. يمكنك إدخال رابط خارجي خاص بك لاختباره حياً.
+                  <p className="text-[11px] text-slate-400 leading-relaxed">
+                    * يتم إرسال طلب POST فوري يحمل كافة بيانات العميل (الاسم، رقم الواتساب، البريد الإلكتروني، الخدمة المطلوبة، الميزانية، وتفاصيل المشروع) إلى مسار الـ Webhook أعلاه وحفظه فورياً في لوحة الإدارة.
                   </p>
                 </div>
               )}
@@ -228,10 +236,11 @@ export default function RegistrationAndWebhookSection({
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-xs font-bold text-slate-300 mb-1.5">
-                      البريد الإلكتروني
+                      البريد الإلكتروني *
                     </label>
                     <input
                       type="email"
+                      required
                       placeholder="name@company.com"
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}

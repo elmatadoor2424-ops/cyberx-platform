@@ -1,6 +1,8 @@
 import fs from "fs";
 import path from "path";
 
+export type LeadStatus = "new" | "contacting" | "closed" | "completed" | "cancelled";
+
 export interface LeadItem {
   id: string;
   fullName: string;
@@ -11,7 +13,7 @@ export interface LeadItem {
   budget?: string;
   projectDetails?: string;
   couponCode?: string;
-  status: "new" | "contacting" | "closed" | "cancelled";
+  status: LeadStatus;
   createdAt: string;
   notes?: string;
   forwardedWebhook?: boolean;
@@ -19,6 +21,10 @@ export interface LeadItem {
 
 const DATA_DIR = path.join(process.cwd(), "src", "data");
 const LEADS_FILE = path.join(DATA_DIR, "leads.json");
+const TMP_LEADS_FILE = path.join("/tmp", "cyberx_leads.json");
+
+// Maintain an in-memory cache on globalThis to survive serverless warm invocations
+const globalStore = globalThis as unknown as { _cyberxLeads?: LeadItem[] };
 
 const SEED_LEADS: LeadItem[] = [
   {
@@ -85,6 +91,7 @@ const SEED_LEADS: LeadItem[] = [
     id: "CX-445812",
     fullName: "محمود زكريا",
     phone: "01098877665",
+    email: "mahmoud.zakaria@newcairo-re.com",
     company: "وكالة عقارات نيو كايرو",
     service: "إدارة الحملات الإعلانية الممولة (Paid Ads)",
     budget: "5,000 - 15,000 ج.م (~$100 - $300)",
@@ -97,36 +104,79 @@ const SEED_LEADS: LeadItem[] = [
   },
 ];
 
-function ensureDirExists() {
-  if (!fs.existsSync(DATA_DIR)) {
-    fs.mkdirSync(DATA_DIR, { recursive: true });
+function tryWriteFile(filePath: string, data: string): boolean {
+  try {
+    const dir = path.dirname(filePath);
+    if (!fs.existsSync(dir)) {
+      fs.mkdirSync(dir, { recursive: true });
+    }
+    fs.writeFileSync(filePath, data, "utf-8");
+    return true;
+  } catch {
+    return false;
   }
+}
+
+function tryReadFile(filePath: string): string | null {
+  try {
+    if (fs.existsSync(filePath)) {
+      return fs.readFileSync(filePath, "utf-8");
+    }
+  } catch {
+    // Ignore read errors
+  }
+  return null;
 }
 
 export function getLeads(): LeadItem[] {
-  try {
-    ensureDirExists();
-    if (!fs.existsSync(LEADS_FILE)) {
-      fs.writeFileSync(LEADS_FILE, JSON.stringify(SEED_LEADS, null, 2), "utf-8");
-      return SEED_LEADS;
-    }
-    const content = fs.readFileSync(LEADS_FILE, "utf-8");
-    return JSON.parse(content);
-  } catch (error) {
-    console.error("Error reading leads file:", error);
-    return SEED_LEADS;
+  // 1. Check in-memory store
+  if (globalStore._cyberxLeads && Array.isArray(globalStore._cyberxLeads) && globalStore._cyberxLeads.length > 0) {
+    return globalStore._cyberxLeads;
   }
+
+  // 2. Check /tmp (useful on Vercel between function calls in same container)
+  const tmpContent = tryReadFile(TMP_LEADS_FILE);
+  if (tmpContent) {
+    try {
+      const parsed = JSON.parse(tmpContent);
+      if (Array.isArray(parsed) && parsed.length > 0) {
+        globalStore._cyberxLeads = parsed;
+        return parsed;
+      }
+    } catch {}
+  }
+
+  // 3. Check src/data/leads.json
+  const fileContent = tryReadFile(LEADS_FILE);
+  if (fileContent) {
+    try {
+      const parsed = JSON.parse(fileContent);
+      if (Array.isArray(parsed) && parsed.length > 0) {
+        globalStore._cyberxLeads = parsed;
+        return parsed;
+      }
+    } catch {}
+  }
+
+  // 4. Fallback to SEED_LEADS
+  globalStore._cyberxLeads = [...SEED_LEADS];
+  saveLeads(globalStore._cyberxLeads);
+  return globalStore._cyberxLeads;
 }
 
 export function saveLeads(leads: LeadItem[]): boolean {
-  try {
-    ensureDirExists();
-    fs.writeFileSync(LEADS_FILE, JSON.stringify(leads, null, 2), "utf-8");
-    return true;
-  } catch (error) {
-    console.error("Error saving leads file:", error);
-    return false;
-  }
+  // Always update in-memory
+  globalStore._cyberxLeads = leads;
+
+  const dataStr = JSON.stringify(leads, null, 2);
+
+  // Attempt write to src/data (local dev)
+  tryWriteFile(LEADS_FILE, dataStr);
+
+  // Attempt write to /tmp (Vercel serverless)
+  tryWriteFile(TMP_LEADS_FILE, dataStr);
+
+  return true;
 }
 
 export function addLead(newLead: Omit<LeadItem, "id" | "createdAt" | "status"> & { id?: string; status?: LeadItem["status"] }): LeadItem {
@@ -137,8 +187,8 @@ export function addLead(newLead: Omit<LeadItem, "id" | "createdAt" | "status"> &
     status: newLead.status || "new",
     createdAt: new Date().toISOString(),
   };
-  leads.unshift(lead);
-  saveLeads(leads);
+  const updatedLeads = [lead, ...leads];
+  saveLeads(updatedLeads);
   return lead;
 }
 
@@ -150,7 +200,7 @@ export function updateLeadStatus(leadId: string, status: LeadItem["status"], not
   if (notes !== undefined) {
     leads[index].notes = notes;
   }
-  saveLeads(leads);
+  saveLeads([...leads]);
   return leads[index];
 }
 

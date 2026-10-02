@@ -2,6 +2,8 @@ import React from "react";
 import AdminPortal from "@/components/admin/AdminPortal";
 import { Metadata } from "next";
 
+export const dynamic = "force-dynamic";
+
 export const metadata: Metadata = {
   title: "CyberX Command Center | Restricted Portal",
   description: "Secure Command & Control Portal for Eng. Ahmed Omar - CyberX",
