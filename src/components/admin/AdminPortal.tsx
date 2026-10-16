@@ -458,10 +458,10 @@ export default function AdminPortal() {
   // 1. LOGIN GATE VIEW (When NOT Authenticated)
   if (!isAuthenticated) {
     return (
-      <div className="min-h-screen bg-[#070A12] text-slate-100 flex items-center justify-center p-4 relative overflow-hidden font-sans selection:bg-cyan-500/30 selection:text-cyan-300">
-        {/* Background Gradients */}
-        <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-cyan-500/10 blur-[170px] rounded-full pointer-events-none"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-pink-500/10 blur-[170px] rounded-full pointer-events-none"></div>
+      <div className="min-h-screen bg-[#0A0F1D] text-slate-100 flex items-center justify-center p-4 relative overflow-hidden font-sans selection:bg-blue-600/30 selection:text-cyan-300">
+        {/* Background Gradients - softened */}
+        <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-blue-600/10 blur-[170px] rounded-full pointer-events-none"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-cyan-500/10 blur-[170px] rounded-full pointer-events-none"></div>
 
         {/* Hidden File Input for Image Uploads */}
         <input
@@ -472,10 +472,10 @@ export default function AdminPortal() {
           className="hidden"
         />
 
-        <div className="relative w-full max-w-md bg-[#0F172A] border border-cyan-500/40 rounded-3xl p-8 shadow-[0_0_50px_rgba(0,240,255,0.2)] scanline-effect">
+        <div className="relative w-full max-w-md bg-[#1E293B]/60 backdrop-blur-md border border-white/10 rounded-3xl p-8 shadow-xl scanline-effect">
           {/* Header */}
           <div className="text-center space-y-3 mb-8">
-            <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-slate-950 border border-cyan-400/50 shadow-[0_0_20px_rgba(0,240,255,0.3)] mb-2">
+            <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-[#111827] border border-white/10 shadow-sm mb-2">
               <Lock className="w-8 h-8 text-cyan-400" />
             </div>
 
@@ -484,11 +484,11 @@ export default function AdminPortal() {
               <span>CYBERX COMMAND CENTER // RESTRICTED ACCESS</span>
             </div>
 
-            <h1 className="text-2xl font-black text-white">
+            <h1 className="text-2xl font-black text-[#F8FAFC]">
               بوابة الإدارة للمهندس أحمد عمر
             </h1>
 
-            <p className="text-xs text-slate-400 leading-relaxed">
+            <p className="text-xs text-[#94A3B8] leading-relaxed">
               مسار تحكم سيبراني مغلق ومحمي. يرجى إدخال اسم المستخدم وكلمة المرور لتأكيد الصلاحيات والوصول للوحة التحكم.
             </p>
           </div>
@@ -504,7 +504,7 @@ export default function AdminPortal() {
           {/* Login Form */}
           <form onSubmit={handleLogin} className="space-y-4">
             <div>
-              <label className="block text-xs font-bold text-slate-300 mb-1.5 flex items-center justify-between">
+              <label className="block text-xs font-bold text-[#F8FAFC] mb-1.5 flex items-center justify-between">
                 <span>اسم المستخدم (Admin Username)</span>
                 <span className="font-mono-tech text-[10px] text-cyan-400">TLS 1.3</span>
               </label>
@@ -515,7 +515,7 @@ export default function AdminPortal() {
                   placeholder="ahmed_omar"
                   value={usernameInput}
                   onChange={(e) => setUsernameInput(e.target.value)}
-                  className="w-full px-4 py-3 rounded-xl bg-slate-950 border border-slate-700 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400 transition-colors font-mono-tech dir-ltr text-right"
+                  className="w-full px-4 py-3 rounded-xl bg-[#111827] border border-white/10 text-sm text-[#F8FAFC] placeholder-[#94A3B8]/60 focus:outline-none focus:border-cyan-400 transition-colors font-mono-tech dir-ltr text-right"
                   dir="ltr"
                 />
                 <User className="w-4 h-4 text-slate-500 absolute left-3 top-3.5 pointer-events-none" />
@@ -523,9 +523,9 @@ export default function AdminPortal() {
             </div>
 
             <div>
-              <label className="block text-xs font-bold text-slate-300 mb-1.5 flex items-center justify-between">
+              <label className="block text-xs font-bold text-[#F8FAFC] mb-1.5 flex items-center justify-between">
                 <span>كلمة المرور المشفرة (Password)</span>
-                <span className="font-mono-tech text-[10px] text-pink-400">SHA-256 HMAC</span>
+                <span className="font-mono-tech text-[10px] text-cyan-400">SHA-256 HMAC</span>
               </label>
               <div className="relative">
                 <input
@@ -534,7 +534,7 @@ export default function AdminPortal() {
                   placeholder="••••••••••••"
                   value={passwordInput}
                   onChange={(e) => setPasswordInput(e.target.value)}
-                  className="w-full px-4 py-3 rounded-xl bg-slate-950 border border-slate-700 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400 transition-colors font-mono-tech dir-ltr text-right"
+                  className="w-full px-4 py-3 rounded-xl bg-[#111827] border border-white/10 text-sm text-[#F8FAFC] placeholder-[#94A3B8]/60 focus:outline-none focus:border-cyan-400 transition-colors font-mono-tech dir-ltr text-right"
                   dir="ltr"
                 />
                 <button
@@ -550,7 +550,7 @@ export default function AdminPortal() {
             <button
               type="submit"
               disabled={isSubmittingLogin}
-              className="w-full mt-2 py-3.5 rounded-xl bg-gradient-to-r from-cyan-500 via-blue-600 to-pink-600 hover:from-cyan-400 hover:to-pink-500 text-slate-950 font-black text-sm shadow-[0_0_20px_rgba(0,240,255,0.35)] transition-all active:scale-95 disabled:opacity-50 cursor-pointer flex items-center justify-center gap-2"
+              className="w-full mt-2 py-3.5 rounded-xl bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-500 hover:to-cyan-400 text-white font-black text-sm shadow-md shadow-blue-500/20 transition-all active:scale-95 disabled:opacity-50 cursor-pointer flex items-center justify-center gap-2"
             >
               {isSubmittingLogin ? (
                 <>
@@ -567,7 +567,7 @@ export default function AdminPortal() {
           </form>
 
           {/* Quick Security Badge */}
-          <div className="mt-6 pt-4 border-t border-slate-800 flex items-center justify-between text-[11px] text-slate-400 font-mono-tech">
+          <div className="mt-6 pt-4 border-t border-white/10 flex items-center justify-between text-[11px] text-[#94A3B8] font-mono-tech">
             <span className="flex items-center gap-1 text-emerald-400">
               <ShieldCheck className="w-3.5 h-3.5" />
               <span>ENCRYPTED PORTAL</span>
@@ -581,7 +581,7 @@ export default function AdminPortal() {
 
   // 2. AUTHENTICATED EXECUTIVE DASHBOARD
   return (
-    <div className="min-h-screen bg-[#070A12] text-slate-100 flex flex-col font-sans selection:bg-cyan-500/30 selection:text-cyan-300">
+    <div className="min-h-screen bg-[#0A0F1D] text-slate-100 flex flex-col font-sans selection:bg-blue-600/30 selection:text-cyan-300">
       {/* Hidden File Input for Image Uploads */}
       <input
         type="file"
@@ -592,12 +592,12 @@ export default function AdminPortal() {
       />
 
       {/* Top Cyber Navigation Bar for Admin */}
-      <header className="sticky top-0 z-40 bg-[#0B0F19]/95 backdrop-blur-xl border-b border-cyan-500/30">
+      <header className="sticky top-0 z-40 bg-[#0A0F1D]/90 backdrop-blur-xl border-b border-white/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
           
           {/* Logo & Executive Badge */}
           <div className="flex items-center gap-4">
-            <div className="relative flex items-center justify-center w-11 h-11 rounded-2xl bg-gradient-to-br from-slate-900 to-slate-950 border border-cyan-400 shadow-[0_0_15px_rgba(0,240,255,0.3)]">
+            <div className="relative flex items-center justify-center w-11 h-11 rounded-2xl bg-[#111827] border border-white/10 shadow-sm">
               <span className="font-mono-tech font-extrabold text-xl text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-pink-500">
                 CX
               </span>

@@ -40,7 +40,7 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-[#0B0F19] text-slate-100 flex flex-col font-sans selection:bg-cyan-500/30 selection:text-cyan-300">
+    <div className="min-h-screen bg-[#0A0F1D] text-[#F8FAFC] flex flex-col font-sans selection:bg-blue-600/30 selection:text-cyan-300">
       
       {/* 24-Hour Dynamic Countdown Urgency Banner */}
       <CountdownBanner
@@ -122,7 +122,7 @@ export default function Home() {
             playCyberSound("beep");
             setIsAiBotOpen(true);
           }}
-          className="relative group p-3.5 rounded-2xl bg-gradient-to-tr from-slate-900 to-slate-950 border border-cyan-400 text-cyan-400 shadow-[0_0_18px_rgba(0,240,255,0.35)] hover:shadow-[0_0_28px_rgba(0,240,255,0.6)] hover:scale-105 active:scale-95 transition-all duration-300 cursor-pointer"
+          className="relative group p-3.5 rounded-2xl bg-[#111827] border border-white/10 hover:border-cyan-400/50 text-cyan-400 shadow-lg shadow-blue-500/20 hover:shadow-cyan-500/30 hover:scale-105 active:scale-95 transition-all duration-300 cursor-pointer backdrop-blur-md"
           title="تحدث مع مساعد الذكاء الاصطناعي CyberX AI"
         >
           <Bot className="w-6 h-6 animate-pulse" />
@@ -130,7 +130,7 @@ export default function Home() {
           <span className="absolute -top-1 -right-1 w-3 h-3 rounded-full bg-emerald-400"></span>
 
           {/* Hover Tooltip */}
-          <span className="absolute left-full ml-3 px-3 py-1.5 rounded-xl bg-slate-900 border border-cyan-500/40 text-xs font-bold text-cyan-300 whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none shadow-xl">
+          <span className="absolute left-full ml-3 px-3 py-1.5 rounded-xl bg-[#111827] border border-white/10 text-xs font-bold text-cyan-300 whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none shadow-xl">
             مساعد CyberX الذكي 🤖
           </span>
         </button>
@@ -141,13 +141,13 @@ export default function Home() {
           target="_blank"
           rel="noopener noreferrer"
           onClick={() => playCyberSound("click")}
-          className="relative group p-3.5 rounded-2xl bg-emerald-600 hover:bg-emerald-500 text-slate-950 shadow-[0_0_18px_rgba(16,185,129,0.35)] hover:shadow-[0_0_28px_rgba(16,185,129,0.6)] hover:scale-105 active:scale-95 transition-all duration-300 cursor-pointer"
+          className="relative group p-3.5 rounded-2xl bg-emerald-600 hover:bg-emerald-500 text-slate-950 shadow-lg shadow-emerald-500/20 hover:shadow-emerald-500/40 hover:scale-105 active:scale-95 transition-all duration-300 cursor-pointer"
           title="محادثة واتساب مباشرة: 01094200285"
         >
           <MessageCircle className="w-6 h-6" />
 
           {/* Hover Tooltip */}
-          <span className="absolute left-full ml-3 px-3 py-1.5 rounded-xl bg-slate-900 border border-emerald-500/40 text-xs font-bold text-emerald-400 whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none shadow-xl">
+          <span className="absolute left-full ml-3 px-3 py-1.5 rounded-xl bg-[#111827] border border-white/10 text-xs font-bold text-emerald-400 whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none shadow-xl">
             واتساب 24/7 (01094200285) 💬
           </span>
         </a>
