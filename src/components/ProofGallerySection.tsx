@@ -123,7 +123,7 @@ export default function ProofGallerySection() {
                 </div>
 
                 {/* Hover overlay hint */}
-                <div className="absolute inset-0 bg-slate-950/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                <div className="absolute inset-0 bg-[#0A0F1D]/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                   <div className="flex items-center gap-2 px-4 py-2 rounded-xl bg-[#111827]/90 border border-white/10 text-cyan-300 text-xs font-bold shadow-lg">
                     <Maximize2 className="w-4 h-4" />
                     <span>انقر لتكبير الشاشة وفحص الأرقام</span>

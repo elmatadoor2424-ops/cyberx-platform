@@ -16,13 +16,13 @@ export default function AdminError({
   }, [error]);
 
   return (
-    <div className="min-h-screen bg-[#070A12] flex items-center justify-center p-4 text-slate-100 font-sans">
-      <div className="max-w-md w-full rounded-3xl bg-[#0F172A] border border-red-500/50 p-8 text-center space-y-4 shadow-[0_0_40px_rgba(239,68,68,0.2)]">
+    <div className="min-h-screen bg-[#0A0F1D] flex items-center justify-center p-4 text-[#F8FAFC] font-sans">
+      <div className="max-w-md w-full rounded-3xl bg-[#1E293B]/60 backdrop-blur-md border border-white/10 p-8 text-center space-y-4 shadow-xl">
         <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-red-950/60 border border-red-500/60 text-red-400 mb-2">
           <AlertTriangle className="w-7 h-7" />
         </div>
 
-        <h2 className="text-xl font-black text-white">
+        <h2 className="text-xl font-black text-[#F8FAFC]">
           حدث خطأ أثناء تحميل لوحة الإدارة
         </h2>
 

@@ -192,7 +192,7 @@ export default function HeroSection({ onOpenAiBot, onSelectDiscount }: HeroSecti
                 </div>
 
                 {/* Hero Showcase Image */}
-                <div className="relative aspect-video w-full overflow-hidden bg-slate-950 group">
+                <div className="relative aspect-video w-full overflow-hidden bg-[#0A0F1D] group">
                   <Image
                     src="/images/hero_showcase.jpg"
                     alt="CyberX Digital Ecosystem Showcase"

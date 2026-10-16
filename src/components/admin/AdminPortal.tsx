@@ -441,9 +441,9 @@ export default function AdminPortal() {
   // Loading Screen
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-[#070A12] flex items-center justify-center text-slate-100 font-sans">
+      <div className="min-h-screen bg-[#0A0F1D] flex items-center justify-center text-slate-100 font-sans">
         <div className="flex flex-col items-center gap-4">
-          <div className="relative w-16 h-16 rounded-2xl bg-slate-900 border border-cyan-500/50 flex items-center justify-center shadow-[0_0_30px_rgba(0,240,255,0.4)]">
+          <div className="relative w-16 h-16 rounded-2xl bg-[#111827] border border-white/10 flex items-center justify-center shadow-lg">
             <ShieldCheck className="w-8 h-8 text-cyan-400 animate-pulse" />
             <span className="absolute -top-1 -right-1 w-3 h-3 rounded-full bg-emerald-400 animate-ping"></span>
           </div>
@@ -671,7 +671,7 @@ export default function AdminPortal() {
       <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
         
         {/* Navigation Tabs Bar */}
-        <div className="flex flex-wrap items-center gap-2 p-1.5 rounded-2xl bg-[#0F172A] border border-cyan-500/30">
+        <div className="flex flex-wrap items-center gap-2 p-1.5 rounded-2xl bg-[#111827] border border-cyan-500/30">
           {[
             { id: "overview", label: "نظرة عامة وإحصائيات", icon: TrendingUp },
             { id: "leads", label: `العملاء والطلبات الواردة (${leads.length})`, icon: Users },
@@ -708,7 +708,7 @@ export default function AdminPortal() {
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
               
               {/* Card 1: Leads */}
-              <div className="rounded-3xl bg-[#0F172A] border border-cyan-500/30 p-6 flex flex-col justify-between shadow-[0_0_20px_rgba(0,240,255,0.1)]">
+              <div className="rounded-3xl bg-[#111827] border border-cyan-500/30 p-6 flex flex-col justify-between shadow-[0_0_20px_rgba(0,240,255,0.1)]">
                 <div className="flex items-center justify-between mb-4">
                   <div className="p-3 rounded-2xl bg-cyan-500/10 text-cyan-400 border border-cyan-500/30">
                     <Users className="w-6 h-6" />
@@ -730,7 +730,7 @@ export default function AdminPortal() {
               </div>
 
               {/* Card 2: Services Count */}
-              <div className="rounded-3xl bg-[#0F172A] border border-pink-500/30 p-6 flex flex-col justify-between shadow-[0_0_20px_rgba(255,0,127,0.1)]">
+              <div className="rounded-3xl bg-[#111827] border border-pink-500/30 p-6 flex flex-col justify-between shadow-[0_0_20px_rgba(255,0,127,0.1)]">
                 <div className="flex items-center justify-between mb-4">
                   <div className="p-3 rounded-2xl bg-pink-500/10 text-pink-400 border border-pink-500/30">
                     <Layers className="w-6 h-6" />
@@ -752,7 +752,7 @@ export default function AdminPortal() {
               </div>
 
               {/* Card 3: Binance & Payment Status */}
-              <div className="rounded-3xl bg-[#0F172A] border border-purple-500/30 p-6 flex flex-col justify-between shadow-[0_0_20px_rgba(168,85,247,0.1)]">
+              <div className="rounded-3xl bg-[#111827] border border-purple-500/30 p-6 flex flex-col justify-between shadow-[0_0_20px_rgba(168,85,247,0.1)]">
                 <div className="flex items-center justify-between mb-4">
                   <div className="p-3 rounded-2xl bg-purple-500/10 text-purple-400 border border-purple-500/30">
                     <Coins className="w-6 h-6" />
@@ -775,7 +775,7 @@ export default function AdminPortal() {
               </div>
 
               {/* Card 4: Webhook & AI Bot Status */}
-              <div className="rounded-3xl bg-[#0F172A] border border-emerald-500/30 p-6 flex flex-col justify-between shadow-[0_0_20px_rgba(16,185,129,0.1)]">
+              <div className="rounded-3xl bg-[#111827] border border-emerald-500/30 p-6 flex flex-col justify-between shadow-[0_0_20px_rgba(16,185,129,0.1)]">
                 <div className="flex items-center justify-between mb-4">
                   <div className="p-3 rounded-2xl bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">
                     <Bot className="w-6 h-6" />
@@ -799,7 +799,7 @@ export default function AdminPortal() {
             </div>
 
             {/* Quick Actions Strip */}
-            <div className="p-6 rounded-3xl bg-[#0F172A] border border-slate-800 flex flex-wrap items-center justify-between gap-4">
+            <div className="p-6 rounded-3xl bg-[#111827] border border-slate-800 flex flex-wrap items-center justify-between gap-4">
               <div>
                 <h3 className="font-bold text-white text-base">
                   مرحباً بك مهندس أحمد عمر في مركز التحكم
@@ -856,7 +856,7 @@ export default function AdminPortal() {
                 {leads.slice(0, 3).map((lead) => (
                   <div
                     key={lead.id}
-                    className="p-5 rounded-2xl bg-[#0F172A] border border-slate-800 flex flex-col justify-between hover:border-cyan-500/40 transition-colors"
+                    className="p-5 rounded-2xl bg-[#111827] border border-slate-800 flex flex-col justify-between hover:border-cyan-500/40 transition-colors"
                   >
                     <div>
                       <div className="flex items-center justify-between text-xs mb-2">
@@ -964,7 +964,7 @@ export default function AdminPortal() {
             </div>
 
             {/* Controls Bar */}
-            <div className="p-4 rounded-2xl bg-[#0F172A] border border-cyan-500/30 flex flex-wrap items-center justify-between gap-4">
+            <div className="p-4 rounded-2xl bg-[#111827] border border-cyan-500/30 flex flex-wrap items-center justify-between gap-4">
               {/* Search input */}
               <div className="relative flex-1 min-w-[260px]">
                 <Search className="w-4 h-4 text-slate-500 absolute right-3 top-3" />
@@ -973,7 +973,7 @@ export default function AdminPortal() {
                   placeholder="ابحث بالاسم، رقم الواتساب، البريد، الشركة، أو الخدمة..."
                   value={leadSearch}
                   onChange={(e) => setLeadSearch(e.target.value)}
-                  className="w-full pr-10 pl-4 py-2.5 rounded-xl bg-slate-950 border border-slate-700 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400"
+                  className="w-full pr-10 pl-4 py-2.5 rounded-xl bg-[#0A0F1D] border border-slate-700 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400"
                 />
               </div>
 
@@ -996,7 +996,7 @@ export default function AdminPortal() {
                     className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer ${
                       leadStatusFilter === s.id
                         ? "bg-gradient-to-r from-cyan-500 to-blue-600 text-slate-950 font-black shadow-[0_0_10px_rgba(0,240,255,0.3)]"
-                        : "bg-slate-950 text-slate-400 hover:text-white border border-slate-800"
+                        : "bg-[#0A0F1D] text-slate-400 hover:text-white border border-slate-800"
                     }`}
                   >
                     {s.label}
@@ -1026,11 +1026,11 @@ export default function AdminPortal() {
             </div>
 
             {/* Interactive Leads Table */}
-            <div className="rounded-3xl bg-[#0F172A] border border-cyan-500/30 overflow-hidden shadow-2xl">
+            <div className="rounded-3xl bg-[#111827] border border-cyan-500/30 overflow-hidden shadow-2xl">
               <div className="overflow-x-auto">
                 <table className="w-full text-right border-collapse text-xs">
                   <thead>
-                    <tr className="bg-slate-950 border-b border-slate-800 text-slate-300 font-mono-tech text-[11px]">
+                    <tr className="bg-[#0A0F1D] border-b border-slate-800 text-slate-300 font-mono-tech text-[11px]">
                       <th className="py-4 px-4 text-right">اسم العميل والنشاط</th>
                       <th className="py-4 px-4 text-right">رقم الواتساب والتواصل</th>
                       <th className="py-4 px-4 text-right">البريد الإلكتروني</th>
@@ -1246,7 +1246,7 @@ export default function AdminPortal() {
               {config.services.map((service, idx) => (
                 <div
                   key={service.id}
-                  className="rounded-3xl bg-[#0F172A] border border-cyan-500/30 p-6 space-y-5 shadow-lg"
+                  className="rounded-3xl bg-[#111827] border border-cyan-500/30 p-6 space-y-5 shadow-lg"
                 >
                   {/* Service Header */}
                   <div className="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-slate-800">
@@ -1270,7 +1270,7 @@ export default function AdminPortal() {
                           updated[idx].badge = e.target.value;
                           setConfig({ ...config, services: updated });
                         }}
-                        className="px-3 py-1.5 rounded-lg bg-slate-950 border border-slate-700 text-xs text-white"
+                        className="px-3 py-1.5 rounded-lg bg-[#0A0F1D] border border-slate-700 text-xs text-white"
                       />
                     </div>
                   </div>
@@ -1278,7 +1278,7 @@ export default function AdminPortal() {
                   {/* 3-Way Prices Grid */}
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                     {/* Market Price */}
-                    <div className="p-4 rounded-2xl bg-slate-950/80 border border-slate-800 space-y-2">
+                    <div className="p-4 rounded-2xl bg-[#0A0F1D]/80 border border-slate-800 space-y-2">
                       <label className="block text-xs font-bold text-slate-400">سعر السوق / المنافسين</label>
                       <div className="grid grid-cols-2 gap-2">
                         <div>
@@ -1311,7 +1311,7 @@ export default function AdminPortal() {
                     </div>
 
                     {/* CyberX Regular Price */}
-                    <div className="p-4 rounded-2xl bg-slate-950/80 border border-slate-800 space-y-2">
+                    <div className="p-4 rounded-2xl bg-[#0A0F1D]/80 border border-slate-800 space-y-2">
                       <label className="block text-xs font-bold text-cyan-300">سعر CyberX الطبيعي</label>
                       <div className="grid grid-cols-2 gap-2">
                         <div>
@@ -1391,12 +1391,12 @@ export default function AdminPortal() {
                         setConfig({ ...config, services: updated });
                       }}
                       placeholder="مثال: هدية الاشتراك: 1,000 رقم داتا عملاء مستهدفة مجاناً لتجربة الحملات فوراً!"
-                      className="w-full px-3 py-2 rounded-xl bg-slate-950 border border-slate-800 text-xs text-emerald-300 font-bold"
+                      className="w-full px-3 py-2 rounded-xl bg-[#0A0F1D] border border-slate-800 text-xs text-emerald-300 font-bold"
                     />
                   </div>
 
                   {/* Bulk Bundle Offer for this Service */}
-                  <div className="p-4 rounded-2xl bg-slate-950 border border-slate-800 space-y-3">
+                  <div className="p-4 rounded-2xl bg-[#0A0F1D] border border-slate-800 space-y-3">
                     <div className="flex items-center justify-between text-xs font-bold text-slate-300">
                       <span className="flex items-center gap-1.5 text-pink-400">
                         <Package className="w-3.5 h-3.5" />
@@ -1503,18 +1503,18 @@ export default function AdminPortal() {
                 {config.team.map((member, mIdx) => (
                   <div
                     key={member.id}
-                    className="rounded-3xl bg-[#0F172A] border border-cyan-500/30 p-6 space-y-4 flex flex-col justify-between"
+                    className="rounded-3xl bg-[#111827] border border-cyan-500/30 p-6 space-y-4 flex flex-col justify-between"
                   >
                     <div>
                       {/* Image Preview & Upload Button */}
-                      <div className="relative aspect-square w-full rounded-2xl overflow-hidden bg-slate-950 border border-slate-800 mb-4 group">
+                      <div className="relative aspect-square w-full rounded-2xl overflow-hidden bg-[#0A0F1D] border border-slate-800 mb-4 group">
                         <Image
                           src={member.image}
                           alt={member.name}
                           fill
                           className="object-cover"
                         />
-                        <div className="absolute inset-0 bg-slate-950/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                        <div className="absolute inset-0 bg-[#0A0F1D]/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                           <button
                             type="button"
                             onClick={() =>
@@ -1544,7 +1544,7 @@ export default function AdminPortal() {
                               updatedTeam[mIdx].name = e.target.value;
                               setConfig({ ...config, team: updatedTeam });
                             }}
-                            className="w-full px-3 py-1.5 rounded-lg bg-slate-950 border border-slate-700 text-sm font-bold text-white"
+                            className="w-full px-3 py-1.5 rounded-lg bg-[#0A0F1D] border border-slate-700 text-sm font-bold text-white"
                           />
                         </div>
 
@@ -1558,7 +1558,7 @@ export default function AdminPortal() {
                               updatedTeam[mIdx].arabicRole = e.target.value;
                               setConfig({ ...config, team: updatedTeam });
                             }}
-                            className="w-full px-3 py-1.5 rounded-lg bg-slate-950 border border-slate-700 text-xs text-cyan-300 font-bold"
+                            className="w-full px-3 py-1.5 rounded-lg bg-[#0A0F1D] border border-slate-700 text-xs text-cyan-300 font-bold"
                           />
                         </div>
 
@@ -1572,7 +1572,7 @@ export default function AdminPortal() {
                               updatedTeam[mIdx].role = e.target.value;
                               setConfig({ ...config, team: updatedTeam });
                             }}
-                            className="w-full px-3 py-1.5 rounded-lg bg-slate-950 border border-slate-700 text-xs font-mono-tech text-slate-300 dir-ltr text-right"
+                            className="w-full px-3 py-1.5 rounded-lg bg-[#0A0F1D] border border-slate-700 text-xs font-mono-tech text-slate-300 dir-ltr text-right"
                             dir="ltr"
                           />
                         </div>
@@ -1587,7 +1587,7 @@ export default function AdminPortal() {
                               updatedTeam[mIdx].bio = e.target.value;
                               setConfig({ ...config, team: updatedTeam });
                             }}
-                            className="w-full px-3 py-1.5 rounded-lg bg-slate-950 border border-slate-700 text-xs text-slate-300 resize-none"
+                            className="w-full px-3 py-1.5 rounded-lg bg-[#0A0F1D] border border-slate-700 text-xs text-slate-300 resize-none"
                           />
                         </div>
                       </div>
@@ -1623,17 +1623,17 @@ export default function AdminPortal() {
                 {config.proofCases.map((proof, pIdx) => (
                   <div
                     key={proof.id}
-                    className="rounded-3xl bg-[#0F172A] border border-cyan-500/30 p-6 space-y-4"
+                    className="rounded-3xl bg-[#111827] border border-cyan-500/30 p-6 space-y-4"
                   >
                     {/* Screenshot Preview */}
-                    <div className="relative aspect-video w-full rounded-2xl overflow-hidden bg-slate-950 border border-slate-800 group">
+                    <div className="relative aspect-video w-full rounded-2xl overflow-hidden bg-[#0A0F1D] border border-slate-800 group">
                       <Image
                         src={proof.image}
                         alt={proof.title}
                         fill
                         className="object-cover"
                       />
-                      <div className="absolute inset-0 bg-slate-950/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                      <div className="absolute inset-0 bg-[#0A0F1D]/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                         <button
                           type="button"
                           onClick={() =>
@@ -1663,7 +1663,7 @@ export default function AdminPortal() {
                             updatedProofs[pIdx].title = e.target.value;
                             setConfig({ ...config, proofCases: updatedProofs });
                           }}
-                          className="w-full px-3 py-1.5 rounded-lg bg-slate-950 border border-slate-700 text-xs text-white font-bold"
+                          className="w-full px-3 py-1.5 rounded-lg bg-[#0A0F1D] border border-slate-700 text-xs text-white font-bold"
                         />
                       </div>
 
@@ -1678,7 +1678,7 @@ export default function AdminPortal() {
                               updatedProofs[pIdx].category = e.target.value;
                               setConfig({ ...config, proofCases: updatedProofs });
                             }}
-                            className="w-full px-3 py-1.5 rounded-lg bg-slate-950 border border-slate-700 text-xs text-cyan-300"
+                            className="w-full px-3 py-1.5 rounded-lg bg-[#0A0F1D] border border-slate-700 text-xs text-cyan-300"
                           />
                         </div>
                         <div>
@@ -1691,7 +1691,7 @@ export default function AdminPortal() {
                               updatedProofs[pIdx].clientType = e.target.value;
                               setConfig({ ...config, proofCases: updatedProofs });
                             }}
-                            className="w-full px-3 py-1.5 rounded-lg bg-slate-950 border border-slate-700 text-xs text-slate-300"
+                            className="w-full px-3 py-1.5 rounded-lg bg-[#0A0F1D] border border-slate-700 text-xs text-slate-300"
                           />
                         </div>
                       </div>
@@ -1747,7 +1747,7 @@ export default function AdminPortal() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               
               {/* Box 1: Mobile Wallets */}
-              <div className="rounded-3xl bg-[#0F172A] border border-cyan-500/30 p-6 space-y-4">
+              <div className="rounded-3xl bg-[#111827] border border-cyan-500/30 p-6 space-y-4">
                 <div className="flex items-center gap-2 text-cyan-400 font-bold text-sm">
                   <Smartphone className="w-4 h-4" />
                   <span>المحافظ الإلكترونية (فودافون كاش / أكسيس باي)</span>
@@ -1764,7 +1764,7 @@ export default function AdminPortal() {
                         updated.paymentWallets[0].number = e.target.value;
                         setConfig({ ...config, contacts: updated });
                       }}
-                      className="w-full px-3 py-2 rounded-xl bg-slate-950 border border-slate-700 text-sm font-mono-tech text-cyan-300 font-bold dir-ltr text-right"
+                      className="w-full px-3 py-2 rounded-xl bg-[#0A0F1D] border border-slate-700 text-sm font-mono-tech text-cyan-300 font-bold dir-ltr text-right"
                       dir="ltr"
                     />
                   </div>
@@ -1779,7 +1779,7 @@ export default function AdminPortal() {
                         updated.paymentWallets[1].number = e.target.value;
                         setConfig({ ...config, contacts: updated });
                       }}
-                      className="w-full px-3 py-2 rounded-xl bg-slate-950 border border-slate-700 text-sm font-mono-tech text-cyan-300 font-bold dir-ltr text-right"
+                      className="w-full px-3 py-2 rounded-xl bg-[#0A0F1D] border border-slate-700 text-sm font-mono-tech text-cyan-300 font-bold dir-ltr text-right"
                       dir="ltr"
                     />
                   </div>
@@ -1791,7 +1791,7 @@ export default function AdminPortal() {
               </div>
 
               {/* Box 2: Binance USDT Wallet */}
-              <div className="rounded-3xl bg-[#0F172A] border border-pink-500/30 p-6 space-y-4">
+              <div className="rounded-3xl bg-[#111827] border border-pink-500/30 p-6 space-y-4">
                 <div className="flex items-center gap-2 text-pink-400 font-bold text-sm">
                   <Coins className="w-4 h-4" />
                   <span>محفظة Binance USDT (الدفع الدولي بالكريبتو)</span>
@@ -1807,7 +1807,7 @@ export default function AdminPortal() {
                         const updated = { ...config.contacts, usdtBinanceAddress: e.target.value };
                         setConfig({ ...config, contacts: updated });
                       }}
-                      className="w-full px-3 py-2 rounded-xl bg-slate-950 border border-slate-700 text-xs font-mono-tech text-cyan-300 font-bold dir-ltr text-right"
+                      className="w-full px-3 py-2 rounded-xl bg-[#0A0F1D] border border-slate-700 text-xs font-mono-tech text-cyan-300 font-bold dir-ltr text-right"
                       dir="ltr"
                     />
                   </div>
@@ -1821,7 +1821,7 @@ export default function AdminPortal() {
                         const updated = { ...config.contacts, usdtNetwork: e.target.value };
                         setConfig({ ...config, contacts: updated });
                       }}
-                      className="w-full px-3 py-2 rounded-xl bg-slate-950 border border-slate-700 text-xs font-mono-tech text-pink-300 font-bold dir-ltr text-right"
+                      className="w-full px-3 py-2 rounded-xl bg-[#0A0F1D] border border-slate-700 text-xs font-mono-tech text-pink-300 font-bold dir-ltr text-right"
                       dir="ltr"
                     />
                   </div>
@@ -1829,7 +1829,7 @@ export default function AdminPortal() {
               </div>
 
               {/* Box 3: Official Direct Contacts */}
-              <div className="rounded-3xl bg-[#0F172A] border border-emerald-500/30 p-6 space-y-4">
+              <div className="rounded-3xl bg-[#111827] border border-emerald-500/30 p-6 space-y-4">
                 <div className="flex items-center gap-2 text-emerald-400 font-bold text-sm">
                   <PhoneCall className="w-4 h-4" />
                   <span>قنوات التواصل المباشر مع العملاء</span>
@@ -1849,7 +1849,7 @@ export default function AdminPortal() {
                         };
                         setConfig({ ...config, contacts: updated });
                       }}
-                      className="w-full px-3 py-2 rounded-xl bg-slate-950 border border-slate-700 text-sm font-mono-tech text-emerald-400 font-bold dir-ltr text-right"
+                      className="w-full px-3 py-2 rounded-xl bg-[#0A0F1D] border border-slate-700 text-sm font-mono-tech text-emerald-400 font-bold dir-ltr text-right"
                       dir="ltr"
                     />
                   </div>
@@ -1868,7 +1868,7 @@ export default function AdminPortal() {
                         };
                         setConfig({ ...config, contacts: updated });
                       }}
-                      className="w-full px-3 py-2 rounded-xl bg-slate-950 border border-slate-700 text-sm font-mono-tech text-cyan-300 font-bold dir-ltr text-right"
+                      className="w-full px-3 py-2 rounded-xl bg-[#0A0F1D] border border-slate-700 text-sm font-mono-tech text-cyan-300 font-bold dir-ltr text-right"
                       dir="ltr"
                     />
                   </div>
@@ -1876,18 +1876,18 @@ export default function AdminPortal() {
               </div>
 
               {/* Box 4: Copyright Notice Lock */}
-              <div className="rounded-3xl bg-[#0F172A] border border-slate-800 p-6 space-y-4">
+              <div className="rounded-3xl bg-[#111827] border border-slate-800 p-6 space-y-4">
                 <div className="flex items-center justify-between text-white font-bold text-sm">
                   <span className="flex items-center gap-2">
                     <ShieldCheck className="w-4 h-4 text-cyan-400" />
                     <span>حقوق الملكية والفوتر (Copyright Notice)</span>
                   </span>
-                  <span className="text-[10px] font-mono-tech text-emerald-400 px-2 py-0.5 rounded-full bg-slate-950 border border-emerald-500/40">
+                  <span className="text-[10px] font-mono-tech text-emerald-400 px-2 py-0.5 rounded-full bg-[#0A0F1D] border border-emerald-500/40">
                     PROTECTED
                   </span>
                 </div>
 
-                <div className="p-4 rounded-2xl bg-slate-950 border border-slate-800 space-y-2">
+                <div className="p-4 rounded-2xl bg-[#0A0F1D] border border-slate-800 space-y-2">
                   <div className="text-xs text-slate-400">النص المعتمد أسفل الموقع:</div>
                   <div className="font-extrabold text-sm text-cyan-300 p-2.5 rounded-xl bg-slate-900 border border-slate-700">
                     جميع الحقوق محفوظة © CyberX | Eng. Ahmed Omar
@@ -1920,11 +1920,11 @@ export default function AdminPortal() {
       {/* Modal 1: Lead Details & Notes Modal */}
       {selectedLeadForDetails && (
         <div
-          className="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4 animate-in fade-in duration-200"
+          className="fixed inset-0 z-50 bg-[#0A0F1D]/80 backdrop-blur-md flex items-center justify-center p-4 animate-in fade-in duration-200"
           onClick={() => setSelectedLeadForDetails(null)}
         >
           <div
-            className="relative w-full max-w-lg rounded-3xl bg-[#0F172A] border border-cyan-500/50 p-6 space-y-4 shadow-[0_0_40px_rgba(0,240,255,0.25)]"
+            className="relative w-full max-w-lg rounded-3xl bg-[#111827] border border-white/10 p-6 space-y-4 shadow-2xl"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex items-center justify-between pb-3 border-b border-slate-800">
@@ -1943,7 +1943,7 @@ export default function AdminPortal() {
             </div>
 
             <div className="space-y-3.5 text-xs">
-              <div className="grid grid-cols-2 gap-3 p-3 rounded-2xl bg-slate-950 border border-slate-800">
+              <div className="grid grid-cols-2 gap-3 p-3 rounded-2xl bg-[#0A0F1D] border border-slate-800">
                 <div>
                   <span className="text-slate-400 block mb-0.5">اسم العميل:</span>
                   <strong className="text-white text-sm">{selectedLeadForDetails.fullName}</strong>
@@ -1954,7 +1954,7 @@ export default function AdminPortal() {
                 </div>
               </div>
 
-              <div className="grid grid-cols-2 gap-3 p-3 rounded-2xl bg-slate-950 border border-slate-800">
+              <div className="grid grid-cols-2 gap-3 p-3 rounded-2xl bg-[#0A0F1D] border border-slate-800">
                 <div>
                   <span className="text-slate-400 block mb-0.5">رقم الواتساب:</span>
                   <span className="font-mono-tech text-emerald-400 font-bold text-sm dir-ltr block" dir="ltr">
@@ -1977,7 +1977,7 @@ export default function AdminPortal() {
                 </div>
               </div>
 
-              <div className="p-3 rounded-2xl bg-slate-950 border border-slate-800 space-y-2">
+              <div className="p-3 rounded-2xl bg-[#0A0F1D] border border-slate-800 space-y-2">
                 <div>
                   <span className="text-slate-400 block mb-0.5">الخدمة أو الباقة المطلوبة:</span>
                   <strong className="text-pink-300 text-sm">{selectedLeadForDetails.service}</strong>
@@ -1997,14 +1997,14 @@ export default function AdminPortal() {
               {selectedLeadForDetails.projectDetails && (
                 <div>
                   <span className="text-slate-400 block mb-1">تفاصيل المشروع والطلب:</span>
-                  <div className="p-3 rounded-xl bg-slate-950 border border-slate-800 text-slate-300 leading-relaxed text-xs">
+                  <div className="p-3 rounded-xl bg-[#0A0F1D] border border-slate-800 text-slate-300 leading-relaxed text-xs">
                     {selectedLeadForDetails.projectDetails}
                   </div>
                 </div>
               )}
 
               {/* Status Update inside Modal */}
-              <div className="p-3 rounded-2xl bg-slate-950 border border-slate-800 flex items-center justify-between">
+              <div className="p-3 rounded-2xl bg-[#0A0F1D] border border-slate-800 flex items-center justify-between">
                 <span className="text-slate-300 font-bold">تحديث حالة الطلب:</span>
                 <select
                   value={selectedLeadForDetails.status === "completed" ? "closed" : selectedLeadForDetails.status}
@@ -2037,7 +2037,7 @@ export default function AdminPortal() {
                     handleUpdateLeadStatus(selectedLeadForDetails.id, selectedLeadForDetails.status, e.target.value)
                   }
                   placeholder="أضف ملاحظاتك لمتابعة هذا العميل وسيتم الحفظ تلقائياً..."
-                  className="w-full px-3 py-2 rounded-xl bg-slate-950 border border-slate-700 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400"
+                  className="w-full px-3 py-2 rounded-xl bg-[#0A0F1D] border border-slate-700 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400"
                 />
               </div>
             </div>
@@ -2072,11 +2072,11 @@ export default function AdminPortal() {
       {/* Modal 2: Add Manual Lead */}
       {showAddLeadModal && (
         <div
-          className="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4 animate-in fade-in duration-200"
+          className="fixed inset-0 z-50 bg-[#0A0F1D]/80 backdrop-blur-md flex items-center justify-center p-4 animate-in fade-in duration-200"
           onClick={() => setShowAddLeadModal(false)}
         >
           <div
-            className="relative w-full max-w-lg rounded-3xl bg-[#0F172A] border border-cyan-500/50 p-6 space-y-4 shadow-[0_0_40px_rgba(0,240,255,0.2)]"
+            className="relative w-full max-w-lg rounded-3xl bg-[#111827] border border-white/10 p-6 space-y-4 shadow-2xl"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex items-center justify-between pb-3 border-b border-slate-800">
@@ -2101,7 +2101,7 @@ export default function AdminPortal() {
                   placeholder="محمد علي"
                   value={newLeadForm.fullName}
                   onChange={(e) => setNewLeadForm({ ...newLeadForm, fullName: e.target.value })}
-                  className="w-full px-3 py-2 rounded-xl bg-slate-950 border border-slate-700 text-xs text-white"
+                  className="w-full px-3 py-2 rounded-xl bg-[#0A0F1D] border border-slate-700 text-xs text-white"
                 />
               </div>
 
@@ -2114,7 +2114,7 @@ export default function AdminPortal() {
                     placeholder="01094200285"
                     value={newLeadForm.phone}
                     onChange={(e) => setNewLeadForm({ ...newLeadForm, phone: e.target.value })}
-                    className="w-full px-3 py-2 rounded-xl bg-slate-950 border border-slate-700 text-xs font-mono-tech text-white dir-ltr text-right"
+                    className="w-full px-3 py-2 rounded-xl bg-[#0A0F1D] border border-slate-700 text-xs font-mono-tech text-white dir-ltr text-right"
                     dir="ltr"
                   />
                 </div>
@@ -2126,7 +2126,7 @@ export default function AdminPortal() {
                     placeholder="مطعم / متجر / عيادة"
                     value={newLeadForm.company}
                     onChange={(e) => setNewLeadForm({ ...newLeadForm, company: e.target.value })}
-                    className="w-full px-3 py-2 rounded-xl bg-slate-950 border border-slate-700 text-xs text-white"
+                    className="w-full px-3 py-2 rounded-xl bg-[#0A0F1D] border border-slate-700 text-xs text-white"
                   />
                 </div>
               </div>
@@ -2136,7 +2136,7 @@ export default function AdminPortal() {
                 <select
                   value={newLeadForm.service}
                   onChange={(e) => setNewLeadForm({ ...newLeadForm, service: e.target.value })}
-                  className="w-full px-3 py-2 rounded-xl bg-slate-950 border border-slate-700 text-xs text-white"
+                  className="w-full px-3 py-2 rounded-xl bg-[#0A0F1D] border border-slate-700 text-xs text-white"
                 >
                   {config?.services.map((s) => (
                     <option key={s.id} value={s.title}>
@@ -2159,7 +2159,7 @@ export default function AdminPortal() {
                     placeholder="مثال: 2,000 ج.م"
                     value={newLeadForm.budget}
                     onChange={(e) => setNewLeadForm({ ...newLeadForm, budget: e.target.value })}
-                    className="w-full px-3 py-2 rounded-xl bg-slate-950 border border-slate-700 text-xs text-white"
+                    className="w-full px-3 py-2 rounded-xl bg-[#0A0F1D] border border-slate-700 text-xs text-white"
                   />
                 </div>
 
@@ -2168,7 +2168,7 @@ export default function AdminPortal() {
                   <select
                     value={newLeadForm.status}
                     onChange={(e) => setNewLeadForm({ ...newLeadForm, status: e.target.value as LeadItem["status"] })}
-                    className="w-full px-3 py-2 rounded-xl bg-slate-950 border border-slate-700 text-xs text-white"
+                    className="w-full px-3 py-2 rounded-xl bg-[#0A0F1D] border border-slate-700 text-xs text-white"
                   >
                     <option value="new">طلب جديد 🔵</option>
                     <option value="contacting">قيد التواصل 🟡</option>
@@ -2184,7 +2184,7 @@ export default function AdminPortal() {
                   placeholder="ملاحظات تفصيلية أو متطلبات خاصة..."
                   value={newLeadForm.notes}
                   onChange={(e) => setNewLeadForm({ ...newLeadForm, notes: e.target.value })}
-                  className="w-full px-3 py-2 rounded-xl bg-slate-950 border border-slate-700 text-xs text-white resize-none"
+                  className="w-full px-3 py-2 rounded-xl bg-[#0A0F1D] border border-slate-700 text-xs text-white resize-none"
                 />
               </div>
 
