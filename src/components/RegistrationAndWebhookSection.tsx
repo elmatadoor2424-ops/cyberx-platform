@@ -116,29 +116,29 @@ export default function RegistrationAndWebhookSection({
   const isCouponValid = formData.couponCode.trim().toUpperCase() === "CYBER70";
 
   return (
-    <section id="register" className="py-24 relative overflow-hidden bg-[#0A0F1D] border-t border-white/10">
+    <section id="register" className="py-24 relative overflow-hidden bg-[#000000] border-t border-[#00FF66]/30">
       {/* Background Soft Neon Ambience */}
-      <div className="absolute top-10 left-1/4 w-[500px] h-[500px] bg-blue-600/10 blur-[150px] rounded-full pointer-events-none"></div>
-      <div className="absolute bottom-10 right-1/4 w-[500px] h-[500px] bg-cyan-500/10 blur-[150px] rounded-full pointer-events-none"></div>
+      <div className="absolute top-10 left-1/4 w-[500px] h-[500px] bg-[#00FF66]/10 blur-[150px] rounded-full pointer-events-none"></div>
+      <div className="absolute bottom-10 right-1/4 w-[500px] h-[500px] bg-[#00FF66]/10 blur-[150px] rounded-full pointer-events-none"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#111827] border border-blue-500/30 text-cyan-300 text-xs font-bold shadow-sm shadow-blue-500/10">
-            <Radio className="w-3.5 h-3.5 text-cyan-400 animate-pulse" />
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#0A0A0A] border border-[#00FF66]/30 text-[#00FF66] text-xs font-bold shadow-sm shadow-[0_0_15px_rgba(0,255,102,0.2)]">
+            <Radio className="w-3.5 h-3.5 text-[#00FF66] animate-pulse" />
             <span>نظام التسجيل الذكي وربط الـ Webhook • REALTIME LEAD PIPELINE</span>
           </div>
 
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#F8FAFC]">
             سجّل مشروعك الآن وفعّل{" "}
-            <span className="bg-gradient-to-r from-blue-400 via-cyan-400 to-teal-300 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-[#00FF66] via-emerald-300 to-[#00CC55] bg-clip-text text-transparent">
               خصم الـ 70% الحصري
             </span>
           </h2>
 
           <p className="text-[#94A3B8] text-base sm:text-lg leading-relaxed">
-            النموذج متصل بمحرك الـ Webhook الفوري لـ <span className="text-cyan-300 font-bold">n8n وأتمتة الواتساب</span>. سيتلقى فريق المهندس أحمد عمر وكارما إشعاراً في أجزاء من الثانية لتأكيد حجزك.
+            النموذج متصل بمحرك الـ Webhook الفوري لـ <span className="text-[#00FF66] font-bold">n8n وأتمتة الواتساب</span>. سيتلقى فريق المهندس أحمد عمر وكارما إشعاراً في أجزاء من الثانية لتأكيد حجزك.
           </p>
         </div>
 
@@ -146,11 +146,11 @@ export default function RegistrationAndWebhookSection({
           
           {/* Form Column (7 cols) */}
           <div className="lg:col-span-7">
-            <div className="rounded-3xl bg-[#1E293B]/60 backdrop-blur-md border border-white/10 p-8 shadow-xl relative scanline-effect">
+            <div className="rounded-3xl bg-[#0A0A0A]/60 backdrop-blur-md border border-[#00FF66]/30 p-8 shadow-xl relative scanline-effect">
               
-              <div className="flex items-center justify-between pb-6 mb-6 border-b border-white/10">
+              <div className="flex items-center justify-between pb-6 mb-6 border-b border-[#00FF66]/30">
                 <div className="flex items-center gap-2">
-                  <span className="w-2.5 h-2.5 rounded-full bg-cyan-400 animate-pulse"></span>
+                  <span className="w-2.5 h-2.5 rounded-full bg-[#00FF66] animate-pulse"></span>
                   <span className="font-mono-tech text-xs text-[#F8FAFC] font-bold">
                     CYBERX // REGISTRATION FORM
                   </span>
@@ -163,10 +163,10 @@ export default function RegistrationAndWebhookSection({
                     playCyberSound("click");
                     setShowWebhookSettings(!showWebhookSettings);
                   }}
-                  className="flex items-center gap-1.5 text-xs text-[#94A3B8] hover:text-cyan-400 transition-colors"
+                  className="flex items-center gap-1.5 text-xs text-[#94A3B8] hover:text-[#00FF66] transition-colors"
                 >
-                  <Settings className="w-3.5 h-3.5 text-cyan-400" />
-                  <span className="font-mono-tech text-cyan-300 font-bold flex items-center gap-1">
+                  <Settings className="w-3.5 h-3.5 text-[#00FF66]" />
+                  <span className="font-mono-tech text-[#00FF66] font-bold flex items-center gap-1">
                     <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
                     <span>Webhook n8n متصل</span>
                   </span>
@@ -175,9 +175,9 @@ export default function RegistrationAndWebhookSection({
 
               {/* Webhook Destination Settings */}
               {showWebhookSettings && (
-                <div className="mb-6 p-4 rounded-xl bg-[#111827] border border-white/10 space-y-2 animate-in fade-in duration-200">
+                <div className="mb-6 p-4 rounded-xl bg-[#0A0A0A] border border-[#00FF66]/30 space-y-2 animate-in fade-in duration-200">
                   <div className="flex items-center justify-between">
-                    <label className="block text-xs font-bold text-cyan-300">
+                    <label className="block text-xs font-bold text-[#00FF66]">
                       رابط الـ Webhook المستهدف لإرسال البيانات (POST Target URL):
                     </label>
                     <span className="px-2 py-0.5 rounded text-[10px] font-mono-tech bg-emerald-950 text-emerald-300 border border-emerald-500/40 font-bold">
@@ -189,7 +189,7 @@ export default function RegistrationAndWebhookSection({
                     placeholder="https://cultures-era-choices-galleries.trycloudflare.com/webhook/c59e6ab9-de89-4c7c-a02c-58869a44c0b3"
                     value={customWebhookUrl}
                     onChange={(e) => setCustomWebhookUrl(e.target.value)}
-                    className="w-full px-3 py-2 rounded-lg bg-[#0A0F1D] border border-white/10 text-xs font-mono-tech text-cyan-300 focus:outline-none focus:border-cyan-400 dir-ltr"
+                    className="w-full px-3 py-2 rounded-lg bg-[#000000] border border-[#00FF66]/30 text-xs font-mono-tech text-[#00FF66] focus:outline-none focus:border-[#00FF66]/30 dir-ltr"
                     dir="ltr"
                   />
                   <p className="text-[11px] text-[#94A3B8] leading-relaxed">
@@ -213,7 +213,7 @@ export default function RegistrationAndWebhookSection({
                       placeholder="مثال: محمد علي"
                       value={formData.fullName}
                       onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
-                      className="w-full px-4 py-3 rounded-xl bg-[#111827] border border-white/10 text-sm text-[#F8FAFC] placeholder-[#94A3B8]/60 focus:outline-none focus:border-cyan-400 transition-colors"
+                      className="w-full px-4 py-3 rounded-xl bg-[#0A0A0A] border border-[#00FF66]/30 text-sm text-[#F8FAFC] placeholder-[#94A3B8]/60 focus:outline-none focus:border-[#00FF66]/30 transition-colors"
                     />
                   </div>
 
@@ -227,7 +227,7 @@ export default function RegistrationAndWebhookSection({
                       placeholder="+20 10 9420 0285"
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                      className="w-full px-4 py-3 rounded-xl bg-[#111827] border border-white/10 text-sm text-[#F8FAFC] placeholder-[#94A3B8]/60 focus:outline-none focus:border-cyan-400 transition-colors dir-ltr text-right"
+                      className="w-full px-4 py-3 rounded-xl bg-[#0A0A0A] border border-[#00FF66]/30 text-sm text-[#F8FAFC] placeholder-[#94A3B8]/60 focus:outline-none focus:border-[#00FF66]/30 transition-colors dir-ltr text-right"
                     />
                   </div>
                 </div>
@@ -244,7 +244,7 @@ export default function RegistrationAndWebhookSection({
                       placeholder="name@company.com"
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      className="w-full px-4 py-3 rounded-xl bg-[#111827] border border-white/10 text-sm text-[#F8FAFC] placeholder-[#94A3B8]/60 focus:outline-none focus:border-cyan-400 transition-colors dir-ltr text-right"
+                      className="w-full px-4 py-3 rounded-xl bg-[#0A0A0A] border border-[#00FF66]/30 text-sm text-[#F8FAFC] placeholder-[#94A3B8]/60 focus:outline-none focus:border-[#00FF66]/30 transition-colors dir-ltr text-right"
                     />
                   </div>
 
@@ -257,7 +257,7 @@ export default function RegistrationAndWebhookSection({
                       placeholder="مثال: مطعم، عيادة، متجر، علامة تجارية..."
                       value={formData.company}
                       onChange={(e) => setFormData({ ...formData, company: e.target.value })}
-                      className="w-full px-4 py-3 rounded-xl bg-[#111827] border border-white/10 text-sm text-[#F8FAFC] placeholder-[#94A3B8]/60 focus:outline-none focus:border-cyan-400 transition-colors"
+                      className="w-full px-4 py-3 rounded-xl bg-[#0A0A0A] border border-[#00FF66]/30 text-sm text-[#F8FAFC] placeholder-[#94A3B8]/60 focus:outline-none focus:border-[#00FF66]/30 transition-colors"
                     />
                   </div>
                 </div>
@@ -270,14 +270,14 @@ export default function RegistrationAndWebhookSection({
                   <select
                     value={formData.service}
                     onChange={(e) => setFormData({ ...formData, service: e.target.value })}
-                    className="w-full px-4 py-3 rounded-xl bg-[#111827] border border-white/10 text-sm text-[#F8FAFC] font-medium focus:outline-none focus:border-cyan-400 transition-colors"
+                    className="w-full px-4 py-3 rounded-xl bg-[#0A0A0A] border border-[#00FF66]/30 text-sm text-[#F8FAFC] font-medium focus:outline-none focus:border-[#00FF66]/30 transition-colors"
                   >
                     {CYBER_SERVICES.map((s) => (
-                      <option key={s.id} value={s.title} className="bg-[#111827] text-[#F8FAFC]">
+                      <option key={s.id} value={s.title} className="bg-[#0A0A0A] text-[#F8FAFC]">
                         0{s.number}. {s.title}
                       </option>
                     ))}
-                    <optgroup label="باقات العروض الخاصة (Bulk Bundles)" className="bg-[#111827] text-[#F8FAFC]">
+                    <optgroup label="باقات العروض الخاصة (Bulk Bundles)" className="bg-[#0A0A0A] text-[#F8FAFC]">
                       {CYBER_SERVICES.map((s) => (
                         <option key={`bulk-${s.id}`} value={`${s.title} - ${s.bulkOffer.title}`}>
                           ★ {s.bulkOffer.title}
@@ -295,12 +295,12 @@ export default function RegistrationAndWebhookSection({
                   <select
                     value={formData.budget}
                     onChange={(e) => setFormData({ ...formData, budget: e.target.value })}
-                    className="w-full px-4 py-3 rounded-xl bg-[#111827] border border-white/10 text-sm text-[#F8FAFC] focus:outline-none focus:border-cyan-400 transition-colors"
+                    className="w-full px-4 py-3 rounded-xl bg-[#0A0A0A] border border-[#00FF66]/30 text-sm text-[#F8FAFC] focus:outline-none focus:border-[#00FF66]/30 transition-colors"
                   >
-                    <option value="أقل من 5,000 ج.م (~$100)" className="bg-[#111827] text-[#F8FAFC]">أقل من 5,000 ج.م (~$100)</option>
-                    <option value="5,000 - 15,000 ج.م (~$100 - $300)" className="bg-[#111827] text-[#F8FAFC]">5,000 - 15,000 ج.م (~$100 - $300) [موصى بها]</option>
-                    <option value="15,000 - 35,000 ج.م (~$300 - $700)" className="bg-[#111827] text-[#F8FAFC]">15,000 - 35,000 ج.م (~$300 - $700) [شركات متوسطة]</option>
-                    <option value="+35,000 ج.م (~+$700)" className="bg-[#111827] text-[#F8FAFC]">+35,000 ج.م (~+$700) [مؤسسات كبرى]</option>
+                    <option value="أقل من 5,000 ج.م (~$100)" className="bg-[#0A0A0A] text-[#F8FAFC]">أقل من 5,000 ج.م (~$100)</option>
+                    <option value="5,000 - 15,000 ج.م (~$100 - $300)" className="bg-[#0A0A0A] text-[#F8FAFC]">5,000 - 15,000 ج.م (~$100 - $300) [موصى بها]</option>
+                    <option value="15,000 - 35,000 ج.م (~$300 - $700)" className="bg-[#0A0A0A] text-[#F8FAFC]">15,000 - 35,000 ج.م (~$300 - $700) [شركات متوسطة]</option>
+                    <option value="+35,000 ج.م (~+$700)" className="bg-[#0A0A0A] text-[#F8FAFC]">+35,000 ج.م (~+$700) [مؤسسات كبرى]</option>
                   </select>
                 </div>
 
@@ -314,14 +314,14 @@ export default function RegistrationAndWebhookSection({
                     placeholder="اكتب أهداف مشروعك، التحديات التي تواجهها، أو الميزات المحددة التي ترغب بإضافتها..."
                     value={formData.projectDetails}
                     onChange={(e) => setFormData({ ...formData, projectDetails: e.target.value })}
-                    className="w-full px-4 py-3 rounded-xl bg-[#111827] border border-white/10 text-sm text-[#F8FAFC] placeholder-[#94A3B8]/60 focus:outline-none focus:border-cyan-400 transition-colors resize-none"
+                    className="w-full px-4 py-3 rounded-xl bg-[#0A0A0A] border border-[#00FF66]/30 text-sm text-[#F8FAFC] placeholder-[#94A3B8]/60 focus:outline-none focus:border-[#00FF66]/30 transition-colors resize-none"
                   />
                 </div>
 
                 {/* Discount Code Input Box */}
-                <div className="p-4 rounded-2xl bg-[#111827] border border-white/10">
+                <div className="p-4 rounded-2xl bg-[#0A0A0A] border border-[#00FF66]/30">
                   <div className="flex items-center justify-between mb-2">
-                    <label className="text-xs font-bold text-cyan-400 flex items-center gap-1.5">
+                    <label className="text-xs font-bold text-[#00FF66] flex items-center gap-1.5">
                       <Percent className="w-3.5 h-3.5" />
                       <span>كود الخصم الحصري (CYBER70):</span>
                     </label>
@@ -339,7 +339,7 @@ export default function RegistrationAndWebhookSection({
                       value={formData.couponCode}
                       onChange={(e) => setFormData({ ...formData, couponCode: e.target.value })}
                       placeholder="CYBER70"
-                      className="w-full px-4 py-2.5 rounded-xl bg-[#0A0F1D] border border-white/10 font-mono-tech font-extrabold text-sm text-cyan-400 uppercase tracking-widest focus:outline-none focus:border-cyan-400 dir-ltr text-right"
+                      className="w-full px-4 py-2.5 rounded-xl bg-[#000000] border border-[#00FF66]/30 font-mono-tech font-extrabold text-sm text-[#00FF66] uppercase tracking-widest focus:outline-none focus:border-[#00FF66]/30 dir-ltr text-right"
                     />
                     <button
                       type="button"
@@ -348,7 +348,7 @@ export default function RegistrationAndWebhookSection({
                         playCyberSound("success");
                         fireCyberConfetti();
                       }}
-                      className="shrink-0 px-3 py-2.5 rounded-xl bg-blue-600/20 border border-blue-500/30 hover:bg-blue-600/30 text-xs font-bold text-cyan-300 transition-colors"
+                      className="shrink-0 px-3 py-2.5 rounded-xl bg-[#00FF66]/20 border border-[#00FF66]/30 hover:bg-[#00FF66]/30 text-xs font-bold text-[#00FF66] transition-colors"
                     >
                       تطبيق كود 70%
                     </button>
@@ -359,7 +359,7 @@ export default function RegistrationAndWebhookSection({
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full flex items-center justify-center gap-3 py-4 rounded-xl bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-500 hover:to-cyan-400 text-white font-black text-base shadow-lg shadow-blue-500/20 transition-all active:scale-95 disabled:opacity-50 cursor-pointer"
+                  className="w-full flex items-center justify-center gap-3 py-4 rounded-xl bg-gradient-to-r from-[#00FF66] to-[#009944] hover:from-[#00FF66] hover:to-[#00CC55] text-white font-black text-base shadow-lg shadow-[0_0_15px_rgba(0,255,102,0.2)] transition-all active:scale-95 disabled:opacity-50 cursor-pointer"
                 >
                   {isSubmitting ? (
                     <>
@@ -375,7 +375,7 @@ export default function RegistrationAndWebhookSection({
                 </button>
 
                 {/* Payment Notice */}
-                <div className="p-3 rounded-xl bg-[#111827] border border-white/10 text-[11px] text-[#94A3B8] flex items-center gap-2">
+                <div className="p-3 rounded-xl bg-[#0A0A0A] border border-[#00FF66]/30 text-[11px] text-[#94A3B8] flex items-center gap-2">
                   <CreditCard className="w-4 h-4 text-emerald-400 shrink-0" />
                   <span>طرق السداد المعتمدة: المحافظ الإلكترونية (فودافون كاش، أكسيس باي) على: 01554597494 - 01094200285 ومحفظة Binance USDT.</span>
                 </div>
@@ -388,13 +388,13 @@ export default function RegistrationAndWebhookSection({
           <div className="lg:col-span-5 space-y-6">
             
             {/* Terminal Live Inspector Box */}
-            <div className="rounded-3xl bg-[#111827] border border-white/10 p-6 shadow-xl scanline-effect font-mono-tech">
+            <div className="rounded-3xl bg-[#0A0A0A] border border-[#00FF66]/30 p-6 shadow-xl scanline-effect font-mono-tech">
               
               {/* Terminal Title Bar */}
-              <div className="flex items-center justify-between pb-3 mb-4 border-b border-white/10">
+              <div className="flex items-center justify-between pb-3 mb-4 border-b border-[#00FF66]/30">
                 <div className="flex items-center gap-2">
-                  <Terminal className="w-4 h-4 text-cyan-400" />
-                  <span className="text-xs text-cyan-400 font-bold">
+                  <Terminal className="w-4 h-4 text-[#00FF66]" />
+                  <span className="text-xs text-[#00FF66] font-bold">
                     CYBERX WEBHOOK INSPECTOR
                   </span>
                 </div>
@@ -424,7 +424,7 @@ export default function RegistrationAndWebhookSection({
                   {submissionResult.leadId && (
                     <div className="space-y-1 text-xs">
                       <div className="text-[#94A3B8]">معرف العميل (Lead ID):</div>
-                      <div className="text-cyan-400 font-bold text-sm">
+                      <div className="text-[#00FF66] font-bold text-sm">
                         {submissionResult.leadId}
                       </div>
                     </div>
@@ -433,7 +433,7 @@ export default function RegistrationAndWebhookSection({
                   {/* Formatted JSON Payload Preview */}
                   <div className="space-y-1">
                     <div className="text-[10px] text-[#94A3B8]">Webhook JSON Payload:</div>
-                    <pre className="p-3 rounded-xl bg-[#0A0F1D] border border-white/10 text-[11px] text-cyan-300 overflow-x-auto max-h-56 leading-relaxed dir-ltr text-left">
+                    <pre className="p-3 rounded-xl bg-[#000000] border border-[#00FF66]/30 text-[11px] text-[#00FF66] overflow-x-auto max-h-56 leading-relaxed dir-ltr text-left">
                       {JSON.stringify(submissionResult.payload, null, 2)}
                     </pre>
                   </div>
@@ -453,7 +453,7 @@ export default function RegistrationAndWebhookSection({
                 </div>
               ) : (
                 <div className="space-y-4 py-8 text-center text-slate-500">
-                  <div className="w-12 h-12 mx-auto rounded-2xl bg-[#0A0F1D] border border-white/10 flex items-center justify-center text-cyan-400">
+                  <div className="w-12 h-12 mx-auto rounded-2xl bg-[#000000] border border-[#00FF66]/30 flex items-center justify-center text-[#00FF66]">
                     <Terminal className="w-6 h-6 animate-pulse" />
                   </div>
                   <div className="text-xs text-[#94A3B8] max-w-xs mx-auto leading-relaxed">
@@ -468,33 +468,33 @@ export default function RegistrationAndWebhookSection({
             </div>
 
             {/* Direct Contacts Card */}
-            <div className="rounded-3xl bg-[#1E293B]/60 backdrop-blur-md border border-white/10 p-6 space-y-3">
+            <div className="rounded-3xl bg-[#0A0A0A]/60 backdrop-blur-md border border-[#00FF66]/30 p-6 space-y-3">
               <h4 className="text-sm font-bold text-[#F8FAFC] flex items-center gap-2">
-                <Sparkles className="w-4 h-4 text-cyan-400" />
+                <Sparkles className="w-4 h-4 text-[#00FF66]" />
                 <span>قنوات التواصل المباشر مع إدارة CyberX</span>
               </h4>
               <ul className="space-y-2 text-xs text-[#94A3B8] leading-relaxed">
-                <li className="flex items-center justify-between p-2 rounded-lg bg-[#111827] border border-white/10">
+                <li className="flex items-center justify-between p-2 rounded-lg bg-[#0A0A0A] border border-[#00FF66]/30">
                   <span>الواتساب المباشر للطلبات:</span>
-                  <a href={CYBER_CONTACTS.whatsappUrl} target="_blank" rel="noopener noreferrer" className="font-mono-tech text-cyan-400 font-bold dir-ltr">
+                  <a href={CYBER_CONTACTS.whatsappUrl} target="_blank" rel="noopener noreferrer" className="font-mono-tech text-[#00FF66] font-bold dir-ltr">
                     {CYBER_CONTACTS.whatsapp}
                   </a>
                 </li>
-                <li className="flex items-center justify-between p-2 rounded-lg bg-[#111827] border border-white/10">
+                <li className="flex items-center justify-between p-2 rounded-lg bg-[#0A0A0A] border border-[#00FF66]/30">
                   <span>الدعم الفني والأنظمة:</span>
                   <a href={CYBER_CONTACTS.techSupportWa} target="_blank" rel="noopener noreferrer" className="font-mono-tech text-emerald-400 font-bold dir-ltr">
                     {CYBER_CONTACTS.techSupport}
                   </a>
                 </li>
-                <li className="flex items-center justify-between p-2 rounded-lg bg-[#111827] border border-white/10">
+                <li className="flex items-center justify-between p-2 rounded-lg bg-[#0A0A0A] border border-[#00FF66]/30">
                   <span>المحافظ (فودافون كاش / أكسيس باي):</span>
-                  <span className="font-mono-tech text-cyan-300 font-bold dir-ltr">
+                  <span className="font-mono-tech text-[#00FF66] font-bold dir-ltr">
                     01554597494 - 01094200285
                   </span>
                 </li>
-                <li className="flex items-center justify-between p-2 rounded-lg bg-[#111827] border border-white/10">
+                <li className="flex items-center justify-between p-2 rounded-lg bg-[#0A0A0A] border border-[#00FF66]/30">
                   <span>محفظة Binance USDT:</span>
-                  <span className="font-mono-tech text-cyan-300 font-bold text-[10px] dir-ltr">
+                  <span className="font-mono-tech text-[#00FF66] font-bold text-[10px] dir-ltr">
                     0x4c9e11...071a
                   </span>
                 </li>

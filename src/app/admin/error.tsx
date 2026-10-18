@@ -16,8 +16,8 @@ export default function AdminError({
   }, [error]);
 
   return (
-    <div className="min-h-screen bg-[#0A0F1D] flex items-center justify-center p-4 text-[#F8FAFC] font-sans">
-      <div className="max-w-md w-full rounded-3xl bg-[#1E293B]/60 backdrop-blur-md border border-white/10 p-8 text-center space-y-4 shadow-xl">
+    <div className="min-h-screen bg-[#000000] flex items-center justify-center p-4 text-[#F8FAFC] font-sans">
+      <div className="max-w-md w-full rounded-3xl bg-[#0A0A0A]/60 backdrop-blur-md border border-[#00FF66]/30 p-8 text-center space-y-4 shadow-xl">
         <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-red-950/60 border border-red-500/60 text-red-400 mb-2">
           <AlertTriangle className="w-7 h-7" />
         </div>
@@ -33,7 +33,7 @@ export default function AdminError({
         <div className="pt-4 flex items-center justify-center gap-3">
           <button
             onClick={() => reset()}
-            className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-slate-950 font-black text-xs shadow-lg hover:scale-105 active:scale-95 transition-all cursor-pointer"
+            className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-[#00FF66] to-[#009944] text-slate-950 font-black text-xs shadow-lg hover:scale-105 active:scale-95 transition-all cursor-pointer"
           >
             <RefreshCw className="w-3.5 h-3.5" />
             <span>إعادة المحاولة ⚡</span>

@@ -11,9 +11,9 @@ export default function Footer() {
   const { contacts: dynamicContacts } = useCyberConfig();
   const contacts = dynamicContacts || CYBER_CONTACTS;
   return (
-    <footer className="bg-[#0A0F1D] border-t border-white/10 text-[#94A3B8] text-sm relative overflow-hidden">
+    <footer className="bg-[#000000] border-t border-[#00FF66]/30 text-[#94A3B8] text-sm relative overflow-hidden">
       {/* Ambient background glow */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[150px] bg-blue-600/5 blur-[120px] rounded-full pointer-events-none"></div>
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[150px] bg-[#00FF66]/5 blur-[120px] rounded-full pointer-events-none"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 mb-12">
@@ -21,13 +21,13 @@ export default function Footer() {
           {/* Brand Info (2 cols) */}
           <div className="lg:col-span-2 space-y-4">
             <div className="flex items-center gap-3">
-              <div className="relative flex items-center justify-center w-10 h-10 rounded-2xl bg-[#111827] border border-white/10 shadow-sm shadow-blue-500/10">
-                <span className="font-mono-tech font-extrabold text-lg text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">
+              <div className="relative flex items-center justify-center w-10 h-10 rounded-2xl bg-[#0A0A0A] border border-[#00FF66]/30 shadow-sm shadow-[0_0_15px_rgba(0,255,102,0.2)]">
+                <span className="font-mono-tech font-extrabold text-lg text-transparent bg-clip-text bg-gradient-to-r from-[#00FF66] to-emerald-400">
                   CX
                 </span>
               </div>
               <span className="font-black text-2xl tracking-wider text-[#F8FAFC]">
-                CYBER<span className="text-cyan-400">X</span>
+                CYBER<span className="text-[#00FF66]">X</span>
               </span>
             </div>
 
@@ -36,11 +36,11 @@ export default function Footer() {
             </p>
 
             <div className="pt-2 flex flex-wrap items-center gap-2 text-xs text-[#94A3B8]">
-              <span className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#111827] border border-white/10 text-cyan-400">
+              <span className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#0A0A0A] border border-[#00FF66]/30 text-[#00FF66]">
                 <ShieldCheck className="w-3.5 h-3.5" />
                 <span>حماية سيبرانية مشفرة</span>
               </span>
-              <span className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#111827] border border-white/10 text-blue-300">
+              <span className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#0A0A0A] border border-[#00FF66]/30 text-[#00FF66]">
                 <Sparkles className="w-3.5 h-3.5" />
                 <span>كود الخصم CYBER70 (-70%)</span>
               </span>
@@ -56,7 +56,7 @@ export default function Footer() {
                   <a
                     href="#services"
                     onClick={() => playCyberSound("click")}
-                    className="hover:text-cyan-400 transition-colors"
+                    className="hover:text-[#00FF66] transition-colors"
                   >
                     {s.title}
                   </a>
@@ -66,7 +66,7 @@ export default function Footer() {
                 <a
                   href="#pricing-comparison"
                   onClick={() => playCyberSound("click")}
-                  className="hover:text-cyan-400 transition-colors text-cyan-300 font-bold"
+                  className="hover:text-[#00FF66] transition-colors text-[#00FF66] font-bold"
                 >
                   جدول مقارنة الأسعار
                 </a>
@@ -75,7 +75,7 @@ export default function Footer() {
                 <a
                   href="#testimonials"
                   onClick={() => playCyberSound("click")}
-                  className="hover:text-cyan-300 transition-colors text-cyan-300 font-bold"
+                  className="hover:text-[#00FF66] transition-colors text-[#00FF66] font-bold"
                 >
                   آراء وتقييمات العملاء
                 </a>
@@ -88,22 +88,22 @@ export default function Footer() {
             <h4 className="font-bold text-[#F8FAFC] text-sm">طرق الدفع والأنظمة</h4>
             <ul className="space-y-2 text-xs">
               <li className="flex items-center gap-1.5 text-[#94A3B8]">
-                <Smartphone className="w-3.5 h-3.5 text-cyan-400" />
+                <Smartphone className="w-3.5 h-3.5 text-[#00FF66]" />
                 <span>المحافظ: 01554597494</span>
               </li>
               <li className="flex items-center gap-1.5 text-[#94A3B8]">
-                <Smartphone className="w-3.5 h-3.5 text-cyan-400" />
+                <Smartphone className="w-3.5 h-3.5 text-[#00FF66]" />
                 <span>المحافظ: 01094200285</span>
               </li>
               <li className="flex items-center gap-1.5 text-[#94A3B8]">
-                <Coins className="w-3.5 h-3.5 text-cyan-400" />
+                <Coins className="w-3.5 h-3.5 text-[#00FF66]" />
                 <span>Binance USDT: BEP20/TRC20</span>
               </li>
               <li>
                 <a
                   href="#payment-methods"
                   onClick={() => playCyberSound("click")}
-                  className="hover:text-cyan-400 transition-colors text-cyan-300 font-bold"
+                  className="hover:text-[#00FF66] transition-colors text-[#00FF66] font-bold"
                 >
                   تفاصيل بوابات السداد
                 </a>
@@ -140,7 +140,7 @@ export default function Footer() {
                   href={contacts.techSupportWa}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 text-cyan-300 hover:text-cyan-200 transition-colors"
+                  className="flex items-center gap-2 text-[#00FF66] hover:text-[#00FF66] transition-colors"
                 >
                   <PhoneCall className="w-4 h-4 shrink-0" />
                   <span className="font-mono-tech dir-ltr">الدعم الفني: {contacts.techSupport}</span>
@@ -151,16 +151,16 @@ export default function Footer() {
                 <span>contact@cyberx.agency</span>
               </li>
               <li className="flex items-center gap-2">
-                <Terminal className="w-4 h-4 text-cyan-400 shrink-0" />
+                <Terminal className="w-4 h-4 text-[#00FF66] shrink-0" />
                 <span>خوادم n8n Webhook متصلة</span>
               </li>
               <li className="pt-2">
                 <Link
                   href="/admin"
                   onClick={() => playCyberSound("click")}
-                  className="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-[#111827] border border-white/10 hover:border-cyan-400/40 text-cyan-300 hover:text-white font-bold transition-all text-xs shadow-sm group"
+                  className="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-[#0A0A0A] border border-[#00FF66]/30 hover:border-[#00FF66]/40 text-[#00FF66] hover:text-white font-bold transition-all text-xs shadow-sm group"
                 >
-                  <Lock className="w-3.5 h-3.5 text-cyan-400 group-hover:rotate-12 transition-transform" />
+                  <Lock className="w-3.5 h-3.5 text-[#00FF66] group-hover:rotate-12 transition-transform" />
                   <span>إدارة المنصة (Admin Login)</span>
                 </Link>
               </li>
@@ -170,15 +170,15 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar: STRICT COPYRIGHT ONLY TO Eng. Ahmed Omar & Admin Button */}
-        <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-[#94A3B8]">
+        <div className="pt-8 border-t border-[#00FF66]/30 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-[#94A3B8]">
           <div className="font-semibold text-[#F8FAFC]">
             {contacts.copyrightNotice}
           </div>
 
           <div className="flex flex-wrap items-center gap-4 text-[11px] font-mono-tech text-[#94A3B8]">
-            <span className="text-cyan-400">PAYMENTS: VODAFONE CASH &bull; ACCESS PAY &bull; BINANCE USDT</span>
+            <span className="text-[#00FF66]">PAYMENTS: VODAFONE CASH &bull; ACCESS PAY &bull; BINANCE USDT</span>
             <span>&bull;</span>
-            <span className="text-cyan-300">PROMO: CYBER70 (-70%)</span>
+            <span className="text-[#00FF66]">PROMO: CYBER70 (-70%)</span>
           </div>
 
           {/* Prominent Dedicated Admin Login Button */}
@@ -186,10 +186,10 @@ export default function Footer() {
             <Link
               href="/admin"
               onClick={() => playCyberSound("click")}
-              className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-[#111827] border border-white/10 hover:border-cyan-400/40 text-cyan-300 hover:text-white text-xs font-bold transition-all shadow-sm group"
+              className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-[#0A0A0A] border border-[#00FF66]/30 hover:border-[#00FF66]/40 text-[#00FF66] hover:text-white text-xs font-bold transition-all shadow-sm group"
               title="دخول المشرف وإدارة الطلبات والعملاء"
             >
-              <KeyRound className="w-3.5 h-3.5 text-cyan-400 group-hover:scale-110 transition-transform" />
+              <KeyRound className="w-3.5 h-3.5 text-[#00FF66] group-hover:scale-110 transition-transform" />
               <span>إدارة المنصة | Admin Login</span>
             </Link>
           </div>

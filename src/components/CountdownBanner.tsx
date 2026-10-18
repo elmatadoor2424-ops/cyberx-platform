@@ -63,46 +63,46 @@ export default function CountdownBanner({ onApplyCoupon }: CountdownBannerProps)
   const pad = (n: number) => n.toString().padStart(2, "0");
 
   return (
-    <div className="relative z-50 bg-[#0A0F1D]/95 backdrop-blur-md border-b border-white/10 text-[#F8FAFC] text-sm py-2 px-3 scanline-effect shadow-sm">
+    <div className="relative z-50 bg-[#000000]/95 backdrop-blur-md border-b border-[#00FF66]/30 text-[#F8FAFC] text-sm py-2 px-3 scanline-effect shadow-sm">
       <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-3">
         {/* Urgent Announcement */}
         <div className="flex items-center gap-2 font-medium">
           <span className="flex h-2.5 w-2.5 relative">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-cyan-500"></span>
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#00FF66] opacity-75"></span>
+            <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#00FF66]"></span>
           </span>
-          <span className="bg-gradient-to-r from-blue-400 via-cyan-300 to-teal-300 bg-clip-text text-transparent font-extrabold">
+          <span className="bg-gradient-to-r from-[#00FF66] via-emerald-300 to-[#00CC55] bg-clip-text text-transparent font-extrabold">
             عرض أول 24 ساعة من CyberX:
           </span>
           <span className="text-[#94A3B8] hidden md:inline">
-            احصل على خصم فوري بقيمة <strong className="text-cyan-400 font-extrabold">70%</strong> بالجنيه المصري (EGP) والدولار (USD)!
+            احصل على خصم فوري بقيمة <strong className="text-[#00FF66] font-extrabold">70%</strong> بالجنيه المصري (EGP) والدولار (USD)!
           </span>
         </div>
 
         {/* 24 Hours Countdown Engine */}
-        <div className="flex items-center gap-2 bg-[#111827] px-3 py-1 rounded-full border border-white/10">
-          <Clock className="w-3.5 h-3.5 text-cyan-400 animate-spin" style={{ animationDuration: "12s" }} />
+        <div className="flex items-center gap-2 bg-[#0A0A0A] px-3 py-1 rounded-full border border-[#00FF66]/30">
+          <Clock className="w-3.5 h-3.5 text-[#00FF66] animate-spin" style={{ animationDuration: "12s" }} />
           <span className="text-xs text-[#94A3B8]">ينتهي العرض خلال:</span>
-          <div className="font-mono-tech font-bold text-xs text-cyan-300 flex items-center gap-1 tracking-wider dir-ltr" dir="ltr">
-            <span className="bg-[#1E293B] px-1.5 py-0.5 rounded text-[#F8FAFC] border border-white/10">{pad(timeLeft.hours)}</span>
+          <div className="font-mono-tech font-bold text-xs text-[#00FF66] flex items-center gap-1 tracking-wider dir-ltr" dir="ltr">
+            <span className="bg-[#0A0A0A] px-1.5 py-0.5 rounded text-[#F8FAFC] border border-[#00FF66]/30">{pad(timeLeft.hours)}</span>
             <span>:</span>
-            <span className="bg-[#1E293B] px-1.5 py-0.5 rounded text-[#F8FAFC] border border-white/10">{pad(timeLeft.minutes)}</span>
+            <span className="bg-[#0A0A0A] px-1.5 py-0.5 rounded text-[#F8FAFC] border border-[#00FF66]/30">{pad(timeLeft.minutes)}</span>
             <span>:</span>
-            <span className="bg-[#1E293B] px-1.5 py-0.5 rounded text-cyan-400 border border-cyan-500/30">{pad(timeLeft.seconds)}</span>
+            <span className="bg-[#0A0A0A] px-1.5 py-0.5 rounded text-[#00FF66] border border-[#00FF66]/30">{pad(timeLeft.seconds)}</span>
           </div>
         </div>
 
         {/* Coupon Code Pill & Copy Button & WhatsApp Direct */}
         <div className="flex items-center gap-2">
-          <div className="flex items-center gap-1.5 bg-[#111827] border border-dashed border-cyan-500/40 rounded-lg px-2.5 py-1">
-            <Sparkles className="w-3.5 h-3.5 text-cyan-400 animate-pulse" />
+          <div className="flex items-center gap-1.5 bg-[#0A0A0A] border border-dashed border-[#00FF66]/40 rounded-lg px-2.5 py-1">
+            <Sparkles className="w-3.5 h-3.5 text-[#00FF66] animate-pulse" />
             <span className="text-xs text-[#94A3B8]">الكود:</span>
-            <code className="font-mono-tech font-extrabold text-cyan-400 tracking-wider">CYBER70</code>
+            <code className="font-mono-tech font-extrabold text-[#00FF66] tracking-wider">CYBER70</code>
           </div>
 
           <button
             onClick={handleCopyCode}
-            className="flex items-center gap-1.5 text-xs font-bold px-3 py-1 rounded-lg bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-500 hover:to-cyan-400 text-white shadow-sm shadow-blue-500/20 transition-all active:scale-95 cursor-pointer"
+            className="flex items-center gap-1.5 text-xs font-bold px-3 py-1 rounded-lg bg-gradient-to-r from-[#00FF66] to-[#009944] hover:from-[#00FF66] hover:to-[#00CC55] text-white shadow-sm shadow-[0_0_15px_rgba(0,255,102,0.2)] transition-all active:scale-95 cursor-pointer"
             title="نسخ كود الخصم وتطبيقه"
           >
             {copied ? (

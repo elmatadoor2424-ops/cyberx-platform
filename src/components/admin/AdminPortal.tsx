@@ -441,13 +441,13 @@ export default function AdminPortal() {
   // Loading Screen
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-[#0A0F1D] flex items-center justify-center text-slate-100 font-sans">
+      <div className="min-h-screen bg-[#000000] flex items-center justify-center text-slate-100 font-sans">
         <div className="flex flex-col items-center gap-4">
-          <div className="relative w-16 h-16 rounded-2xl bg-[#111827] border border-white/10 flex items-center justify-center shadow-lg">
-            <ShieldCheck className="w-8 h-8 text-cyan-400 animate-pulse" />
+          <div className="relative w-16 h-16 rounded-2xl bg-[#0A0A0A] border border-[#00FF66]/30 flex items-center justify-center shadow-lg">
+            <ShieldCheck className="w-8 h-8 text-[#00FF66] animate-pulse" />
             <span className="absolute -top-1 -right-1 w-3 h-3 rounded-full bg-emerald-400 animate-ping"></span>
           </div>
-          <span className="text-xs font-mono-tech text-cyan-300 tracking-widest animate-pulse">
+          <span className="text-xs font-mono-tech text-[#00FF66] tracking-widest animate-pulse">
             CYBERX // CHECKING SECURE SESSION...
           </span>
         </div>
@@ -458,10 +458,10 @@ export default function AdminPortal() {
   // 1. LOGIN GATE VIEW (When NOT Authenticated)
   if (!isAuthenticated) {
     return (
-      <div className="min-h-screen bg-[#0A0F1D] text-slate-100 flex items-center justify-center p-4 relative overflow-hidden font-sans selection:bg-blue-600/30 selection:text-cyan-300">
+      <div className="min-h-screen bg-[#000000] text-slate-100 flex items-center justify-center p-4 relative overflow-hidden font-sans selection:bg-[#00FF66]/30 selection:text-[#00FF66]">
         {/* Background Gradients - softened */}
-        <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-blue-600/10 blur-[170px] rounded-full pointer-events-none"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-cyan-500/10 blur-[170px] rounded-full pointer-events-none"></div>
+        <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-[#00FF66]/10 blur-[170px] rounded-full pointer-events-none"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-[#00FF66]/10 blur-[170px] rounded-full pointer-events-none"></div>
 
         {/* Hidden File Input for Image Uploads */}
         <input
@@ -472,14 +472,14 @@ export default function AdminPortal() {
           className="hidden"
         />
 
-        <div className="relative w-full max-w-md bg-[#1E293B]/60 backdrop-blur-md border border-white/10 rounded-3xl p-8 shadow-xl scanline-effect">
+        <div className="relative w-full max-w-md bg-[#0A0A0A]/60 backdrop-blur-md border border-[#00FF66]/30 rounded-3xl p-8 shadow-xl scanline-effect">
           {/* Header */}
           <div className="text-center space-y-3 mb-8">
-            <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-[#111827] border border-white/10 shadow-sm mb-2">
-              <Lock className="w-8 h-8 text-cyan-400" />
+            <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-[#0A0A0A] border border-[#00FF66]/30 shadow-sm mb-2">
+              <Lock className="w-8 h-8 text-[#00FF66]" />
             </div>
 
-            <div className="flex items-center justify-center gap-1.5 text-[11px] font-mono-tech font-bold text-cyan-400">
+            <div className="flex items-center justify-center gap-1.5 text-[11px] font-mono-tech font-bold text-[#00FF66]">
               <Radio className="w-3.5 h-3.5 text-emerald-400 animate-pulse" />
               <span>CYBERX COMMAND CENTER // RESTRICTED ACCESS</span>
             </div>
@@ -506,7 +506,7 @@ export default function AdminPortal() {
             <div>
               <label className="block text-xs font-bold text-[#F8FAFC] mb-1.5 flex items-center justify-between">
                 <span>اسم المستخدم (Admin Username)</span>
-                <span className="font-mono-tech text-[10px] text-cyan-400">TLS 1.3</span>
+                <span className="font-mono-tech text-[10px] text-[#00FF66]">TLS 1.3</span>
               </label>
               <div className="relative">
                 <input
@@ -515,7 +515,7 @@ export default function AdminPortal() {
                   placeholder="ahmed_omar"
                   value={usernameInput}
                   onChange={(e) => setUsernameInput(e.target.value)}
-                  className="w-full px-4 py-3 rounded-xl bg-[#111827] border border-white/10 text-sm text-[#F8FAFC] placeholder-[#94A3B8]/60 focus:outline-none focus:border-cyan-400 transition-colors font-mono-tech dir-ltr text-right"
+                  className="w-full px-4 py-3 rounded-xl bg-[#0A0A0A] border border-[#00FF66]/30 text-sm text-[#F8FAFC] placeholder-[#94A3B8]/60 focus:outline-none focus:border-[#00FF66]/30 transition-colors font-mono-tech dir-ltr text-right"
                   dir="ltr"
                 />
                 <User className="w-4 h-4 text-slate-500 absolute left-3 top-3.5 pointer-events-none" />
@@ -525,7 +525,7 @@ export default function AdminPortal() {
             <div>
               <label className="block text-xs font-bold text-[#F8FAFC] mb-1.5 flex items-center justify-between">
                 <span>كلمة المرور المشفرة (Password)</span>
-                <span className="font-mono-tech text-[10px] text-cyan-400">SHA-256 HMAC</span>
+                <span className="font-mono-tech text-[10px] text-[#00FF66]">SHA-256 HMAC</span>
               </label>
               <div className="relative">
                 <input
@@ -534,7 +534,7 @@ export default function AdminPortal() {
                   placeholder="••••••••••••"
                   value={passwordInput}
                   onChange={(e) => setPasswordInput(e.target.value)}
-                  className="w-full px-4 py-3 rounded-xl bg-[#111827] border border-white/10 text-sm text-[#F8FAFC] placeholder-[#94A3B8]/60 focus:outline-none focus:border-cyan-400 transition-colors font-mono-tech dir-ltr text-right"
+                  className="w-full px-4 py-3 rounded-xl bg-[#0A0A0A] border border-[#00FF66]/30 text-sm text-[#F8FAFC] placeholder-[#94A3B8]/60 focus:outline-none focus:border-[#00FF66]/30 transition-colors font-mono-tech dir-ltr text-right"
                   dir="ltr"
                 />
                 <button
@@ -550,7 +550,7 @@ export default function AdminPortal() {
             <button
               type="submit"
               disabled={isSubmittingLogin}
-              className="w-full mt-2 py-3.5 rounded-xl bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-500 hover:to-cyan-400 text-white font-black text-sm shadow-md shadow-blue-500/20 transition-all active:scale-95 disabled:opacity-50 cursor-pointer flex items-center justify-center gap-2"
+              className="w-full mt-2 py-3.5 rounded-xl bg-gradient-to-r from-[#00FF66] to-[#009944] hover:from-[#00FF66] hover:to-[#00CC55] text-white font-black text-sm shadow-md shadow-[0_0_15px_rgba(0,255,102,0.2)] transition-all active:scale-95 disabled:opacity-50 cursor-pointer flex items-center justify-center gap-2"
             >
               {isSubmittingLogin ? (
                 <>
@@ -567,7 +567,7 @@ export default function AdminPortal() {
           </form>
 
           {/* Quick Security Badge */}
-          <div className="mt-6 pt-4 border-t border-white/10 flex items-center justify-between text-[11px] text-[#94A3B8] font-mono-tech">
+          <div className="mt-6 pt-4 border-t border-[#00FF66]/30 flex items-center justify-between text-[11px] text-[#94A3B8] font-mono-tech">
             <span className="flex items-center gap-1 text-emerald-400">
               <ShieldCheck className="w-3.5 h-3.5" />
               <span>ENCRYPTED PORTAL</span>
@@ -581,7 +581,7 @@ export default function AdminPortal() {
 
   // 2. AUTHENTICATED EXECUTIVE DASHBOARD
   return (
-    <div className="min-h-screen bg-[#0A0F1D] text-slate-100 flex flex-col font-sans selection:bg-blue-600/30 selection:text-cyan-300">
+    <div className="min-h-screen bg-[#000000] text-slate-100 flex flex-col font-sans selection:bg-[#00FF66]/30 selection:text-[#00FF66]">
       {/* Hidden File Input for Image Uploads */}
       <input
         type="file"
@@ -592,13 +592,13 @@ export default function AdminPortal() {
       />
 
       {/* Top Cyber Navigation Bar for Admin */}
-      <header className="sticky top-0 z-40 bg-[#0A0F1D]/90 backdrop-blur-xl border-b border-white/10">
+      <header className="sticky top-0 z-40 bg-[#000000]/90 backdrop-blur-xl border-b border-[#00FF66]/30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
           
           {/* Logo & Executive Badge */}
           <div className="flex items-center gap-4">
-            <div className="relative flex items-center justify-center w-11 h-11 rounded-2xl bg-[#111827] border border-white/10 shadow-sm">
-              <span className="font-mono-tech font-extrabold text-xl text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-pink-500">
+            <div className="relative flex items-center justify-center w-11 h-11 rounded-2xl bg-[#0A0A0A] border border-[#00FF66]/30 shadow-sm">
+              <span className="font-mono-tech font-extrabold text-xl text-transparent bg-clip-text bg-gradient-to-r from-[#00FF66] to-pink-500">
                 CX
               </span>
               <span className="absolute -top-1 -right-1 w-2.5 h-2.5 rounded-full bg-emerald-400"></span>
@@ -607,9 +607,9 @@ export default function AdminPortal() {
             <div>
               <div className="flex items-center gap-2">
                 <span className="font-black text-xl text-white">
-                  CYBER<span className="text-cyan-400">X</span> ADMIN
+                  CYBER<span className="text-[#00FF66]">X</span> ADMIN
                 </span>
-                <span className="px-2.5 py-0.5 rounded-full bg-cyan-950 border border-cyan-500/40 text-[10px] font-mono-tech text-cyan-300 font-bold">
+                <span className="px-2.5 py-0.5 rounded-full bg-[#0A0A0A] border border-[#00FF66]/40 text-[10px] font-mono-tech text-[#00FF66] font-bold">
                   COMMAND PORTAL
                 </span>
               </div>
@@ -629,14 +629,14 @@ export default function AdminPortal() {
               className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-300 hover:text-white border border-slate-700 text-xs font-bold transition-all"
             >
               <span>معاينة الموقع المباشر</span>
-              <ExternalLink className="w-3.5 h-3.5 text-cyan-400" />
+              <ExternalLink className="w-3.5 h-3.5 text-[#00FF66]" />
             </Link>
 
             {/* Save Config CTA button if changes */}
             <button
               onClick={handleSaveConfig}
               disabled={isSavingConfig}
-              className="flex items-center gap-2 px-4 py-2 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 font-black text-xs shadow-[0_0_15px_rgba(0,240,255,0.3)] transition-all cursor-pointer disabled:opacity-50"
+              className="flex items-center gap-2 px-4 py-2 rounded-xl bg-gradient-to-r from-[#00FF66] to-[#009944] hover:from-[#00FF66] hover:to-[#008833] text-slate-950 font-black text-xs shadow-[0_0_15px_rgba(0,240,255,0.3)] transition-all cursor-pointer disabled:opacity-50"
             >
               {isSavingConfig ? (
                 <RefreshCw className="w-3.5 h-3.5 animate-spin" />
@@ -671,7 +671,7 @@ export default function AdminPortal() {
       <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
         
         {/* Navigation Tabs Bar */}
-        <div className="flex flex-wrap items-center gap-2 p-1.5 rounded-2xl bg-[#111827] border border-cyan-500/30">
+        <div className="flex flex-wrap items-center gap-2 p-1.5 rounded-2xl bg-[#0A0A0A] border border-[#00FF66]/30">
           {[
             { id: "overview", label: "نظرة عامة وإحصائيات", icon: TrendingUp },
             { id: "leads", label: `العملاء والطلبات الواردة (${leads.length})`, icon: Users },
@@ -690,7 +690,7 @@ export default function AdminPortal() {
                 }}
                 className={`flex items-center gap-2 px-5 py-3 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer ${
                   isActive
-                    ? "bg-gradient-to-r from-cyan-500 to-blue-600 text-slate-950 shadow-[0_0_15px_rgba(0,240,255,0.3)] font-black"
+                    ? "bg-gradient-to-r from-[#00FF66] to-[#009944] text-slate-950 shadow-[0_0_15px_rgba(0,240,255,0.3)] font-black"
                     : "text-slate-400 hover:text-white hover:bg-slate-900"
                 }`}
               >
@@ -708,12 +708,12 @@ export default function AdminPortal() {
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
               
               {/* Card 1: Leads */}
-              <div className="rounded-3xl bg-[#111827] border border-cyan-500/30 p-6 flex flex-col justify-between shadow-[0_0_20px_rgba(0,240,255,0.1)]">
+              <div className="rounded-3xl bg-[#0A0A0A] border border-[#00FF66]/30 p-6 flex flex-col justify-between shadow-[0_0_20px_rgba(0,240,255,0.1)]">
                 <div className="flex items-center justify-between mb-4">
-                  <div className="p-3 rounded-2xl bg-cyan-500/10 text-cyan-400 border border-cyan-500/30">
+                  <div className="p-3 rounded-2xl bg-[#00FF66]/10 text-[#00FF66] border border-[#00FF66]/30">
                     <Users className="w-6 h-6" />
                   </div>
-                  <span className="text-[10px] font-mono-tech px-2.5 py-1 rounded-full bg-slate-900 text-cyan-300 font-bold border border-cyan-500/30">
+                  <span className="text-[10px] font-mono-tech px-2.5 py-1 rounded-full bg-slate-900 text-[#00FF66] font-bold border border-[#00FF66]/30">
                     REALTIME
                   </span>
                 </div>
@@ -730,7 +730,7 @@ export default function AdminPortal() {
               </div>
 
               {/* Card 2: Services Count */}
-              <div className="rounded-3xl bg-[#111827] border border-pink-500/30 p-6 flex flex-col justify-between shadow-[0_0_20px_rgba(255,0,127,0.1)]">
+              <div className="rounded-3xl bg-[#0A0A0A] border border-pink-500/30 p-6 flex flex-col justify-between shadow-[0_0_20px_rgba(255,0,127,0.1)]">
                 <div className="flex items-center justify-between mb-4">
                   <div className="p-3 rounded-2xl bg-pink-500/10 text-pink-400 border border-pink-500/30">
                     <Layers className="w-6 h-6" />
@@ -752,7 +752,7 @@ export default function AdminPortal() {
               </div>
 
               {/* Card 3: Binance & Payment Status */}
-              <div className="rounded-3xl bg-[#111827] border border-purple-500/30 p-6 flex flex-col justify-between shadow-[0_0_20px_rgba(168,85,247,0.1)]">
+              <div className="rounded-3xl bg-[#0A0A0A] border border-purple-500/30 p-6 flex flex-col justify-between shadow-[0_0_20px_rgba(168,85,247,0.1)]">
                 <div className="flex items-center justify-between mb-4">
                   <div className="p-3 rounded-2xl bg-purple-500/10 text-purple-400 border border-purple-500/30">
                     <Coins className="w-6 h-6" />
@@ -770,17 +770,17 @@ export default function AdminPortal() {
                 </div>
                 <div className="mt-4 pt-4 border-t border-slate-800 text-[11px] text-slate-400 flex items-center justify-between">
                   <span>محفظة Binance:</span>
-                  <span className="text-cyan-400 font-mono-tech text-[10px]">0x4c9e11...071a</span>
+                  <span className="text-[#00FF66] font-mono-tech text-[10px]">0x4c9e11...071a</span>
                 </div>
               </div>
 
               {/* Card 4: Webhook & AI Bot Status */}
-              <div className="rounded-3xl bg-[#111827] border border-emerald-500/30 p-6 flex flex-col justify-between shadow-[0_0_20px_rgba(16,185,129,0.1)]">
+              <div className="rounded-3xl bg-[#0A0A0A] border border-emerald-500/30 p-6 flex flex-col justify-between shadow-[0_0_20px_rgba(16,185,129,0.1)]">
                 <div className="flex items-center justify-between mb-4">
                   <div className="p-3 rounded-2xl bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">
                     <Bot className="w-6 h-6" />
                   </div>
-                  <span className="text-[10px] font-mono-tech px-2.5 py-1 rounded-full bg-slate-900 text-cyan-300 font-bold border border-cyan-500/30">
+                  <span className="text-[10px] font-mono-tech px-2.5 py-1 rounded-full bg-slate-900 text-[#00FF66] font-bold border border-[#00FF66]/30">
                     n8n CONNECTED
                   </span>
                 </div>
@@ -792,14 +792,14 @@ export default function AdminPortal() {
                 </div>
                 <div className="mt-4 pt-4 border-t border-slate-800 text-[11px] text-slate-400 flex items-center justify-between">
                   <span>زمن استجابة الروبوت:</span>
-                  <strong className="text-cyan-300 font-mono-tech">0.2s</strong>
+                  <strong className="text-[#00FF66] font-mono-tech">0.2s</strong>
                 </div>
               </div>
 
             </div>
 
             {/* Quick Actions Strip */}
-            <div className="p-6 rounded-3xl bg-[#111827] border border-slate-800 flex flex-wrap items-center justify-between gap-4">
+            <div className="p-6 rounded-3xl bg-[#0A0A0A] border border-slate-800 flex flex-wrap items-center justify-between gap-4">
               <div>
                 <h3 className="font-bold text-white text-base">
                   مرحباً بك مهندس أحمد عمر في مركز التحكم
@@ -812,7 +812,7 @@ export default function AdminPortal() {
               <div className="flex flex-wrap items-center gap-3">
                 <button
                   onClick={() => setShowAddLeadModal(true)}
-                  className="px-4 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-cyan-300 border border-cyan-500/40 text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer"
+                  className="px-4 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-[#00FF66] border border-[#00FF66]/40 text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer"
                 >
                   <Plus className="w-4 h-4" />
                   <span>إضافة عميل يدوياً</span>
@@ -840,12 +840,12 @@ export default function AdminPortal() {
             <div className="space-y-4">
               <div className="flex items-center justify-between">
                 <h3 className="text-lg font-black text-white flex items-center gap-2">
-                  <Users className="w-5 h-5 text-cyan-400" />
+                  <Users className="w-5 h-5 text-[#00FF66]" />
                   <span>أحدث طلبات العملاء المسجلين</span>
                 </h3>
                 <button
                   onClick={() => setActiveTab("leads")}
-                  className="text-xs text-cyan-400 hover:text-cyan-300 font-bold flex items-center gap-1 cursor-pointer"
+                  className="text-xs text-[#00FF66] hover:text-[#00FF66] font-bold flex items-center gap-1 cursor-pointer"
                 >
                   <span>عرض الكل ({leads.length})</span>
                   <ArrowRight className="w-3.5 h-3.5 rotate-180" />
@@ -856,18 +856,18 @@ export default function AdminPortal() {
                 {leads.slice(0, 3).map((lead) => (
                   <div
                     key={lead.id}
-                    className="p-5 rounded-2xl bg-[#111827] border border-slate-800 flex flex-col justify-between hover:border-cyan-500/40 transition-colors"
+                    className="p-5 rounded-2xl bg-[#0A0A0A] border border-slate-800 flex flex-col justify-between hover:border-[#00FF66]/40 transition-colors"
                   >
                     <div>
                       <div className="flex items-center justify-between text-xs mb-2">
-                        <span className="font-mono-tech text-cyan-400 font-bold">{lead.id}</span>
+                        <span className="font-mono-tech text-[#00FF66] font-bold">{lead.id}</span>
                         <span
                           className={`px-2 py-0.5 rounded-md text-[10px] font-bold ${
                             lead.status === "closed"
                               ? "bg-emerald-950 text-emerald-300 border border-emerald-500/40"
                               : lead.status === "contacting"
                               ? "bg-yellow-950 text-yellow-300 border border-yellow-500/40"
-                              : "bg-cyan-950 text-cyan-300 border border-cyan-500/40"
+                              : "bg-[#0A0A0A] text-[#00FF66] border border-[#00FF66]/40"
                           }`}
                         >
                           {lead.status === "closed"
@@ -922,8 +922,8 @@ export default function AdminPortal() {
                   id: "new",
                   label: "طلبات جديدة",
                   count: leads.filter((l) => l.status === "new").length,
-                  color: "border-cyan-500/40 bg-cyan-950/30 text-cyan-300",
-                  badge: "bg-cyan-900 text-cyan-300 animate-pulse",
+                  color: "border-[#00FF66]/40 bg-[#00FF66]/10 text-[#00FF66]",
+                  badge: "bg-[#0A0A0A] text-[#00FF66] animate-pulse",
                 },
                 {
                   id: "contacting",
@@ -947,7 +947,7 @@ export default function AdminPortal() {
                     setLeadStatusFilter(pill.id);
                   }}
                   className={`p-3.5 rounded-2xl border text-right transition-all cursor-pointer ${pill.color} ${
-                    leadStatusFilter === pill.id ? "ring-2 ring-cyan-400 shadow-lg" : "hover:border-cyan-400/60"
+                    leadStatusFilter === pill.id ? "ring-2 ring-cyan-400 shadow-lg" : "hover:border-[#00FF66]/60"
                   }`}
                 >
                   <div className="text-[11px] font-bold text-slate-400 flex items-center justify-between">
@@ -964,7 +964,7 @@ export default function AdminPortal() {
             </div>
 
             {/* Controls Bar */}
-            <div className="p-4 rounded-2xl bg-[#111827] border border-cyan-500/30 flex flex-wrap items-center justify-between gap-4">
+            <div className="p-4 rounded-2xl bg-[#0A0A0A] border border-[#00FF66]/30 flex flex-wrap items-center justify-between gap-4">
               {/* Search input */}
               <div className="relative flex-1 min-w-[260px]">
                 <Search className="w-4 h-4 text-slate-500 absolute right-3 top-3" />
@@ -973,7 +973,7 @@ export default function AdminPortal() {
                   placeholder="ابحث بالاسم، رقم الواتساب، البريد، الشركة، أو الخدمة..."
                   value={leadSearch}
                   onChange={(e) => setLeadSearch(e.target.value)}
-                  className="w-full pr-10 pl-4 py-2.5 rounded-xl bg-[#0A0F1D] border border-slate-700 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400"
+                  className="w-full pr-10 pl-4 py-2.5 rounded-xl bg-[#000000] border border-slate-700 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-[#00FF66]/30"
                 />
               </div>
 
@@ -995,8 +995,8 @@ export default function AdminPortal() {
                     }}
                     className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer ${
                       leadStatusFilter === s.id
-                        ? "bg-gradient-to-r from-cyan-500 to-blue-600 text-slate-950 font-black shadow-[0_0_10px_rgba(0,240,255,0.3)]"
-                        : "bg-[#0A0F1D] text-slate-400 hover:text-white border border-slate-800"
+                        ? "bg-gradient-to-r from-[#00FF66] to-[#009944] text-slate-950 font-black shadow-[0_0_10px_rgba(0,240,255,0.3)]"
+                        : "bg-[#000000] text-slate-400 hover:text-white border border-slate-800"
                     }`}
                   >
                     {s.label}
@@ -1008,7 +1008,7 @@ export default function AdminPortal() {
               <div className="flex items-center gap-2">
                 <button
                   onClick={() => setShowAddLeadModal(true)}
-                  className="px-4 py-2 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-slate-950 font-black text-xs flex items-center gap-1.5 shadow-[0_0_12px_rgba(0,240,255,0.25)] hover:scale-105 active:scale-95 transition-all cursor-pointer"
+                  className="px-4 py-2 rounded-xl bg-gradient-to-r from-[#00FF66] to-[#009944] text-slate-950 font-black text-xs flex items-center gap-1.5 shadow-[0_0_12px_rgba(0,240,255,0.25)] hover:scale-105 active:scale-95 transition-all cursor-pointer"
                 >
                   <Plus className="w-4 h-4" />
                   <span>إضافة عميل يدوياً</span>
@@ -1026,11 +1026,11 @@ export default function AdminPortal() {
             </div>
 
             {/* Interactive Leads Table */}
-            <div className="rounded-3xl bg-[#111827] border border-cyan-500/30 overflow-hidden shadow-2xl">
+            <div className="rounded-3xl bg-[#0A0A0A] border border-[#00FF66]/30 overflow-hidden shadow-2xl">
               <div className="overflow-x-auto">
                 <table className="w-full text-right border-collapse text-xs">
                   <thead>
-                    <tr className="bg-[#0A0F1D] border-b border-slate-800 text-slate-300 font-mono-tech text-[11px]">
+                    <tr className="bg-[#000000] border-b border-slate-800 text-slate-300 font-mono-tech text-[11px]">
                       <th className="py-4 px-4 text-right">اسم العميل والنشاط</th>
                       <th className="py-4 px-4 text-right">رقم الواتساب والتواصل</th>
                       <th className="py-4 px-4 text-right">البريد الإلكتروني</th>
@@ -1047,7 +1047,7 @@ export default function AdminPortal() {
                           {/* 1. اسم العميل والنشاط */}
                           <td className="py-4 px-4">
                             <div className="flex items-center gap-2.5">
-                              <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-slate-800 to-slate-950 border border-cyan-500/40 flex items-center justify-center font-bold text-cyan-300 font-mono-tech shrink-0 shadow-[0_0_10px_rgba(0,240,255,0.15)]">
+                              <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-slate-800 to-slate-950 border border-[#00FF66]/40 flex items-center justify-center font-bold text-[#00FF66] font-mono-tech shrink-0 shadow-[0_0_10px_rgba(0,240,255,0.15)]">
                                 {lead.fullName.charAt(0)}
                               </div>
                               <div>
@@ -1055,7 +1055,7 @@ export default function AdminPortal() {
                                   {lead.fullName}
                                 </div>
                                 <div className="flex items-center gap-2 mt-0.5">
-                                  <span className="text-[10px] font-mono-tech text-cyan-400 font-bold">
+                                  <span className="text-[10px] font-mono-tech text-[#00FF66] font-bold">
                                     {lead.id}
                                   </span>
                                   {lead.company && (
@@ -1092,7 +1092,7 @@ export default function AdminPortal() {
                               <div className="space-y-1">
                                 <a
                                   href={`mailto:${lead.email}`}
-                                  className="text-cyan-300 hover:text-cyan-200 hover:underline font-mono-tech text-xs dir-ltr block"
+                                  className="text-[#00FF66] hover:text-[#00FF66] hover:underline font-mono-tech text-xs dir-ltr block"
                                   dir="ltr"
                                 >
                                   {lead.email}
@@ -1160,7 +1160,7 @@ export default function AdminPortal() {
                                   ? "bg-yellow-950/90 text-yellow-300 border-yellow-500/50 shadow-[0_0_10px_rgba(234,179,8,0.2)]"
                                   : lead.status === "cancelled"
                                   ? "bg-red-950/90 text-red-300 border-red-500/50"
-                                  : "bg-cyan-950/90 text-cyan-300 border-cyan-500/50 shadow-[0_0_10px_rgba(0,240,255,0.2)]"
+                                  : "bg-[#00FF66]/10 text-[#00FF66] border-[#00FF66]/50 shadow-[0_0_10px_rgba(0,240,255,0.2)]"
                               }`}
                             >
                               <option value="new">جديد 🔵</option>
@@ -1175,7 +1175,7 @@ export default function AdminPortal() {
                             <div className="flex items-center justify-center gap-1.5">
                               <button
                                 onClick={() => setSelectedLeadForDetails(lead)}
-                                className="p-2 rounded-xl bg-slate-900 hover:bg-cyan-950 text-cyan-400 hover:text-white border border-slate-700 hover:border-cyan-500/50 transition-all cursor-pointer"
+                                className="p-2 rounded-xl bg-slate-900 hover:bg-[#0A0A0A] text-[#00FF66] hover:text-white border border-slate-700 hover:border-[#00FF66]/50 transition-all cursor-pointer"
                                 title="عرض التفاصيل الكاملة"
                               >
                                 <Eye className="w-4 h-4" />
@@ -1202,7 +1202,7 @@ export default function AdminPortal() {
                                 setLeadSearch("");
                                 setLeadStatusFilter("all");
                               }}
-                              className="text-xs text-cyan-400 hover:underline mt-1 font-bold"
+                              className="text-xs text-[#00FF66] hover:underline mt-1 font-bold"
                             >
                               إعادة تعيين خيارات التصفية
                             </button>
@@ -1223,7 +1223,7 @@ export default function AdminPortal() {
             <div className="flex items-center justify-between pb-4 border-b border-slate-800">
               <div>
                 <h3 className="text-xl font-black text-white flex items-center gap-2">
-                  <DollarSign className="w-5 h-5 text-cyan-400" />
+                  <DollarSign className="w-5 h-5 text-[#00FF66]" />
                   <span>إدارة أسعار الخدمات السبع وباقات العروض المجمعة فورياً</span>
                 </h3>
                 <p className="text-xs text-slate-400 mt-1">
@@ -1234,7 +1234,7 @@ export default function AdminPortal() {
               <button
                 onClick={handleSaveConfig}
                 disabled={isSavingConfig}
-                className="px-6 py-2.5 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-slate-950 font-black text-xs shadow-[0_0_15px_rgba(0,240,255,0.3)] transition-all cursor-pointer flex items-center gap-2"
+                className="px-6 py-2.5 rounded-xl bg-gradient-to-r from-[#00FF66] to-[#009944] text-slate-950 font-black text-xs shadow-[0_0_15px_rgba(0,240,255,0.3)] transition-all cursor-pointer flex items-center gap-2"
               >
                 <Save className="w-4 h-4" />
                 <span>حفظ التعديلات فوراً ⚡</span>
@@ -1246,12 +1246,12 @@ export default function AdminPortal() {
               {config.services.map((service, idx) => (
                 <div
                   key={service.id}
-                  className="rounded-3xl bg-[#111827] border border-cyan-500/30 p-6 space-y-5 shadow-lg"
+                  className="rounded-3xl bg-[#0A0A0A] border border-[#00FF66]/30 p-6 space-y-5 shadow-lg"
                 >
                   {/* Service Header */}
                   <div className="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-slate-800">
                     <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-xl bg-slate-900 border border-cyan-400/40 flex items-center justify-center font-mono-tech font-bold text-cyan-400 text-sm">
+                      <div className="w-10 h-10 rounded-xl bg-slate-900 border border-[#00FF66]/40 flex items-center justify-center font-mono-tech font-bold text-[#00FF66] text-sm">
                         0{service.number}
                       </div>
                       <div>
@@ -1270,7 +1270,7 @@ export default function AdminPortal() {
                           updated[idx].badge = e.target.value;
                           setConfig({ ...config, services: updated });
                         }}
-                        className="px-3 py-1.5 rounded-lg bg-[#0A0F1D] border border-slate-700 text-xs text-white"
+                        className="px-3 py-1.5 rounded-lg bg-[#000000] border border-slate-700 text-xs text-white"
                       />
                     </div>
                   </div>
@@ -1278,7 +1278,7 @@ export default function AdminPortal() {
                   {/* 3-Way Prices Grid */}
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                     {/* Market Price */}
-                    <div className="p-4 rounded-2xl bg-[#0A0F1D]/80 border border-slate-800 space-y-2">
+                    <div className="p-4 rounded-2xl bg-[#000000]/80 border border-slate-800 space-y-2">
                       <label className="block text-xs font-bold text-slate-400">سعر السوق / المنافسين</label>
                       <div className="grid grid-cols-2 gap-2">
                         <div>
@@ -1311,8 +1311,8 @@ export default function AdminPortal() {
                     </div>
 
                     {/* CyberX Regular Price */}
-                    <div className="p-4 rounded-2xl bg-[#0A0F1D]/80 border border-slate-800 space-y-2">
-                      <label className="block text-xs font-bold text-cyan-300">سعر CyberX الطبيعي</label>
+                    <div className="p-4 rounded-2xl bg-[#000000]/80 border border-slate-800 space-y-2">
+                      <label className="block text-xs font-bold text-[#00FF66]">سعر CyberX الطبيعي</label>
                       <div className="grid grid-cols-2 gap-2">
                         <div>
                           <span className="text-[10px] text-slate-500">بالجنيه EGP:</span>
@@ -1324,7 +1324,7 @@ export default function AdminPortal() {
                               updated[idx].cyberxPriceEGP = Number(e.target.value);
                               setConfig({ ...config, services: updated });
                             }}
-                            className="w-full px-2 py-1.5 rounded-lg bg-slate-900 border border-cyan-500/40 text-xs font-mono-tech text-cyan-300 font-bold"
+                            className="w-full px-2 py-1.5 rounded-lg bg-slate-900 border border-[#00FF66]/40 text-xs font-mono-tech text-[#00FF66] font-bold"
                           />
                         </div>
                         <div>
@@ -1337,7 +1337,7 @@ export default function AdminPortal() {
                               updated[idx].cyberxPriceUSD = Number(e.target.value);
                               setConfig({ ...config, services: updated });
                             }}
-                            className="w-full px-2 py-1.5 rounded-lg bg-slate-900 border border-cyan-500/40 text-xs font-mono-tech text-cyan-300 font-bold"
+                            className="w-full px-2 py-1.5 rounded-lg bg-slate-900 border border-[#00FF66]/40 text-xs font-mono-tech text-[#00FF66] font-bold"
                           />
                         </div>
                       </div>
@@ -1391,12 +1391,12 @@ export default function AdminPortal() {
                         setConfig({ ...config, services: updated });
                       }}
                       placeholder="مثال: هدية الاشتراك: 1,000 رقم داتا عملاء مستهدفة مجاناً لتجربة الحملات فوراً!"
-                      className="w-full px-3 py-2 rounded-xl bg-[#0A0F1D] border border-slate-800 text-xs text-emerald-300 font-bold"
+                      className="w-full px-3 py-2 rounded-xl bg-[#000000] border border-slate-800 text-xs text-emerald-300 font-bold"
                     />
                   </div>
 
                   {/* Bulk Bundle Offer for this Service */}
-                  <div className="p-4 rounded-2xl bg-[#0A0F1D] border border-slate-800 space-y-3">
+                  <div className="p-4 rounded-2xl bg-[#000000] border border-slate-800 space-y-3">
                     <div className="flex items-center justify-between text-xs font-bold text-slate-300">
                       <span className="flex items-center gap-1.5 text-pink-400">
                         <Package className="w-3.5 h-3.5" />
@@ -1429,7 +1429,7 @@ export default function AdminPortal() {
                             updated[idx].bulkOffer.priceEGP = Number(e.target.value);
                             setConfig({ ...config, services: updated });
                           }}
-                          className="w-full px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-700 text-xs font-mono-tech text-cyan-300 font-bold"
+                          className="w-full px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-700 text-xs font-mono-tech text-[#00FF66] font-bold"
                         />
                       </div>
 
@@ -1443,7 +1443,7 @@ export default function AdminPortal() {
                             updated[idx].bulkOffer.priceUSD = Number(e.target.value);
                             setConfig({ ...config, services: updated });
                           }}
-                          className="w-full px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-700 text-xs font-mono-tech text-cyan-300 font-bold"
+                          className="w-full px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-700 text-xs font-mono-tech text-[#00FF66] font-bold"
                         />
                       </div>
                     </div>
@@ -1458,7 +1458,7 @@ export default function AdminPortal() {
               <button
                 onClick={handleSaveConfig}
                 disabled={isSavingConfig}
-                className="px-8 py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-slate-950 font-black text-sm shadow-[0_0_20px_rgba(0,240,255,0.35)] transition-all cursor-pointer flex items-center gap-2"
+                className="px-8 py-3 rounded-xl bg-gradient-to-r from-[#00FF66] to-[#009944] text-slate-950 font-black text-sm shadow-[0_0_20px_rgba(0,240,255,0.35)] transition-all cursor-pointer flex items-center gap-2"
               >
                 <Save className="w-4 h-4" />
                 <span>حفظ التعديلات وتطبيقها على الموقع ⚡</span>
@@ -1474,7 +1474,7 @@ export default function AdminPortal() {
             <div className="flex items-center justify-between pb-4 border-b border-slate-800">
               <div>
                 <h3 className="text-xl font-black text-white flex items-center gap-2">
-                  <Camera className="w-5 h-5 text-cyan-400" />
+                  <Camera className="w-5 h-5 text-[#00FF66]" />
                   <span>إدارة فريق العمل، الصور الشخصية ومعرض سكرينات النتائج</span>
                 </h3>
                 <p className="text-xs text-slate-400 mt-1">
@@ -1485,7 +1485,7 @@ export default function AdminPortal() {
               <button
                 onClick={handleSaveConfig}
                 disabled={isSavingConfig}
-                className="px-6 py-2.5 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-slate-950 font-black text-xs shadow-[0_0_15px_rgba(0,240,255,0.3)] transition-all cursor-pointer flex items-center gap-2"
+                className="px-6 py-2.5 rounded-xl bg-gradient-to-r from-[#00FF66] to-[#009944] text-slate-950 font-black text-xs shadow-[0_0_15px_rgba(0,240,255,0.3)] transition-all cursor-pointer flex items-center gap-2"
               >
                 <Save className="w-4 h-4" />
                 <span>حفظ الوسائط ⚡</span>
@@ -1495,7 +1495,7 @@ export default function AdminPortal() {
             {/* Section 1: Team Members */}
             <div className="space-y-4">
               <h4 className="text-base font-extrabold text-white flex items-center gap-2">
-                <Users className="w-4 h-4 text-cyan-400" />
+                <Users className="w-4 h-4 text-[#00FF66]" />
                 <span>أعضاء القيادة والـ Team (3)</span>
               </h4>
 
@@ -1503,18 +1503,18 @@ export default function AdminPortal() {
                 {config.team.map((member, mIdx) => (
                   <div
                     key={member.id}
-                    className="rounded-3xl bg-[#111827] border border-cyan-500/30 p-6 space-y-4 flex flex-col justify-between"
+                    className="rounded-3xl bg-[#0A0A0A] border border-[#00FF66]/30 p-6 space-y-4 flex flex-col justify-between"
                   >
                     <div>
                       {/* Image Preview & Upload Button */}
-                      <div className="relative aspect-square w-full rounded-2xl overflow-hidden bg-[#0A0F1D] border border-slate-800 mb-4 group">
+                      <div className="relative aspect-square w-full rounded-2xl overflow-hidden bg-[#000000] border border-slate-800 mb-4 group">
                         <Image
                           src={member.image}
                           alt={member.name}
                           fill
                           className="object-cover"
                         />
-                        <div className="absolute inset-0 bg-[#0A0F1D]/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                        <div className="absolute inset-0 bg-[#000000]/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                           <button
                             type="button"
                             onClick={() =>
@@ -1524,7 +1524,7 @@ export default function AdminPortal() {
                                 setConfig({ ...config, team: updatedTeam });
                               })
                             }
-                            className="px-4 py-2 rounded-xl bg-cyan-400 hover:bg-cyan-300 text-slate-950 font-bold text-xs shadow-lg flex items-center gap-1.5 cursor-pointer"
+                            className="px-4 py-2 rounded-xl bg-[#00FF66] hover:bg-[#00FF66] text-slate-950 font-bold text-xs shadow-lg flex items-center gap-1.5 cursor-pointer"
                           >
                             <Upload className="w-4 h-4" />
                             <span>رفع صورة جديدة</span>
@@ -1544,7 +1544,7 @@ export default function AdminPortal() {
                               updatedTeam[mIdx].name = e.target.value;
                               setConfig({ ...config, team: updatedTeam });
                             }}
-                            className="w-full px-3 py-1.5 rounded-lg bg-[#0A0F1D] border border-slate-700 text-sm font-bold text-white"
+                            className="w-full px-3 py-1.5 rounded-lg bg-[#000000] border border-slate-700 text-sm font-bold text-white"
                           />
                         </div>
 
@@ -1558,7 +1558,7 @@ export default function AdminPortal() {
                               updatedTeam[mIdx].arabicRole = e.target.value;
                               setConfig({ ...config, team: updatedTeam });
                             }}
-                            className="w-full px-3 py-1.5 rounded-lg bg-[#0A0F1D] border border-slate-700 text-xs text-cyan-300 font-bold"
+                            className="w-full px-3 py-1.5 rounded-lg bg-[#000000] border border-slate-700 text-xs text-[#00FF66] font-bold"
                           />
                         </div>
 
@@ -1572,7 +1572,7 @@ export default function AdminPortal() {
                               updatedTeam[mIdx].role = e.target.value;
                               setConfig({ ...config, team: updatedTeam });
                             }}
-                            className="w-full px-3 py-1.5 rounded-lg bg-[#0A0F1D] border border-slate-700 text-xs font-mono-tech text-slate-300 dir-ltr text-right"
+                            className="w-full px-3 py-1.5 rounded-lg bg-[#000000] border border-slate-700 text-xs font-mono-tech text-slate-300 dir-ltr text-right"
                             dir="ltr"
                           />
                         </div>
@@ -1587,7 +1587,7 @@ export default function AdminPortal() {
                               updatedTeam[mIdx].bio = e.target.value;
                               setConfig({ ...config, team: updatedTeam });
                             }}
-                            className="w-full px-3 py-1.5 rounded-lg bg-[#0A0F1D] border border-slate-700 text-xs text-slate-300 resize-none"
+                            className="w-full px-3 py-1.5 rounded-lg bg-[#000000] border border-slate-700 text-xs text-slate-300 resize-none"
                           />
                         </div>
                       </div>
@@ -1602,7 +1602,7 @@ export default function AdminPortal() {
                           setConfig({ ...config, team: updatedTeam });
                         })
                       }
-                      className="w-full py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-cyan-300 border border-cyan-500/40 text-xs font-bold transition-all flex items-center justify-center gap-1.5 cursor-pointer"
+                      className="w-full py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-[#00FF66] border border-[#00FF66]/40 text-xs font-bold transition-all flex items-center justify-center gap-1.5 cursor-pointer"
                     >
                       <Upload className="w-3.5 h-3.5" />
                       <span>تغيير صورة {member.name}</span>
@@ -1623,17 +1623,17 @@ export default function AdminPortal() {
                 {config.proofCases.map((proof, pIdx) => (
                   <div
                     key={proof.id}
-                    className="rounded-3xl bg-[#111827] border border-cyan-500/30 p-6 space-y-4"
+                    className="rounded-3xl bg-[#0A0A0A] border border-[#00FF66]/30 p-6 space-y-4"
                   >
                     {/* Screenshot Preview */}
-                    <div className="relative aspect-video w-full rounded-2xl overflow-hidden bg-[#0A0F1D] border border-slate-800 group">
+                    <div className="relative aspect-video w-full rounded-2xl overflow-hidden bg-[#000000] border border-slate-800 group">
                       <Image
                         src={proof.image}
                         alt={proof.title}
                         fill
                         className="object-cover"
                       />
-                      <div className="absolute inset-0 bg-[#0A0F1D]/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                      <div className="absolute inset-0 bg-[#000000]/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                         <button
                           type="button"
                           onClick={() =>
@@ -1663,7 +1663,7 @@ export default function AdminPortal() {
                             updatedProofs[pIdx].title = e.target.value;
                             setConfig({ ...config, proofCases: updatedProofs });
                           }}
-                          className="w-full px-3 py-1.5 rounded-lg bg-[#0A0F1D] border border-slate-700 text-xs text-white font-bold"
+                          className="w-full px-3 py-1.5 rounded-lg bg-[#000000] border border-slate-700 text-xs text-white font-bold"
                         />
                       </div>
 
@@ -1678,7 +1678,7 @@ export default function AdminPortal() {
                               updatedProofs[pIdx].category = e.target.value;
                               setConfig({ ...config, proofCases: updatedProofs });
                             }}
-                            className="w-full px-3 py-1.5 rounded-lg bg-[#0A0F1D] border border-slate-700 text-xs text-cyan-300"
+                            className="w-full px-3 py-1.5 rounded-lg bg-[#000000] border border-slate-700 text-xs text-[#00FF66]"
                           />
                         </div>
                         <div>
@@ -1691,7 +1691,7 @@ export default function AdminPortal() {
                               updatedProofs[pIdx].clientType = e.target.value;
                               setConfig({ ...config, proofCases: updatedProofs });
                             }}
-                            className="w-full px-3 py-1.5 rounded-lg bg-[#0A0F1D] border border-slate-700 text-xs text-slate-300"
+                            className="w-full px-3 py-1.5 rounded-lg bg-[#000000] border border-slate-700 text-xs text-slate-300"
                           />
                         </div>
                       </div>
@@ -1726,7 +1726,7 @@ export default function AdminPortal() {
             <div className="flex items-center justify-between pb-4 border-b border-slate-800">
               <div>
                 <h3 className="text-xl font-black text-white flex items-center gap-2">
-                  <CreditCard className="w-5 h-5 text-cyan-400" />
+                  <CreditCard className="w-5 h-5 text-[#00FF66]" />
                   <span>تعديل حسابات الدفع المعتمدة وقنوات التواصل الرسمية</span>
                 </h3>
                 <p className="text-xs text-slate-400 mt-1">
@@ -1737,7 +1737,7 @@ export default function AdminPortal() {
               <button
                 onClick={handleSaveConfig}
                 disabled={isSavingConfig}
-                className="px-6 py-2.5 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-slate-950 font-black text-xs shadow-[0_0_15px_rgba(0,240,255,0.3)] transition-all cursor-pointer flex items-center gap-2"
+                className="px-6 py-2.5 rounded-xl bg-gradient-to-r from-[#00FF66] to-[#009944] text-slate-950 font-black text-xs shadow-[0_0_15px_rgba(0,240,255,0.3)] transition-all cursor-pointer flex items-center gap-2"
               >
                 <Save className="w-4 h-4" />
                 <span>حفظ التعديلات ⚡</span>
@@ -1747,8 +1747,8 @@ export default function AdminPortal() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               
               {/* Box 1: Mobile Wallets */}
-              <div className="rounded-3xl bg-[#111827] border border-cyan-500/30 p-6 space-y-4">
-                <div className="flex items-center gap-2 text-cyan-400 font-bold text-sm">
+              <div className="rounded-3xl bg-[#0A0A0A] border border-[#00FF66]/30 p-6 space-y-4">
+                <div className="flex items-center gap-2 text-[#00FF66] font-bold text-sm">
                   <Smartphone className="w-4 h-4" />
                   <span>المحافظ الإلكترونية (فودافون كاش / أكسيس باي)</span>
                 </div>
@@ -1764,7 +1764,7 @@ export default function AdminPortal() {
                         updated.paymentWallets[0].number = e.target.value;
                         setConfig({ ...config, contacts: updated });
                       }}
-                      className="w-full px-3 py-2 rounded-xl bg-[#0A0F1D] border border-slate-700 text-sm font-mono-tech text-cyan-300 font-bold dir-ltr text-right"
+                      className="w-full px-3 py-2 rounded-xl bg-[#000000] border border-slate-700 text-sm font-mono-tech text-[#00FF66] font-bold dir-ltr text-right"
                       dir="ltr"
                     />
                   </div>
@@ -1779,7 +1779,7 @@ export default function AdminPortal() {
                         updated.paymentWallets[1].number = e.target.value;
                         setConfig({ ...config, contacts: updated });
                       }}
-                      className="w-full px-3 py-2 rounded-xl bg-[#0A0F1D] border border-slate-700 text-sm font-mono-tech text-cyan-300 font-bold dir-ltr text-right"
+                      className="w-full px-3 py-2 rounded-xl bg-[#000000] border border-slate-700 text-sm font-mono-tech text-[#00FF66] font-bold dir-ltr text-right"
                       dir="ltr"
                     />
                   </div>
@@ -1791,7 +1791,7 @@ export default function AdminPortal() {
               </div>
 
               {/* Box 2: Binance USDT Wallet */}
-              <div className="rounded-3xl bg-[#111827] border border-pink-500/30 p-6 space-y-4">
+              <div className="rounded-3xl bg-[#0A0A0A] border border-pink-500/30 p-6 space-y-4">
                 <div className="flex items-center gap-2 text-pink-400 font-bold text-sm">
                   <Coins className="w-4 h-4" />
                   <span>محفظة Binance USDT (الدفع الدولي بالكريبتو)</span>
@@ -1807,7 +1807,7 @@ export default function AdminPortal() {
                         const updated = { ...config.contacts, usdtBinanceAddress: e.target.value };
                         setConfig({ ...config, contacts: updated });
                       }}
-                      className="w-full px-3 py-2 rounded-xl bg-[#0A0F1D] border border-slate-700 text-xs font-mono-tech text-cyan-300 font-bold dir-ltr text-right"
+                      className="w-full px-3 py-2 rounded-xl bg-[#000000] border border-slate-700 text-xs font-mono-tech text-[#00FF66] font-bold dir-ltr text-right"
                       dir="ltr"
                     />
                   </div>
@@ -1821,7 +1821,7 @@ export default function AdminPortal() {
                         const updated = { ...config.contacts, usdtNetwork: e.target.value };
                         setConfig({ ...config, contacts: updated });
                       }}
-                      className="w-full px-3 py-2 rounded-xl bg-[#0A0F1D] border border-slate-700 text-xs font-mono-tech text-pink-300 font-bold dir-ltr text-right"
+                      className="w-full px-3 py-2 rounded-xl bg-[#000000] border border-slate-700 text-xs font-mono-tech text-pink-300 font-bold dir-ltr text-right"
                       dir="ltr"
                     />
                   </div>
@@ -1829,7 +1829,7 @@ export default function AdminPortal() {
               </div>
 
               {/* Box 3: Official Direct Contacts */}
-              <div className="rounded-3xl bg-[#111827] border border-emerald-500/30 p-6 space-y-4">
+              <div className="rounded-3xl bg-[#0A0A0A] border border-emerald-500/30 p-6 space-y-4">
                 <div className="flex items-center gap-2 text-emerald-400 font-bold text-sm">
                   <PhoneCall className="w-4 h-4" />
                   <span>قنوات التواصل المباشر مع العملاء</span>
@@ -1849,7 +1849,7 @@ export default function AdminPortal() {
                         };
                         setConfig({ ...config, contacts: updated });
                       }}
-                      className="w-full px-3 py-2 rounded-xl bg-[#0A0F1D] border border-slate-700 text-sm font-mono-tech text-emerald-400 font-bold dir-ltr text-right"
+                      className="w-full px-3 py-2 rounded-xl bg-[#000000] border border-slate-700 text-sm font-mono-tech text-emerald-400 font-bold dir-ltr text-right"
                       dir="ltr"
                     />
                   </div>
@@ -1868,7 +1868,7 @@ export default function AdminPortal() {
                         };
                         setConfig({ ...config, contacts: updated });
                       }}
-                      className="w-full px-3 py-2 rounded-xl bg-[#0A0F1D] border border-slate-700 text-sm font-mono-tech text-cyan-300 font-bold dir-ltr text-right"
+                      className="w-full px-3 py-2 rounded-xl bg-[#000000] border border-slate-700 text-sm font-mono-tech text-[#00FF66] font-bold dir-ltr text-right"
                       dir="ltr"
                     />
                   </div>
@@ -1876,20 +1876,20 @@ export default function AdminPortal() {
               </div>
 
               {/* Box 4: Copyright Notice Lock */}
-              <div className="rounded-3xl bg-[#111827] border border-slate-800 p-6 space-y-4">
+              <div className="rounded-3xl bg-[#0A0A0A] border border-slate-800 p-6 space-y-4">
                 <div className="flex items-center justify-between text-white font-bold text-sm">
                   <span className="flex items-center gap-2">
-                    <ShieldCheck className="w-4 h-4 text-cyan-400" />
+                    <ShieldCheck className="w-4 h-4 text-[#00FF66]" />
                     <span>حقوق الملكية والفوتر (Copyright Notice)</span>
                   </span>
-                  <span className="text-[10px] font-mono-tech text-emerald-400 px-2 py-0.5 rounded-full bg-[#0A0F1D] border border-emerald-500/40">
+                  <span className="text-[10px] font-mono-tech text-emerald-400 px-2 py-0.5 rounded-full bg-[#000000] border border-emerald-500/40">
                     PROTECTED
                   </span>
                 </div>
 
-                <div className="p-4 rounded-2xl bg-[#0A0F1D] border border-slate-800 space-y-2">
+                <div className="p-4 rounded-2xl bg-[#000000] border border-slate-800 space-y-2">
                   <div className="text-xs text-slate-400">النص المعتمد أسفل الموقع:</div>
-                  <div className="font-extrabold text-sm text-cyan-300 p-2.5 rounded-xl bg-slate-900 border border-slate-700">
+                  <div className="font-extrabold text-sm text-[#00FF66] p-2.5 rounded-xl bg-slate-900 border border-slate-700">
                     جميع الحقوق محفوظة © CyberX | Eng. Ahmed Omar
                   </div>
                   <p className="text-[11px] text-slate-500">
@@ -1905,7 +1905,7 @@ export default function AdminPortal() {
               <button
                 onClick={handleSaveConfig}
                 disabled={isSavingConfig}
-                className="px-8 py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-slate-950 font-black text-sm shadow-[0_0_20px_rgba(0,240,255,0.35)] transition-all cursor-pointer flex items-center gap-2"
+                className="px-8 py-3 rounded-xl bg-gradient-to-r from-[#00FF66] to-[#009944] text-slate-950 font-black text-sm shadow-[0_0_20px_rgba(0,240,255,0.35)] transition-all cursor-pointer flex items-center gap-2"
               >
                 <Save className="w-4 h-4" />
                 <span>حفظ بيانات الدفع والتواصل فوراً ⚡</span>
@@ -1920,15 +1920,15 @@ export default function AdminPortal() {
       {/* Modal 1: Lead Details & Notes Modal */}
       {selectedLeadForDetails && (
         <div
-          className="fixed inset-0 z-50 bg-[#0A0F1D]/80 backdrop-blur-md flex items-center justify-center p-4 animate-in fade-in duration-200"
+          className="fixed inset-0 z-50 bg-[#000000]/80 backdrop-blur-md flex items-center justify-center p-4 animate-in fade-in duration-200"
           onClick={() => setSelectedLeadForDetails(null)}
         >
           <div
-            className="relative w-full max-w-lg rounded-3xl bg-[#111827] border border-white/10 p-6 space-y-4 shadow-2xl"
+            className="relative w-full max-w-lg rounded-3xl bg-[#0A0A0A] border border-[#00FF66]/30 p-6 space-y-4 shadow-2xl"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex items-center justify-between pb-3 border-b border-slate-800">
-              <div className="flex items-center gap-2 font-mono-tech text-cyan-400 font-bold text-sm">
+              <div className="flex items-center gap-2 font-mono-tech text-[#00FF66] font-bold text-sm">
                 <span>ملف العميل // {selectedLeadForDetails.id}</span>
               </div>
               <div className="flex items-center gap-2">
@@ -1943,7 +1943,7 @@ export default function AdminPortal() {
             </div>
 
             <div className="space-y-3.5 text-xs">
-              <div className="grid grid-cols-2 gap-3 p-3 rounded-2xl bg-[#0A0F1D] border border-slate-800">
+              <div className="grid grid-cols-2 gap-3 p-3 rounded-2xl bg-[#000000] border border-slate-800">
                 <div>
                   <span className="text-slate-400 block mb-0.5">اسم العميل:</span>
                   <strong className="text-white text-sm">{selectedLeadForDetails.fullName}</strong>
@@ -1954,7 +1954,7 @@ export default function AdminPortal() {
                 </div>
               </div>
 
-              <div className="grid grid-cols-2 gap-3 p-3 rounded-2xl bg-[#0A0F1D] border border-slate-800">
+              <div className="grid grid-cols-2 gap-3 p-3 rounded-2xl bg-[#000000] border border-slate-800">
                 <div>
                   <span className="text-slate-400 block mb-0.5">رقم الواتساب:</span>
                   <span className="font-mono-tech text-emerald-400 font-bold text-sm dir-ltr block" dir="ltr">
@@ -1966,7 +1966,7 @@ export default function AdminPortal() {
                   {selectedLeadForDetails.email ? (
                     <a
                       href={`mailto:${selectedLeadForDetails.email}`}
-                      className="font-mono-tech text-cyan-300 hover:underline text-xs dir-ltr block"
+                      className="font-mono-tech text-[#00FF66] hover:underline text-xs dir-ltr block"
                       dir="ltr"
                     >
                       {selectedLeadForDetails.email}
@@ -1977,7 +1977,7 @@ export default function AdminPortal() {
                 </div>
               </div>
 
-              <div className="p-3 rounded-2xl bg-[#0A0F1D] border border-slate-800 space-y-2">
+              <div className="p-3 rounded-2xl bg-[#000000] border border-slate-800 space-y-2">
                 <div>
                   <span className="text-slate-400 block mb-0.5">الخدمة أو الباقة المطلوبة:</span>
                   <strong className="text-pink-300 text-sm">{selectedLeadForDetails.service}</strong>
@@ -1997,14 +1997,14 @@ export default function AdminPortal() {
               {selectedLeadForDetails.projectDetails && (
                 <div>
                   <span className="text-slate-400 block mb-1">تفاصيل المشروع والطلب:</span>
-                  <div className="p-3 rounded-xl bg-[#0A0F1D] border border-slate-800 text-slate-300 leading-relaxed text-xs">
+                  <div className="p-3 rounded-xl bg-[#000000] border border-slate-800 text-slate-300 leading-relaxed text-xs">
                     {selectedLeadForDetails.projectDetails}
                   </div>
                 </div>
               )}
 
               {/* Status Update inside Modal */}
-              <div className="p-3 rounded-2xl bg-[#0A0F1D] border border-slate-800 flex items-center justify-between">
+              <div className="p-3 rounded-2xl bg-[#000000] border border-slate-800 flex items-center justify-between">
                 <span className="text-slate-300 font-bold">تحديث حالة الطلب:</span>
                 <select
                   value={selectedLeadForDetails.status === "completed" ? "closed" : selectedLeadForDetails.status}
@@ -2018,7 +2018,7 @@ export default function AdminPortal() {
                       ? "bg-yellow-950 text-yellow-300 border-yellow-500/50"
                       : selectedLeadForDetails.status === "cancelled"
                       ? "bg-red-950 text-red-300 border-red-500/50"
-                      : "bg-cyan-950 text-cyan-300 border-cyan-500/50"
+                      : "bg-[#0A0A0A] text-[#00FF66] border-[#00FF66]/50"
                   }`}
                 >
                   <option value="new">طلب جديد 🔵</option>
@@ -2037,7 +2037,7 @@ export default function AdminPortal() {
                     handleUpdateLeadStatus(selectedLeadForDetails.id, selectedLeadForDetails.status, e.target.value)
                   }
                   placeholder="أضف ملاحظاتك لمتابعة هذا العميل وسيتم الحفظ تلقائياً..."
-                  className="w-full px-3 py-2 rounded-xl bg-[#0A0F1D] border border-slate-700 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400"
+                  className="w-full px-3 py-2 rounded-xl bg-[#000000] border border-slate-700 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-[#00FF66]/30"
                 />
               </div>
             </div>
@@ -2072,16 +2072,16 @@ export default function AdminPortal() {
       {/* Modal 2: Add Manual Lead */}
       {showAddLeadModal && (
         <div
-          className="fixed inset-0 z-50 bg-[#0A0F1D]/80 backdrop-blur-md flex items-center justify-center p-4 animate-in fade-in duration-200"
+          className="fixed inset-0 z-50 bg-[#000000]/80 backdrop-blur-md flex items-center justify-center p-4 animate-in fade-in duration-200"
           onClick={() => setShowAddLeadModal(false)}
         >
           <div
-            className="relative w-full max-w-lg rounded-3xl bg-[#111827] border border-white/10 p-6 space-y-4 shadow-2xl"
+            className="relative w-full max-w-lg rounded-3xl bg-[#0A0A0A] border border-[#00FF66]/30 p-6 space-y-4 shadow-2xl"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex items-center justify-between pb-3 border-b border-slate-800">
               <h3 className="font-extrabold text-white text-base flex items-center gap-2">
-                <Plus className="w-4 h-4 text-cyan-400" />
+                <Plus className="w-4 h-4 text-[#00FF66]" />
                 <span>إضافة عميل جديد يدوياً إلى Pipeline</span>
               </h3>
               <button
@@ -2101,7 +2101,7 @@ export default function AdminPortal() {
                   placeholder="محمد علي"
                   value={newLeadForm.fullName}
                   onChange={(e) => setNewLeadForm({ ...newLeadForm, fullName: e.target.value })}
-                  className="w-full px-3 py-2 rounded-xl bg-[#0A0F1D] border border-slate-700 text-xs text-white"
+                  className="w-full px-3 py-2 rounded-xl bg-[#000000] border border-slate-700 text-xs text-white"
                 />
               </div>
 
@@ -2114,7 +2114,7 @@ export default function AdminPortal() {
                     placeholder="01094200285"
                     value={newLeadForm.phone}
                     onChange={(e) => setNewLeadForm({ ...newLeadForm, phone: e.target.value })}
-                    className="w-full px-3 py-2 rounded-xl bg-[#0A0F1D] border border-slate-700 text-xs font-mono-tech text-white dir-ltr text-right"
+                    className="w-full px-3 py-2 rounded-xl bg-[#000000] border border-slate-700 text-xs font-mono-tech text-white dir-ltr text-right"
                     dir="ltr"
                   />
                 </div>
@@ -2126,7 +2126,7 @@ export default function AdminPortal() {
                     placeholder="مطعم / متجر / عيادة"
                     value={newLeadForm.company}
                     onChange={(e) => setNewLeadForm({ ...newLeadForm, company: e.target.value })}
-                    className="w-full px-3 py-2 rounded-xl bg-[#0A0F1D] border border-slate-700 text-xs text-white"
+                    className="w-full px-3 py-2 rounded-xl bg-[#000000] border border-slate-700 text-xs text-white"
                   />
                 </div>
               </div>
@@ -2136,7 +2136,7 @@ export default function AdminPortal() {
                 <select
                   value={newLeadForm.service}
                   onChange={(e) => setNewLeadForm({ ...newLeadForm, service: e.target.value })}
-                  className="w-full px-3 py-2 rounded-xl bg-[#0A0F1D] border border-slate-700 text-xs text-white"
+                  className="w-full px-3 py-2 rounded-xl bg-[#000000] border border-slate-700 text-xs text-white"
                 >
                   {config?.services.map((s) => (
                     <option key={s.id} value={s.title}>
@@ -2159,7 +2159,7 @@ export default function AdminPortal() {
                     placeholder="مثال: 2,000 ج.م"
                     value={newLeadForm.budget}
                     onChange={(e) => setNewLeadForm({ ...newLeadForm, budget: e.target.value })}
-                    className="w-full px-3 py-2 rounded-xl bg-[#0A0F1D] border border-slate-700 text-xs text-white"
+                    className="w-full px-3 py-2 rounded-xl bg-[#000000] border border-slate-700 text-xs text-white"
                   />
                 </div>
 
@@ -2168,7 +2168,7 @@ export default function AdminPortal() {
                   <select
                     value={newLeadForm.status}
                     onChange={(e) => setNewLeadForm({ ...newLeadForm, status: e.target.value as LeadItem["status"] })}
-                    className="w-full px-3 py-2 rounded-xl bg-[#0A0F1D] border border-slate-700 text-xs text-white"
+                    className="w-full px-3 py-2 rounded-xl bg-[#000000] border border-slate-700 text-xs text-white"
                   >
                     <option value="new">طلب جديد 🔵</option>
                     <option value="contacting">قيد التواصل 🟡</option>
@@ -2184,7 +2184,7 @@ export default function AdminPortal() {
                   placeholder="ملاحظات تفصيلية أو متطلبات خاصة..."
                   value={newLeadForm.notes}
                   onChange={(e) => setNewLeadForm({ ...newLeadForm, notes: e.target.value })}
-                  className="w-full px-3 py-2 rounded-xl bg-[#0A0F1D] border border-slate-700 text-xs text-white resize-none"
+                  className="w-full px-3 py-2 rounded-xl bg-[#000000] border border-slate-700 text-xs text-white resize-none"
                 />
               </div>
 
@@ -2198,7 +2198,7 @@ export default function AdminPortal() {
                 </button>
                 <button
                   type="submit"
-                  className="px-5 py-2 rounded-xl bg-cyan-400 hover:bg-cyan-300 text-slate-950 font-black"
+                  className="px-5 py-2 rounded-xl bg-[#00FF66] hover:bg-[#00FF66] text-slate-950 font-black"
                 >
                   إضافة العميل وتثبيته ⚡
                 </button>

@@ -2,24 +2,28 @@
 @import "tailwindcss";
 
 :root, .dark {
-  --background: #0A0F1D;
-  --foreground: #F8FAFC;
-  --cyber-bg: #0A0F1D;
-  --cyber-slate: #111827;
-  --cyber-card: #1E293B;
-  --cyber-card-bg: rgba(30, 41, 59, 0.6);
-  --cyber-border: rgba(255, 255, 255, 0.1);
-  --cyber-heading: #F8FAFC;
-  --cyber-text: #94A3B8;
-  --tech-blue: #2563eb;
-  --tech-cyan: #06b6d4;
-  --tech-blue-soft: rgba(37, 99, 235, 0.2);
-  --tech-cyan-soft: rgba(6, 182, 212, 0.2);
+  --background: #000000;
+  --foreground: #00FF66;
+  --primary: #00FF66;
+  --cyber-bg: #000000;
+  --cyber-slate: #0A0A0A;
+  --cyber-card: #0A0A0A;
+  --cyber-card-bg: rgba(10, 10, 10, 0.9);
+  --cyber-border: rgba(0, 255, 102, 0.3);
+  --cyber-heading: #00FF66;
+  --cyber-text: #86EFAC;
+  --tech-green: #00FF66;
+  --tech-green-soft: rgba(0, 255, 102, 0.2);
+  --tech-blue: #00FF66;
+  --tech-cyan: #00FF66;
+  --tech-blue-soft: rgba(0, 255, 102, 0.2);
+  --tech-cyan-soft: rgba(0, 255, 102, 0.2);
 }
 
 @theme {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
 }
 
 * {
@@ -28,101 +32,99 @@
 
 html {
   scroll-behavior: smooth;
-  background-color: #0A0F1D;
+  background-color: #000000;
 }
 
 body {
   background-color: var(--background);
-  color: var(--cyber-heading);
+  color: var(--foreground);
   font-family: 'Cairo', 'Outfit', sans-serif;
   overflow-x: hidden;
   position: relative;
 }
 
-/* Eye-Friendly Cyber Custom Scrollbar */
+/* Hacker Matrix Custom Scrollbar */
 ::-webkit-scrollbar {
   width: 7px;
 }
 ::-webkit-scrollbar-track {
-  background: #0A0F1D;
+  background: #000000;
 }
 ::-webkit-scrollbar-thumb {
-  background: #1E293B;
+  background: #0A0A0A;
   border-radius: 4px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(0, 255, 102, 0.3);
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, #2563eb, #06b6d4);
+  background: #00FF66;
 }
 
-/* Subtle Eye-Friendly Background Grid & Dot Patterns */
+/* Hacker Matrix Background Grid & Dot Patterns */
 .cyber-grid-bg {
   background-image: 
-    linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+    linear-gradient(to right, rgba(0, 255, 102, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 255, 102, 0.05) 1px, transparent 1px);
   background-size: 40px 40px;
 }
 
 .cyber-dots-bg {
-  background-image: radial-gradient(rgba(6, 182, 212, 0.08) 1px, transparent 1px);
+  background-image: radial-gradient(rgba(0, 255, 102, 0.12) 1px, transparent 1px);
   background-size: 24px 24px;
 }
 
-/* Eye-Friendly Soft Modern Tech Glows & Shadows */
-.neon-glow-cyan {
-  box-shadow: 0 0 16px rgba(6, 182, 212, 0.2), 0 0 30px rgba(6, 182, 212, 0.06);
-}
-
-.neon-glow-blue {
-  box-shadow: 0 0 16px rgba(37, 99, 235, 0.25), 0 0 30px rgba(37, 99, 235, 0.08);
-}
-
-.neon-glow-dual {
-  box-shadow: -8px 0 20px rgba(37, 99, 235, 0.15), 8px 0 20px rgba(6, 182, 212, 0.15);
+/* Matrix Neon Glows & Shadows */
+.neon-glow-cyan,
+.neon-glow-blue,
+.neon-glow-dual,
+.neon-glow-green {
+  box-shadow: 0 0 15px rgba(0, 255, 102, 0.25), 0 0 30px rgba(0, 255, 102, 0.1);
 }
 
 .soft-glow-button {
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .soft-glow-button:hover {
-  box-shadow: 0 4px 20px rgba(37, 99, 235, 0.25), 0 0 15px rgba(6, 182, 212, 0.2);
+  box-shadow: 0 0 20px rgba(0, 255, 102, 0.4), 0 0 10px rgba(0, 255, 102, 0.3);
   transform: translateY(-1px);
 }
 
-.neon-text-cyan {
-  color: #38bdf8;
-  text-shadow: 0 0 10px rgba(56, 189, 248, 0.35);
+.neon-text-cyan,
+.neon-text-green {
+  color: #00FF66;
+  text-shadow: 0 0 10px rgba(0, 255, 102, 0.6), 0 0 20px rgba(0, 255, 102, 0.3);
 }
 
-.neon-border-cyan {
-  border-color: rgba(6, 182, 212, 0.3);
-  box-shadow: 0 0 10px rgba(6, 182, 212, 0.15);
+.neon-border-cyan,
+.neon-border-green {
+  border-color: rgba(0, 255, 102, 0.4);
+  box-shadow: 0 0 15px rgba(0, 255, 102, 0.2);
 }
 
-/* Glassmorphism Card with Eye-Friendly Deep Slate Navy & Soft White/10 Border */
+/* Hacker Matrix Glassmorphism Card: bg-[#0A0A0A] border-[#00FF66]/30 shadow-[0_0_15px_rgba(0,255,102,0.2)] */
 .cyber-card {
-  background: rgba(30, 41, 59, 0.6);
+  background: #0A0A0A;
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(0, 255, 102, 0.3);
+  box-shadow: 0 0 15px rgba(0, 255, 102, 0.2);
   border-radius: 1.25rem;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .cyber-card:hover {
-  border-color: rgba(59, 130, 246, 0.35);
-  box-shadow: 0 10px 25px -10px rgba(37, 99, 235, 0.2), 0 0 18px -5px rgba(6, 182, 212, 0.15);
+  border-color: #00FF66;
+  box-shadow: 0 0 25px rgba(0, 255, 102, 0.4);
   transform: translateY(-3px);
 }
 
-/* Soft Smart Animations */
+/* Matrix Pulsing & Float Animations */
 @keyframes softPulseGlow {
   0%, 100% {
-    opacity: 0.25;
+    opacity: 0.3;
     transform: scale(1);
   }
   50% {
-    opacity: 0.45;
+    opacity: 0.6;
     transform: scale(1.02);
   }
 }
@@ -161,9 +163,9 @@ body {
   content: "";
   position: absolute;
   top: 0; left: 0; right: 0; height: 1.5px;
-  background: linear-gradient(90deg, transparent, rgba(56, 189, 248, 0.4), rgba(37, 99, 235, 0.4), transparent);
-  opacity: 0.35;
-  animation: scanline 6s linear infinite;
+  background: linear-gradient(90deg, transparent, rgba(0, 255, 102, 0.6), transparent);
+  opacity: 0.4;
+  animation: scanline 5s linear infinite;
   pointer-events: none;
 }
 

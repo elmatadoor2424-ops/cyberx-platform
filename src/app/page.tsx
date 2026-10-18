@@ -40,7 +40,7 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-[#0A0F1D] text-[#F8FAFC] flex flex-col font-sans selection:bg-blue-600/30 selection:text-cyan-300">
+    <div className="min-h-screen bg-[#000000] text-[#00FF66] flex flex-col font-sans selection:bg-[#00FF66]/30 selection:text-[#00FF66]">
       
       {/* 24-Hour Dynamic Countdown Urgency Banner */}
       <CountdownBanner
@@ -122,15 +122,15 @@ export default function Home() {
             playCyberSound("beep");
             setIsAiBotOpen(true);
           }}
-          className="relative group p-3.5 rounded-2xl bg-[#111827] border border-white/10 hover:border-cyan-400/50 text-cyan-400 shadow-lg shadow-blue-500/20 hover:shadow-cyan-500/30 hover:scale-105 active:scale-95 transition-all duration-300 cursor-pointer backdrop-blur-md"
+          className="relative group p-3.5 rounded-2xl bg-[#0A0A0A] border border-[#00FF66]/30 hover:border-[#00FF66] text-[#00FF66] shadow-[0_0_15px_rgba(0,255,102,0.2)] hover:shadow-[0_0_25px_rgba(0,255,102,0.4)] hover:scale-105 active:scale-95 transition-all duration-300 cursor-pointer backdrop-blur-md"
           title="تحدث مع مساعد الذكاء الاصطناعي CyberX AI"
         >
           <Bot className="w-6 h-6 animate-pulse" />
-          <span className="absolute -top-1 -right-1 w-3 h-3 rounded-full bg-emerald-400 animate-ping"></span>
-          <span className="absolute -top-1 -right-1 w-3 h-3 rounded-full bg-emerald-400"></span>
+          <span className="absolute -top-1 -right-1 w-3 h-3 rounded-full bg-[#00FF66] animate-ping"></span>
+          <span className="absolute -top-1 -right-1 w-3 h-3 rounded-full bg-[#00FF66]"></span>
 
           {/* Hover Tooltip */}
-          <span className="absolute left-full ml-3 px-3 py-1.5 rounded-xl bg-[#111827] border border-white/10 text-xs font-bold text-cyan-300 whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none shadow-xl">
+          <span className="absolute left-full ml-3 px-3 py-1.5 rounded-xl bg-[#0A0A0A] border border-[#00FF66]/30 text-xs font-bold text-[#00FF66] whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none shadow-xl">
             مساعد CyberX الذكي 🤖
           </span>
         </button>
@@ -141,13 +141,13 @@ export default function Home() {
           target="_blank"
           rel="noopener noreferrer"
           onClick={() => playCyberSound("click")}
-          className="relative group p-3.5 rounded-2xl bg-emerald-600 hover:bg-emerald-500 text-slate-950 shadow-lg shadow-emerald-500/20 hover:shadow-emerald-500/40 hover:scale-105 active:scale-95 transition-all duration-300 cursor-pointer"
+          className="relative group p-3.5 rounded-2xl bg-[#00FF66] hover:bg-[#00dd55] text-black font-bold shadow-[0_0_15px_rgba(0,255,102,0.3)] hover:shadow-[0_0_25px_rgba(0,255,102,0.5)] hover:scale-105 active:scale-95 transition-all duration-300 cursor-pointer"
           title="محادثة واتساب مباشرة: 01094200285"
         >
-          <MessageCircle className="w-6 h-6" />
+          <MessageCircle className="w-6 h-6 text-black" />
 
           {/* Hover Tooltip */}
-          <span className="absolute left-full ml-3 px-3 py-1.5 rounded-xl bg-[#111827] border border-white/10 text-xs font-bold text-emerald-400 whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none shadow-xl">
+          <span className="absolute left-full ml-3 px-3 py-1.5 rounded-xl bg-[#0A0A0A] border border-[#00FF66]/30 text-xs font-bold text-[#00FF66] whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none shadow-xl">
             واتساب 24/7 (01094200285) 💬
           </span>
         </a>

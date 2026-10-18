@@ -135,26 +135,26 @@ export default function AIChatModal({
   };
 
   return (
-    <div className="fixed inset-0 z-50 bg-[#0A0F1D]/80 backdrop-blur-md flex items-center justify-center p-3 sm:p-6 animate-in fade-in duration-200">
-      <div className="relative w-full max-w-2xl h-[650px] max-h-[90vh] rounded-3xl bg-[#111827] border border-white/10 flex flex-col shadow-2xl overflow-hidden scanline-effect">
+    <div className="fixed inset-0 z-50 bg-[#000000]/80 backdrop-blur-md flex items-center justify-center p-3 sm:p-6 animate-in fade-in duration-200">
+      <div className="relative w-full max-w-2xl h-[650px] max-h-[90vh] rounded-3xl bg-[#0A0A0A] border border-[#00FF66]/30 flex flex-col shadow-2xl overflow-hidden scanline-effect">
         
         {/* Chat Header */}
-        <div className="flex items-center justify-between px-6 py-4 bg-[#0A0F1D]/90 border-b border-white/10">
+        <div className="flex items-center justify-between px-6 py-4 bg-[#000000]/90 border-b border-[#00FF66]/30">
           <div className="flex items-center gap-3">
-            <div className="relative w-11 h-11 rounded-2xl overflow-hidden border border-white/10 bg-[#111827] shrink-0">
+            <div className="relative w-11 h-11 rounded-2xl overflow-hidden border border-[#00FF66]/30 bg-[#0A0A0A] shrink-0">
               <Image
                 src="/bot.png"
                 alt="CyberX AI Bot"
                 fill
                 className="object-cover"
               />
-              <span className="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-emerald-400 border border-[#0A0F1D]"></span>
+              <span className="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-emerald-400 border border-[#000000]"></span>
             </div>
 
             <div>
               <div className="flex items-center gap-2">
                 <h3 className="font-black text-[#F8FAFC] text-base">CyberX AI Bot</h3>
-                <span className="text-[10px] font-mono-tech px-2 py-0.5 rounded-full bg-blue-950/60 text-cyan-300 border border-blue-500/30">
+                <span className="text-[10px] font-mono-tech px-2 py-0.5 rounded-full bg-[#00FF66]/10 text-[#00FF66] border border-[#00FF66]/30">
                   REALTIME 0.2s
                 </span>
               </div>
@@ -170,7 +170,7 @@ export default function AIChatModal({
               playCyberSound("click");
               onClose();
             }}
-            className="p-2 rounded-xl bg-[#1E293B]/60 hover:bg-[#1E293B] text-[#94A3B8] hover:text-[#F8FAFC] transition-colors cursor-pointer"
+            className="p-2 rounded-xl bg-[#0A0A0A]/60 hover:bg-[#0A0A0A] text-[#94A3B8] hover:text-[#F8FAFC] transition-colors cursor-pointer"
           >
             <X className="w-5 h-5" />
           </button>
@@ -189,8 +189,8 @@ export default function AIChatModal({
                 <div
                   className={`w-8 h-8 rounded-lg shrink-0 flex items-center justify-center text-xs font-bold ${
                     isBot
-                      ? "bg-blue-500/10 border border-blue-500/30 text-cyan-400"
-                      : "bg-cyan-500/10 border border-cyan-500/30 text-cyan-300"
+                      ? "bg-[#00FF66]/10 border border-[#00FF66]/30 text-[#00FF66]"
+                      : "bg-[#00FF66]/10 border border-[#00FF66]/30 text-[#00FF66]"
                   }`}
                 >
                   {isBot ? <Bot className="w-4 h-4" /> : <User className="w-4 h-4" />}
@@ -200,8 +200,8 @@ export default function AIChatModal({
                 <div
                   className={`max-w-[85%] sm:max-w-[78%] rounded-2xl p-4 text-xs sm:text-sm leading-relaxed ${
                     isBot
-                      ? "bg-[#1E293B]/80 border border-white/10 text-[#F8FAFC] shadow-sm"
-                      : "bg-gradient-to-r from-blue-600 to-cyan-500 text-white font-medium shadow-md shadow-blue-500/20"
+                      ? "bg-[#0A0A0A]/80 border border-[#00FF66]/30 text-[#F8FAFC] shadow-sm"
+                      : "bg-gradient-to-r from-[#00FF66] to-[#009944] text-white font-medium shadow-md shadow-[0_0_15px_rgba(0,255,102,0.2)]"
                   }`}
                 >
                   <p className="whitespace-pre-line">{m.text}</p>
@@ -210,7 +210,7 @@ export default function AIChatModal({
                   {m.action && (
                     <button
                       onClick={() => handleActionClick(m.action!.targetId)}
-                      className="mt-3 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-gradient-to-r from-blue-600 to-cyan-500 text-white font-bold text-xs shadow-md shadow-blue-500/20 hover:from-blue-500 hover:to-cyan-400 transition-all cursor-pointer"
+                      className="mt-3 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-gradient-to-r from-[#00FF66] to-[#009944] text-white font-bold text-xs shadow-md shadow-[0_0_15px_rgba(0,255,102,0.2)] hover:from-[#00FF66] hover:to-[#00CC55] transition-all cursor-pointer"
                     >
                       <Sparkles className="w-3.5 h-3.5" />
                       <span>{m.action.label}</span>
@@ -220,7 +220,7 @@ export default function AIChatModal({
 
                   <div
                     className={`text-[10px] mt-1.5 font-mono-tech ${
-                      isBot ? "text-[#94A3B8] text-left" : "text-cyan-100 text-left"
+                      isBot ? "text-[#94A3B8] text-left" : "text-[#00FF66] text-left"
                     }`}
                   >
                     {m.time}
@@ -231,7 +231,7 @@ export default function AIChatModal({
           })}
 
           {isTyping && (
-            <div className="flex items-center gap-2 text-xs text-cyan-400 font-mono-tech">
+            <div className="flex items-center gap-2 text-xs text-[#00FF66] font-mono-tech">
               <Bot className="w-4 h-4 animate-bounce" />
               <span>CyberX AI Assistant يقوم بصياغة الرد...</span>
             </div>
@@ -241,13 +241,13 @@ export default function AIChatModal({
         </div>
 
         {/* Quick Questions Chips */}
-        <div className="px-4 py-2 bg-[#0A0F1D]/90 border-t border-white/10 overflow-x-auto flex items-center gap-2 scrollbar-none">
+        <div className="px-4 py-2 bg-[#000000]/90 border-t border-[#00FF66]/30 overflow-x-auto flex items-center gap-2 scrollbar-none">
           <span className="text-[11px] text-[#94A3B8] font-bold shrink-0">استفسارات سريعة:</span>
           {QUICK_QUESTIONS.map((q, idx) => (
             <button
               key={idx}
               onClick={() => handleSend(q)}
-              className="text-[11px] px-3 py-1 rounded-full bg-[#1E293B]/60 hover:bg-[#1E293B] text-[#94A3B8] hover:text-cyan-300 border border-white/10 shrink-0 transition-colors cursor-pointer"
+              className="text-[11px] px-3 py-1 rounded-full bg-[#0A0A0A]/60 hover:bg-[#0A0A0A] text-[#94A3B8] hover:text-[#00FF66] border border-[#00FF66]/30 shrink-0 transition-colors cursor-pointer"
             >
               {q}
             </button>
@@ -255,7 +255,7 @@ export default function AIChatModal({
         </div>
 
         {/* Input Bar */}
-        <div className="p-4 bg-[#0A0F1D] border-t border-white/10 flex items-center gap-2">
+        <div className="p-4 bg-[#000000] border-t border-[#00FF66]/30 flex items-center gap-2">
           <input
             type="text"
             placeholder="اسأل الروبوت (عن الأسعار، الباقات المجمعة، طرق الدفع فودافون كاش وUSDT...)"
@@ -264,13 +264,13 @@ export default function AIChatModal({
             onKeyDown={(e) => {
               if (e.key === "Enter") handleSend();
             }}
-            className="flex-1 px-4 py-3 rounded-xl bg-[#111827] border border-white/10 text-sm text-[#F8FAFC] placeholder-[#94A3B8]/60 focus:outline-none focus:border-cyan-400 transition-colors"
+            className="flex-1 px-4 py-3 rounded-xl bg-[#0A0A0A] border border-[#00FF66]/30 text-sm text-[#F8FAFC] placeholder-[#94A3B8]/60 focus:outline-none focus:border-[#00FF66]/30 transition-colors"
           />
 
           <button
             onClick={() => handleSend()}
             disabled={!inputVal.trim()}
-            className="p-3 rounded-xl bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-500 hover:to-cyan-400 text-white font-bold shadow-md shadow-blue-500/20 disabled:opacity-40 transition-all cursor-pointer"
+            className="p-3 rounded-xl bg-gradient-to-r from-[#00FF66] to-[#009944] hover:from-[#00FF66] hover:to-[#00CC55] text-white font-bold shadow-md shadow-[0_0_15px_rgba(0,255,102,0.2)] disabled:opacity-40 transition-all cursor-pointer"
           >
             <Send className="w-5 h-5" />
           </button>
